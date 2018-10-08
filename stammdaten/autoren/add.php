@@ -2,10 +2,7 @@
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
 include '../../api/mainCall.php';
-$autorTitelsUrl = $baseURL.'autor/titels';
-$get_data = callAPI('GET',$autorTitelsUrl , false);
-$response = json_decode($get_data, true);
-$autorTitels = $response['content']['data'];
+include '../../api/autoren.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 
@@ -35,7 +32,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addAutorenForm" @submit="registerUser()">
+		            <form role="form" id="addAutorenForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
@@ -50,29 +47,29 @@ include '../../inc/sidebar.php';
 								</div>
 								<div class="form-group">
 									<label for="Vorname">Vorname</label>
-									<input type="text" class="form-control" name="Vorname" id="Vorname">
+									<input type="text" class="form-control" name="Vorname" value="<?php if(isset($_POST['Vorname'])) echo $_POST['Vorname'];?>" id="Vorname">
 								</div>
 								<div class="form-group">
 									<label for="Nachname">Nachname*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="Nachname" name="Nachname" required>
+									<input type="text" class="form-control" id="Nachname" name="Nachname" value="<?php if(isset($_POST['Nachname'])) echo $_POST['Nachname'];?>" required>
 								</div>
 								<div class="form-group">
 									<label for="Suchname">Suchname</label>
-									<input type="text" class="form-control" name="Suchname" id="Suchname">
+									<input type="text" class="form-control"  name="Suchname" value="<?php if(isset($_POST['Suchname'])) echo $_POST['Suchname'];?>" id="Suchname">
 								</div>
 								<div class="form-group">
 									<label for="Geburtsjahr">Geburtsjahr/ datum</label>
-									<input type="text" class="form-control" name="Geburtsjahr" id="Geburtsjahr" data-mask="99/99/9999">
+									<input type="text" class="form-control" name="Geburtsjahr" value="<?php if(isset($_POST['Geburtsjahr'])) echo $_POST['Geburtsjahr'];?>" id="Geburtsjahr" data-mask="99/99/9999">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="Todesjahr">Todesjahr/ datum</label>
-									<input type="text" class="form-control" name="Todesjahr" id="Todesjahr" data-mask="99/99/9999">
+									<input type="text" class="form-control" name="Todesjahr" value="<?php if(isset($_POST['Todesjahr'])) echo $_POST['Todesjahr'];?>" id="Todesjahr" data-mask="99/99/9999">
 								</div>
 								<div class="form-group">
 									<label for="Kommentar">Kommentar</label>
-									<textarea id="Kommentar" name="Kommentar" :bind="autor.Kommentar" class="form-control texteditor" aria-hidden="true"></textarea>
+									<textarea id="Kommentar" name="Kommentar" value="<?php if(isset($_POST['Kommentar'])) echo $_POST['Kommentar'];?>" class="form-control texteditor" aria-hidden="true"></textarea>
 								</div>
 							</div>
 						</div>
@@ -80,7 +77,7 @@ include '../../inc/sidebar.php';
 		              <!-- /.box-body -->
 
 		              <div class="box-footer">
-		                <button class="btn btn-success" type="submit" id="saveFormBtn">Speichern</button>
+		                <input class="btn btn-success" type="submit" value="Speichern" name="Speichern" id="saveFormBtn">
 						<button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
 		              </div>
 		            </form>

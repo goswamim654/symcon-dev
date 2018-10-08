@@ -6,8 +6,7 @@ $get_data = callAPI('GET', $baseURL.'autor/all', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
 $autoren = $response['content']['data'];
-// print_r($autoren);
-// die();
+
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
@@ -31,13 +30,20 @@ include '../../inc/sidebar.php';
 			<div class="col-md-12">
 				<div class="box box-success">
 		            <div class="box-header with-border">
-		              <h3 class="box-title">
-		              	<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Autor/Herausgeber</a>
-		              </h3>
+		            	<?php if(isset($_SESSION['success'])) { ?>
+		              	<div class="alert alert-success alert-dismissible alert-hide">
+			                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+			                <h4><i class="icon fa fa-check"></i> Contrats!</h4>
+			                <?php echo $_SESSION['success'];?>.
+			             </div>
+		              	<?php unset($_SESSION['success']); } ?>
+						<h3 class="box-title">
+							<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Autor/Herausgeber</a>
+						</h3>
 		            </div>
 		            <!-- /.box-header -->
 		            <div class="box-body">
-			            <form id="frm-example" action="/path/to/your/script" method="POST">
+			            <form id="frm-example" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 		            		<div class="table-responsive">
 					            <table id="autoren" class="table table-bordered table-striped display table-hover">
 					                <thead>
@@ -53,7 +59,15 @@ include '../../inc/sidebar.php';
 					                	<?php foreach ($autoren as $key => $autor) { ?>
 						                <tr>
 						                	<td class="rowlink-skip"></td>
-											<td><a href="#rowlinkModal" data-toggle="modal"><?php echo $autor['Nachname']; ?></a></td>
+											<td><a href="#rowlinkModal" 
+													data-autor_id="<?php echo $autor['AutorID']; ?>"
+													data-Vorname="<?php echo $autor['Vorname']; ?>"
+													data-Nachname="<?php echo $autor['Nachname']; ?>"
+													data-Suchname="<?php echo $autor['Suchname']; ?>"
+													data-Geburtsdatum="<?php echo $autor['Geburtsdatum']; ?>"
+													data-Sterbedatum="<?php echo $autor['Sterbedatum']; ?>"
+													data-Kommentar="<?php echo $autor['Kommentar']; ?>"
+													data-toggle="modal"><?php echo $autor['Nachname']; ?></a></td>
 											<td><?php echo $autor['Ersteller']; ?></td>
 											<td><?php echo $autor['Bearbeiter']; ?></td>
 											<td class="rowlink-skip">

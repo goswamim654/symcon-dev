@@ -2,13 +2,13 @@
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
 include '../../api/mainCall.php';
+include '../../api/autoren.php';
 $autor_id = $_GET['autor'];
 $autorTitelsUrl = $baseURL.'autor/titels';
 $get_data = callAPI('GET',$autorTitelsUrl , false);
 $response = json_decode($get_data, true);
 $autorTitels = $response['content']['data'];
-// print_r($autorTitels);
-// die();
+
 $autorEditUrl = $baseURL.'autor/view?autorId='.$autor_id;
 $get_data = callAPI('GET',$autorEditUrl , false);
 $response = json_decode($get_data, true);
@@ -44,7 +44,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addAutorenForm">
+		            <form role="form" id="addAutorenForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
@@ -89,7 +89,7 @@ include '../../inc/sidebar.php';
 		              <!-- /.box-body -->
 
 		              <div class="box-footer">
-		                <button class="btn btn-success" type="submit" id="saveFormBtn">Änderungen Speichern</button>
+		              	 <input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
 						<button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
 		              </div>
 		            </form>

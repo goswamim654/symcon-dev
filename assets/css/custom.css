@@ -173,7 +173,7 @@ select.form-control.input-sm {
 th.sorting {
     font-size: 15px;
 }
-.table-hover.rowlink tr:hover td,.table-hover .rowlink tr:hover td {
+.table-hover.rowlink tr:hover td,.table-hover .rowlink tr:hover td, .kuntoDropdown li a:hover {
     background-color:#A1C180;
     color:#fff !important;
 }

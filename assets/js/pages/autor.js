@@ -48,4 +48,24 @@ $(document).ready(function () {
             'Nachname': "Nachname ist eine Pflichtangabe"
         }
 	});
+
+    $('#rowlinkModal').modal({
+        keyboard: true,
+        backdrop: "static",
+        show:false,
+        
+    }, 3000).on('show.bs.modal', function(event) {
+    	var modalHeader = 'Anzeigen Autor/Herausgeber';
+    	var autor_id = $(event.relatedTarget).data('autor_id');
+    	var Vorname = $(event.relatedTarget).data('vorname');
+    	var Nachname = $(event.relatedTarget).data('nachname');
+    	var Suchname = $(event.relatedTarget).data('suchname');
+    	var Geburtsdatum = $(event.relatedTarget).data('geburtsdatum');
+    	var Sterbedatum = $(event.relatedTarget).data('sterbedatum');
+    	var Kommentar = $(event.relatedTarget).data('kommentar');
+        $(this).find('.modal-title').html(modalHeader);
+        $(this).find('#rowlinkModalDetails').html($('<label>Vorname:</label> '+ Vorname +'<br><label>Nachname:</label> '+ Nachname +'<br><label>Suchname:</label> '+ Suchname +'<br><label>Geburtsdatum:</label> '+ Geburtsdatum +'<br><label>Sterbedatum:</label> '+ Sterbedatum + '<br><label>Kommentar:</label> '+ Kommentar +'<br>'));
+    }).on('hidden.bs.modal', function () {
+    	$(this).find('#rowlinkModalDetails').html('');
+	});
 });

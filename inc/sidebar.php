@@ -14,11 +14,6 @@
       </form>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="mobile-show"><a href="#">Erweiterte Suche</a></li>
-        <li class="<?php if($actual_link == $absoluteUrl) echo 'active'; ?>">
-          <a href="<?php echo $absoluteUrl;?>">
-            <i class="fa fa-dashboard"></i> <span><?php echo $dashboard; ?></span>
-          </a>
-        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-sign-in"></i>
@@ -34,7 +29,7 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-heartbeat"></i>
-            <span>Meteria Medica</span>
+            <span>Materia Medica</span>
           </a>
         </li>
         <li class="<?php if(preg_match("/stammdaten/", $actual_link)) echo 'active'; ?> treeview"> 
@@ -48,7 +43,7 @@
           <ul class="treeview-menu">
             <li class="<?php if(preg_match("/quellen/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/quellen"><i class="fa fa-circle-o"></i> Quellen</a></li>
             <li class="<?php if(preg_match("/zeitschriften/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/zeitschriften"><i class="fa fa-circle-o"></i> Zeitschriften</a></li>
-            <li class="<?php if(preg_match("/arzeneien/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/arzeneien"><i class="fa fa-circle-o"></i> Arzeneien</a></li>
+            <li class="<?php if(preg_match("/arzneien/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/arzneien"><i class="fa fa-circle-o"></i> Arzneien</a></li>
             <li class="<?php if(preg_match("/autoren/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/autoren"><i class="fa fa-circle-o"></i> Autoren</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Prüfer</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Herkunft</a></li>
