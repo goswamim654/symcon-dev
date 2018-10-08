@@ -1,21 +1,7 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
-include '../../api/mainCall.php';
 include '../../api/autoren.php';
-$autor_id = $_GET['autor'];
-$autorTitelsUrl = $baseURL.'autor/titels';
-$get_data = callAPI('GET',$autorTitelsUrl , false);
-$response = json_decode($get_data, true);
-$autorTitels = $response['content']['data'];
-
-$autorEditUrl = $baseURL.'autor/view?autorId='.$autor_id;
-$get_data = callAPI('GET',$autorEditUrl , false);
-$response = json_decode($get_data, true);
-$status = $response['status'];
-$autoren = $response['content']['data'];
-// print_r($autoren);
-// die();
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>

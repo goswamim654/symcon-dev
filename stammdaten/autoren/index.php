@@ -1,12 +1,7 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
-include '../../api/mainCall.php';
-$get_data = callAPI('GET', $baseURL.'autor/all', false);
-$response = json_decode($get_data, true);
-$status = $response['status'];
-$autoren = $response['content']['data'];
-
+include '../../api/autoren.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>

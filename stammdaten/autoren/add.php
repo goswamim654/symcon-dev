@@ -1,11 +1,9 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
-include '../../api/mainCall.php';
 include '../../api/autoren.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
-
 ?>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
