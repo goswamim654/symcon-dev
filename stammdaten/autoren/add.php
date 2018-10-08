@@ -1,8 +1,14 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
+include '../../api/mainCall.php';
+$autorTitelsUrl = $baseURL.'autor/titels';
+$get_data = callAPI('GET',$autorTitelsUrl , false);
+$response = json_decode($get_data, true);
+$autorTitels = $response['content']['data'];
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
+
 ?>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -37,9 +43,9 @@ include '../../inc/sidebar.php';
 									<label for="Titel">Titel</label>
 									<select class="form-control" name="Titel" id="Titel" autofocus>
 										<option value="">Select a Titel</option>
-										<option value="Dr">Dr.</option>
-										<option value="Mr.">Mr.</option>
-										<option value="Mrs.">Mrs.</option>
+										<?php foreach ($autorTitels as $key => $autorTitel) { ?>
+										<option value="Dr"><?php echo $autorTitel;?></option>
+										<?php } ?>
 									</select>
 								</div>
 								<div class="form-group">

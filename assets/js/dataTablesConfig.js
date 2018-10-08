@@ -59,9 +59,9 @@ $(document).ready(function () {
 		]
     });
 
-    //datatable init arzeneien
+    //datatable init arzneien
     
-	var table = $('#arzeneien').DataTable({
+	var table = $('#arzneien').DataTable({
 		//'ajax': 'https://api.myjson.com/bins/1us28',  
 		"responsive": true,
     	"language": {
@@ -87,7 +87,7 @@ $(document).ready(function () {
     });
 
 
-    //datatable init arzeneien
+    //datatable init arzneien
     
 	var table = $('#autoren').DataTable({
 		//'ajax': 'https://api.myjson.com/bins/1us28',  
