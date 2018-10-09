@@ -1,16 +1,6 @@
 $(document).ready(function () {
-	//datepicker date of birth init
-	$('#Geburtsjahr').datepicker(
-	{
-      	changeMonth: true,
-			changeYear: true,
-			dateFormat: 'dd/mm/yy'
-		},
-		$.datepicker.regional[ "de" ]
-	);
-
-	//datepicker date of death init
-	$('#Todesjahr').datepicker(
+	//datepicker init
+	$('#Todesjahr, #Geburtsjahr').datepicker(
 	{
       	changeMonth: true,
 			changeYear: true,
@@ -20,7 +10,7 @@ $(document).ready(function () {
 	);
 
 	$('#Todesjahr').change(function() {
-		if ($.datepicker.parseDate("dd/mm/yy",$('#Geburtsjahr').val()) > $.datepicker.parseDate("dd/mm/yy",$('#Todesjahr').val())) {
+		if ($('#Geburtsjahr').val() !== '' && ($.datepicker.parseDate("dd/mm/yy",$('#Geburtsjahr').val()) > $.datepicker.parseDate("dd/mm/yy",$('#Todesjahr').val()))) {
 			$('#Todesjahr').val('');
 			$('#Geburtsjahr').val('');
 			$('#Geburtsjahr').focus();
@@ -29,23 +19,16 @@ $(document).ready(function () {
 	});
 
 	$('#Geburtsjahr').change(function() {
-		if ($.datepicker.parseDate("dd/mm/yy",$('#Geburtsjahr').val()) > $.datepicker.parseDate("dd/mm/yy",$('#Todesjahr').val())) {
+		if ($('#Todesjahr').val() !== '' && ($.datepicker.parseDate("dd/mm/yy",$('#Geburtsjahr').val()) > $.datepicker.parseDate("dd/mm/yy",$('#Todesjahr').val()))) {
 			$('#Todesjahr').val('');
 			$('#Geburtsjahr').val('');
 			$('#Geburtsjahr').focus();
 			alert("Geburtsjahr cannot be greater than Todesjahr");
 		}
 	});
-    
-
-	jQuery.validator.addMethod("validDate", function(value, element) {
-        return this.optional(element) || moment(value,"DD/MM/YYYY").isValid();
-    }, "Please enter a valid date in the format DD/MM/YYYY");
 
 	// form validation
-	$.extend($.validator.messages, {
-		    required: '<i class = "icon-exclamation-sign"></i>'
-	});
+	
     var validobj = $("#addAutorenForm").validate({
 		errorPlacement: function(error, element) {
 		error.appendTo(element.prev("span"));
@@ -63,8 +46,8 @@ $(document).ready(function () {
         show:false,
         
     }, 3000).on('show.bs.modal', function(event) {
+    	$(this).find('.modal-title').html('Anzeigen Autor/ Herausgeber');
     	var notAvailable = 'Nicht verfügba';
-    	var modalHeader = 'Anzeigen Autor/ Herausgeber';
     	var autor_id = $(event.relatedTarget).data('autor_id');
     	var Vorname = $(event.relatedTarget).data('vorname');
     	if(Vorname === '') Vorname = notAvailable;
@@ -78,9 +61,17 @@ $(document).ready(function () {
     	if(Sterbedatum === '') Sterbedatum = notAvailable;
     	var Kommentar = $(event.relatedTarget).data('kommentar');
     	if(Kommentar === '') Kommentar = notAvailable;
-        $(this).find('.modal-title').html(modalHeader);
-        $(this).find('#rowlinkModalDetails').html('<div class="row"><div class="col-xs-2"><label>Vorname:</label></div><div class="col-xs-10">'+ Vorname +'</div></div><div class="row"><div class="col-xs-2"><label>Nachname:</label></div><div class="col-xs-10">'+ Nachname +'</div></div><div class="row"><div class="col-xs-2"><label>Suchname:</label></div><div class="col-xs-10">'+ Suchname +'</div></div><div class="row"><div class="col-xs-2"><label>Geburtsdatum:</label></div><div class="col-xs-10">'+ Geburtsdatum +'</div></div><div class="row"><div class="col-xs-2"><label>Sterbedatum:</label></div><div class="col-xs-10">'+ Sterbedatum + '</div></div><div class="row"><div class="col-xs-2"><label>Kommentar:</label></div><div class="col-xs-10">'+ Kommentar +'</div></div>');
-        var value = $(this).find('.col-xs-10').each(function () {
+
+    	let autor = { Vorname: Vorname, Nachname: Nachname, Suchname:Suchname, Geburtsdatum: Geburtsdatum, Sterbedatum: Sterbedatum, Kommentar: Kommentar};
+        let modalContents = '';
+        for(let key in autor) {
+        	modalContents += `<div class="row">
+				<div class="col-xs-2"><label>${key}:</label></div>
+				<div class="col-xs-10">${autor[key]}</div>
+			</div>`;
+        }
+		$(this).find('#rowlinkModalDetails').html(modalContents);
+        $(this).find('.col-xs-10').each(function () {
         	if($(this).html() === notAvailable) {
         		$(this).css( "color", "#A1C180" );
         	}

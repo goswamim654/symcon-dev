@@ -1,5 +1,8 @@
 $(document).ready(function () {
-		    
+	// extend juery validation rule
+	$.extend($.validator.messages, {
+		    required: '<i class = "icon-exclamation-sign"></i>'
+	});    
 	//  multiple select
 	$('.select2').select2();
 
@@ -12,12 +15,6 @@ $(document).ready(function () {
 		},
 		$.datepicker.regional[ "de" ]
 	);
-
-	// Quelle form validation
-
-	$.extend($.validator.messages, {
-	    required: '<i class = "icon-exclamation-sign"></i>'
-	});
 	
 	$('.normal-search a').click(function() {
 		$(this).hide();

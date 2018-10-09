@@ -35,7 +35,7 @@ include '../../inc/sidebar.php';
 		              	<div class="row">
 							<div class="col-md-6">
 								<div class="row">
-									<div class="form-group col-xs-5 col-sm-3">
+									<div class="form-group col-xs-5 col-sm-4">
 										<label for="Titel">Titel</label>
 										<select class="form-control" name="Titel" id="Titel" autofocus>
 											<option value="">Select a Titel</option>
@@ -44,7 +44,7 @@ include '../../inc/sidebar.php';
 											<?php } ?>
 										</select>
 									</div>
-									<div class="form-group col-xs-7 col-sm-9">
+									<div class="form-group col-xs-7 col-sm-8">
 										<label for="Vorname">Vorname</label>
 										<input type="text" class="form-control" name="Vorname" value="<?php if(isset($_POST['Vorname'])) echo $_POST['Vorname'];?>" id="Vorname">
 									</div>
