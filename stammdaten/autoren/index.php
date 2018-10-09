@@ -33,7 +33,7 @@ include '../../inc/sidebar.php';
 			             </div>
 		              	<?php unset($_SESSION['success']); } ?>
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Autor/Herausgeber</a>
+							<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Autor/ Herausgeber</a>
 						</h3>
 		            </div>
 		            <!-- /.box-header -->
@@ -43,8 +43,8 @@ include '../../inc/sidebar.php';
 					            <table id="autoren" class="table table-bordered table-striped display table-hover">
 					                <thead>
 						                <tr>
-						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
-											 <th>Nachname</th>
+						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen" disabled><i class="fa fa-trash"></i></button></th>
+											 <th>Suchname</th>
 											<th>Angelegt durch</th>
 											<th>Bearbeiter</th>
 											<th class="no-sort">Aktionen</th>
@@ -52,8 +52,9 @@ include '../../inc/sidebar.php';
 					                </thead>
 					                <tbody data-link="row" class="rowlink">
 					                	<?php foreach ($autoren as $key => $autor) { ?>
+
 						                <tr>
-						                	<td class="rowlink-skip"></td>
+						                	<td class="rowlink-skip"><?php echo $autor['AutorID']; ?></td>
 											<td><a href="#rowlinkModal" 
 													data-autor_id="<?php echo $autor['AutorID']; ?>"
 													data-Vorname="<?php echo $autor['Vorname']; ?>"
@@ -61,12 +62,12 @@ include '../../inc/sidebar.php';
 													data-Suchname="<?php echo $autor['Suchname']; ?>"
 													data-Geburtsdatum="<?php echo $autor['Geburtsdatum']; ?>"
 													data-Sterbedatum="<?php echo $autor['Sterbedatum']; ?>"
-													data-Kommentar="<?php echo $autor['Kommentar']; ?>"
-													data-toggle="modal"><?php echo $autor['Nachname']; ?></a></td>
+													data-Kommentar='<?php echo $autor['Kommentar']; ?>'
+													data-toggle="modal"><?php if( $autor['Suchname'] ) echo $autor['Suchname']; else echo $autor['Vorname'].$autor['Nachname'];  ?></a></td>
 											<td><?php echo $autor['Ersteller']; ?></td>
 											<td><?php echo $autor['Bearbeiter']; ?></td>
 											<td class="rowlink-skip">
-												<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/autoren/edit.php?autor=<?php echo $autor['AutorID']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+												<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/autoren/edit.php?autorid=<?php echo $autor['AutorID']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 		            	       	            </td>
 						                </tr>
 						            	<?php } ?>

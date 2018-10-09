@@ -9,6 +9,10 @@ $autorTitels = $response['content']['data'];
 // list autoren
 
 if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absoluteUrl.'stammdaten/autoren/index.php') {
+	if(isset($_POST['id'])) {
+		var_dump($_POST['id']);
+		die();
+	}
 	$get_data = callAPI('GET', $baseApiURL.'autor/all', false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
@@ -17,8 +21,9 @@ if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absolu
 
 // get a single autor
 
-if(isset($_GET['autor'])) {
-	$autorEditUrl = $baseApiURL.'autor/view?autorId='.$_GET['autor'];
+if(isset($_GET['autorid'])) {
+	$autorid = $_GET['autorid'];
+	$autorEditUrl = $baseApiURL.'autor/view?autorId='.$autorid;
 	$get_data = callAPI('GET',$autorEditUrl , false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
@@ -64,12 +69,14 @@ if(isset($_POST['ÄnderungenSpeichern'])) {
 		"Kommentar" => $_POST['Kommentar']
 	);
 
-	$get_data = callAPI('POST', 'https://alegralabs.com/hemanta/symcom/api/public/v1/autor/add', json_encode($data_array));
+	$get_data = callAPI('POST',  $baseApiURL.'autor/update?autorId='.$autorid, json_encode($data_array));
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
 	$autoren = $response['content']['data'];
-	//var_dump($get_data);
-	
+	if($status == 2 ) {
+		$_SESSION['success'] = $response['message'];
+		header('Location: '.$absoluteUrl. 'stammdaten/autoren/index.php');
+	}
 }
 
 // delete a autor

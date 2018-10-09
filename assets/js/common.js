@@ -38,6 +38,6 @@ $(document).ready(function () {
 	    } 
 	});
 
-	$('.alert-hide').fadeOut( 'slow');
+	$('.alert-hide').fadeOut(5000);
 
 });

@@ -1,90 +1,90 @@
 $(document).ready(function () {
 	//datatable init quellen
-	var table = $('#quellen').DataTable({
-		//'ajax': 'https://api.myjson.com/bins/1us28',  
-		"responsive": true,
-    	"language": {
-           "url": absoluteUrl+"lang/dataTableGerman.json"
-       	},
-		'columnDefs': [{
-		 'targets': 0,
-		 'searchable': false,
-		 'orderable': false,
-		 'className': 'dt-body-center',
-		 'render': function (data, type, full, meta){
-		     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
-		 }
-		}],
-		'order': [[1, 'asc']],
-		"aoColumns": [
-				{ "bSortable": false },
-				null,
-				null,
-				null,
-				null,
-				null,
-			{ "bSortable": false }
-		]
-    });
+	// var table = $('#quellen').DataTable({
+	// 	//'ajax': 'https://api.myjson.com/bins/1us28',  
+	// 	"responsive": true,
+ //    	"language": {
+ //           "url": absoluteUrl+"lang/dataTableGerman.json"
+ //       	},
+	// 	'columnDefs': [{
+	// 	 'targets': 0,
+	// 	 'searchable': false,
+	// 	 'orderable': false,
+	// 	 'className': 'dt-body-center',
+	// 	 'render': function (data, type, full, meta){
+	// 	     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+	// 	 }
+	// 	}],
+	// 	'order': [[1, 'asc']],
+	// 	"aoColumns": [
+	// 			{ "bSortable": false },
+	// 			null,
+	// 			null,
+	// 			null,
+	// 			null,
+	// 			null,
+	// 		{ "bSortable": false }
+	// 	]
+ //    });
 
 
-    //datatable init zeitschriften
+ //    //datatable init zeitschriften
 
-	var table = $('#zeitschriften').DataTable({
-		//'ajax': 'https://api.myjson.com/bins/1us28',  
-		"responsive": true,
-    	"language": {
-           "url": absoluteUrl+"lang/dataTableGerman.json"
-       	},
-		'columnDefs': [{
-		 'targets': 0,
-		 'searchable': false,
-		 'orderable': false,
-		 'className': 'dt-body-center',
-		 'render': function (data, type, full, meta){
-		     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
-		 }
-		}],
-		'order': [[1, 'asc']],
-		"aoColumns": [
-				{ "bSortable": false },
-				null,
-				null,
-				null,
-				null,
-				null,
-				null,
-				null,
-			{ "bSortable": false }
-		]
-    });
+	// var table = $('#zeitschriften').DataTable({
+	// 	//'ajax': 'https://api.myjson.com/bins/1us28',  
+	// 	"responsive": true,
+ //    	"language": {
+ //           "url": absoluteUrl+"lang/dataTableGerman.json"
+ //       	},
+	// 	'columnDefs': [{
+	// 	 'targets': 0,
+	// 	 'searchable': false,
+	// 	 'orderable': false,
+	// 	 'className': 'dt-body-center',
+	// 	 'render': function (data, type, full, meta){
+	// 	     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+	// 	 }
+	// 	}],
+	// 	'order': [[1, 'asc']],
+	// 	"aoColumns": [
+	// 			{ "bSortable": false },
+	// 			null,
+	// 			null,
+	// 			null,
+	// 			null,
+	// 			null,
+	// 			null,
+	// 			null,
+	// 		{ "bSortable": false }
+	// 	]
+ //    });
 
-    //datatable init arzneien
+ //    //datatable init arzneien
     
-	var table = $('#arzneien').DataTable({
-		//'ajax': 'https://api.myjson.com/bins/1us28',  
-		"responsive": true,
-    	"language": {
-           "url": absoluteUrl+"lang/dataTableGerman.json"
-       	},
-		'columnDefs': [{
-		 'targets': 0,
-		 'searchable': false,
-		 'orderable': false,
-		 'className': 'dt-body-center',
-		 'render': function (data, type, full, meta){
-		     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
-		 }
-		}],
-		'order': [[1, 'asc']],
-		"aoColumns": [
-				{ "bSortable": false },
-				null,
-				null,
-				null,
-			{ "bSortable": false }
-		]
-    });
+	// var table = $('#arzneien').DataTable({
+	// 	//'ajax': 'https://api.myjson.com/bins/1us28',  
+	// 	"responsive": true,
+ //    	"language": {
+ //           "url": absoluteUrl+"lang/dataTableGerman.json"
+ //       	},
+	// 	'columnDefs': [{
+	// 	 'targets': 0,
+	// 	 'searchable': false,
+	// 	 'orderable': false,
+	// 	 'className': 'dt-body-center',
+	// 	 'render': function (data, type, full, meta){
+	// 	     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+	// 	 }
+	// 	}],
+	// 	'order': [[1, 'asc']],
+	// 	"aoColumns": [
+	// 			{ "bSortable": false },
+	// 			null,
+	// 			null,
+	// 			null,
+	// 		{ "bSortable": false }
+	// 	]
+ //    });
 
 
     //datatable init arzneien
@@ -137,15 +137,16 @@ $(document).ready(function () {
 		}
 	});
 
-	$('#frm-example').on('submit', function(e){
+	$('#frm-example').on('submit', function(e) {
 		var form = this;
 
 		// Iterate over all checkboxes in the table
-		table.$('input[type="checkbox"]').each(function(){
+		table.$('input[type="checkbox"]').each(function() {
 			// If checkbox doesn't exist in DOM
-			if(!$.contains(document, this)){
+			//if(!$.contains(document, this)){
 				// If checkbox is checked
-				if(this.checked){
+				if(this.checked) {
+					//console.log('checked');
 				   // Create a hidden element 
 				   $(form).append(
 				      $('<input>')
@@ -154,14 +155,14 @@ $(document).ready(function () {
 				         .val(this.value)
 				   );
 				}
-			} 
+			//} 
 	  });
 
 	  // FOR TESTING ONLY
 	  
 	  // Output form data to a console
-	  $('#example-console').text($(form).serialize()); 
-	  console.log("Form submission", $(form).serialize()); 
+	  // $('#example-console').text($(form).serialize()); 
+	  //console.log("Form submission", $(form).serialize()); 
 	   
 	  // Prevent actual form submission
 	  e.preventDefault();

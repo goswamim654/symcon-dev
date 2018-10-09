@@ -12,7 +12,15 @@
 					<span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title"></h4>
 				</div>
-				<div class="modal-body" id="rowlinkModalDetails"></div>
+				<div class="modal-body">
+					<!-- Default box -->
+					<div class="box box-success">
+						<div class="box-body" id="rowlinkModalDetails">
+							
+						</div>
+					</div>
+					<!-- /.box -->
+				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
 				</div>

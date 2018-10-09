@@ -10,12 +10,12 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Neu Autor/Herausgeber
+        Neu Autor/ Herausgeber
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
         <li class=""> <a href="<?php echo $absoluteUrl;?>stammdaten/autoren/">Autoren</a></li>
-        <li class="active"> Neu Autor/Herausgeber</li>
+        <li class="active"> Neu Autor/ Herausgeber</li>
       </ol>
     </section>
 
@@ -34,18 +34,20 @@ include '../../inc/sidebar.php';
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
-								<div class="form-group">
-									<label for="Titel">Titel</label>
-									<select class="form-control" name="Titel" id="Titel" autofocus>
-										<option value="">Select a Titel</option>
-										<?php foreach ($autorTitels as $key => $autorTitel) { ?>
-										<option value="Dr"><?php echo $autorTitel;?></option>
-										<?php } ?>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="Vorname">Vorname</label>
-									<input type="text" class="form-control" name="Vorname" value="<?php if(isset($_POST['Vorname'])) echo $_POST['Vorname'];?>" id="Vorname">
+								<div class="row">
+									<div class="form-group col-xs-5 col-sm-3">
+										<label for="Titel">Titel</label>
+										<select class="form-control" name="Titel" id="Titel" autofocus>
+											<option value="">Select a Titel</option>
+											<?php foreach ($autorTitels as $key => $autorTitel) { ?>
+											<option value="<?php echo $autorTitel;?>"><?php echo $autorTitel;?></option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="form-group col-xs-7 col-sm-9">
+										<label for="Vorname">Vorname</label>
+										<input type="text" class="form-control" name="Vorname" value="<?php if(isset($_POST['Vorname'])) echo $_POST['Vorname'];?>" id="Vorname">
+									</div>
 								</div>
 								<div class="form-group">
 									<label for="Nachname">Nachname*</label><span class="error-text"></span>
@@ -76,7 +78,7 @@ include '../../inc/sidebar.php';
 
 		              <div class="box-footer">
 		                <input class="btn btn-success" type="submit" value="Speichern" name="Speichern" id="saveFormBtn">
-						<button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
+						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/autoren/" id="cancelBtn">Abbrechen</a>
 		              </div>
 		            </form>
 		          </div>
