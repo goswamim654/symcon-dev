@@ -40,7 +40,7 @@ include '../../inc/sidebar.php';
 		            <div class="box-body">
 			            <form id="frm-example" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 		            		<div class="table-responsive">
-					            <table id="autoren" class="table table-bordered table-striped display table-hover">
+					            <table id="autoren" class="table-loader table table-bordered table-striped display table-hover">
 					                <thead>
 						                <tr>
 						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen" disabled><i class="fa fa-trash"></i></button></th>
