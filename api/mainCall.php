@@ -42,18 +42,3 @@ function callAPI($method, $url, $data){
    curl_close($curl);
    return $result;
 }
-
-// $data_array =  array(
-//       "Code"      => '',
-//       "Suchname"  => '',
-//       "Titel"     => '',
-//       "Vorname"   => '',
-//       "Nachname"  => 'Mukesh',
-//       "Geburtsdatum" => '',
-//       "Sterbedatum" => '',
-//       "Kommentar" => '',
-//       "Sterbedatum" => '',
-//       "ip_address" => '',
-//    );
-// $get_data = callAPI('POST', 'https://alegralabs.com/hemanta/symcom/api/public/v1/user/login', json_encode($data_array));
-// var_dump($get_data);

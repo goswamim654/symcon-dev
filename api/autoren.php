@@ -1,11 +1,19 @@
 <?php
 include 'mainCall.php';
 $autoren = '';
+$get_data = '';
+$response = '';
+$autorTitels = '';
 // titels
 $autorTitelsUrl = $baseApiURL.'autor/titels';
 $get_data = callAPI('GET',$autorTitelsUrl , false);
 $response = json_decode($get_data, true);
-$autorTitels = $response['content']['data'];
+if($response['status'] == 0) {
+	echo $response['message'];
+	die();
+} else if($response['status'] == 2) {
+	$autorTitels = $response['content']['data'];
+}
 
 // list autoren
 if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absoluteUrl.'stammdaten/autoren/index.php') {
@@ -16,7 +24,12 @@ if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absolu
 	$get_data = callAPI('GET', $baseApiURL.'autor/all', false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
-	$autoren = $response['content']['data'];
+	if($response['status'] == 0) {
+		echo $response['message'];
+		die();
+	} else if($response['status'] == 2) {
+		$autoren = $response['content']['data'];	
+	}
 }
 
 // get a single autor
@@ -27,7 +40,12 @@ if(isset($_GET['autorId'])) {
 	$get_data = callAPI('GET',$autorEditUrl , false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
-	$autoren = $response['content']['data'];																
+	if($response['status'] == 0) {
+		echo $response['message'];
+		die();
+	} else if($response['status'] == 2) {
+		$autoren = $response['content']['data'];	
+	}																
 }
 
 // add a autor
@@ -47,10 +65,15 @@ if(isset($_POST['Speichern'])) {
 	$get_data = callAPI('POST', $baseApiURL.'autor/add', json_encode($data_array));
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
-	$autoren = $response['content']['data'];
-	if($status == 2 ) {
+	if($response['status'] == 0) {
+		echo $response['message'];
+		die();
+	} else if($response['status'] == 2) {
 		$_SESSION['success'] = $response['message'];
-		header('Location: '.$absoluteUrl. 'stammdaten/autoren/index.php');
+		header('Location: '.$absoluteUrl. 'stammdaten/autoren/index.php');	
+	} if($status == 3 ) {
+		print_r($response);
+		die();
 	}
 	
 }

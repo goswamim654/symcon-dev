@@ -51,20 +51,23 @@ include '../../inc/sidebar.php';
 						                </tr>
 					                </thead>
 					                <tbody data-link="row" class="rowlink">
-					                	<?php foreach ($autoren as $key => $autor) { ?>
+					                	<?php 
+					                	if($autoren != null && $autoren != '') { 
+					                		foreach ($autoren as $key => $autor) { ?>
 
-						                <tr>
-						                	<td class="rowlink-skip"><?php echo $autor['AutorID']; ?></td>
-											<td><a href="#rowlinkModal" 
-													data-autorId="<?php echo $autor['AutorID']; ?>"
-													data-toggle="modal"><?php if( $autor['Suchname'] ) echo $autor['Suchname']; else echo $autor['Vorname'].$autor['Nachname'];  ?></a></td>
-											<td><?php echo $autor['Ersteller']; ?></td>
-											<td><?php echo $autor['Bearbeiter']; ?></td>
-											<td class="rowlink-skip">
-												<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/autoren/edit.php?autorId=<?php echo $autor['AutorID']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
-		            	       	            </td>
-						                </tr>
-						            	<?php } ?>
+							                <tr>
+							                	<td class="rowlink-skip"><?php echo $autor['AutorID']; ?></td>
+												<td><a href="#rowlinkModal" 
+														data-autorId="<?php echo $autor['AutorID']; ?>"
+														data-toggle="modal"><?php if( $autor['Suchname'] ) echo $autor['Suchname']; else echo $autor['Vorname'].$autor['Nachname'];  ?></a></td>
+												<td><?php echo $autor['Ersteller']; ?></td>
+												<td><?php echo $autor['Bearbeiter']; ?></td>
+												<td class="rowlink-skip">
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/autoren/edit.php?autorId=<?php echo $autor['AutorID']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+			            	       	            </td>
+							                </tr>
+							            <?php } 
+							            } ?>
 						            </tbody>
 					            </table>
 					        </div>
