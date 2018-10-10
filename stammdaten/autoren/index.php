@@ -56,18 +56,12 @@ include '../../inc/sidebar.php';
 						                <tr>
 						                	<td class="rowlink-skip"><?php echo $autor['AutorID']; ?></td>
 											<td><a href="#rowlinkModal" 
-													data-autor_id="<?php echo $autor['AutorID']; ?>"
-													data-Vorname="<?php echo $autor['Vorname']; ?>"
-													data-Nachname="<?php echo $autor['Nachname']; ?>"
-													data-Suchname="<?php echo $autor['Suchname']; ?>"
-													data-Geburtsdatum="<?php echo $autor['Geburtsdatum']; ?>"
-													data-Sterbedatum="<?php echo $autor['Sterbedatum']; ?>"
-													data-Kommentar='<?php echo $autor['Kommentar']; ?>'
+													data-autorId="<?php echo $autor['AutorID']; ?>"
 													data-toggle="modal"><?php if( $autor['Suchname'] ) echo $autor['Suchname']; else echo $autor['Vorname'].$autor['Nachname'];  ?></a></td>
 											<td><?php echo $autor['Ersteller']; ?></td>
 											<td><?php echo $autor['Bearbeiter']; ?></td>
 											<td class="rowlink-skip">
-												<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/autoren/edit.php?autorid=<?php echo $autor['AutorID']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+												<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/autoren/edit.php?autorId=<?php echo $autor['AutorID']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 		            	       	            </td>
 						                </tr>
 						            	<?php } ?>

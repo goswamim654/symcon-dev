@@ -10,6 +10,6 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 
 // api base url
 
-$baseApiURL = 'https://alegralabs.com/hemanta/symcom/api/public/v1/';
+$baseApiURL = 'https://www.alegralabs.com/hemanta/symcom/api/public/v1/';
 
 ?>

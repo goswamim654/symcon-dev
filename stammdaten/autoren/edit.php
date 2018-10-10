@@ -30,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addAutorenForm" action="<?php echo $_SERVER['PHP_SELF'].'?autorid='.$autorid; ?>" method="POST">
+		            <form role="form" id="addAutorenForm" action="<?php echo $_SERVER['PHP_SELF'].'?autorId='.$autorId; ?>" method="POST">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
@@ -38,7 +38,7 @@ include '../../inc/sidebar.php';
 									<div class="form-group col-xs-5 col-sm-4">
 										<label for="Titel">Titel</label>
 										<select class="form-control" name="Titel" id="Titel" autofocus>
-											<option value="">Select a Titel</option>
+											<option value="">Titel wählen</option>
 											<?php foreach ($autorTitels as $key => $autorTitel) { ?>
 											<option value="<?php echo $autorTitel;?>" <?php echo ($autoren['Titel'] == $autorTitel ? 'selected' : ''); ?>><?php echo $autorTitel;?></option>
 											<?php } ?>

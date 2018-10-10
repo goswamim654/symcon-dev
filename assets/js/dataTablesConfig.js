@@ -18,7 +18,7 @@ $(document).ready(function () {
 		     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
 		 }
 		}],
-		'order': [[1, 'asc']],
+		'order': [],
 		"aoColumns": [
 				{ "bSortable": false },
 				null,

@@ -1,5 +1,6 @@
 <?php
 include 'mainCall.php';
+$autoren = '';
 // titels
 $autorTitelsUrl = $baseApiURL.'autor/titels';
 $get_data = callAPI('GET',$autorTitelsUrl , false);
@@ -7,7 +8,6 @@ $response = json_decode($get_data, true);
 $autorTitels = $response['content']['data'];
 
 // list autoren
-
 if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absoluteUrl.'stammdaten/autoren/index.php') {
 	if(isset($_POST['id'])) {
 		var_dump($_POST['id']);
@@ -21,9 +21,9 @@ if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absolu
 
 // get a single autor
 
-if(isset($_GET['autorid'])) {
-	$autorid = $_GET['autorid'];
-	$autorEditUrl = $baseApiURL.'autor/view?autorId='.$autorid;
+if(isset($_GET['autorId'])) {
+	$autorId = $_GET['autorId'];
+	$autorEditUrl = $baseApiURL.'autor/view?autorId='.$autorId;
 	$get_data = callAPI('GET',$autorEditUrl , false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
@@ -69,7 +69,7 @@ if(isset($_POST['ÄnderungenSpeichern'])) {
 		"Kommentar" => $_POST['Kommentar']
 	);
 
-	$get_data = callAPI('POST',  $baseApiURL.'autor/update?autorId='.$autorid, json_encode($data_array));
+	$get_data = callAPI('POST',  $baseApiURL.'autor/update?autorId='.$autorId, json_encode($data_array));
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
 	$autoren = $response['content']['data'];
