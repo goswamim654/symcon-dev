@@ -13,7 +13,7 @@
         </div>
       </form>
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="mobile-show"><a href="#">Erweiterte Suche</a></li>
+        <li class="mobile-show"><a href="#search" class="cd-search-trigger">Erweiterte Suche</a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-sign-in"></i>

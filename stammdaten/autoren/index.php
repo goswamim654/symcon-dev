@@ -32,18 +32,25 @@ include '../../inc/sidebar.php';
 			                <?php echo $_SESSION['success'];?>.
 			             </div>
 		              	<?php unset($_SESSION['success']); } ?>
+		              	<?php if(isset($_SESSION['validationError'])) { ?>
+		              	<div class="alert alert-danger alert-dismissible alert-hide">
+			                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+			                <h4><i class="icon fa fa-check"></i> Error!</h4>
+			                <?php echo $_SESSION['validationError'];?>.
+			             </div>
+		              	<?php unset($_SESSION['validationError']); } ?>
 						<h3 class="box-title">
 							<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Autor/ Herausgeber</a>
 						</h3>
 		            </div>
 		            <!-- /.box-header -->
 		            <div class="box-body">
-			            <form id="frm-example" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+			            <form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 		            		<div class="table-responsive">
-					            <table id="autoren" class="table-loader table table-bordered table-striped display table-hover">
+					            <table id="autoren" class="table-loader table table-bordered table-striped display table-hover custom-table">
 					                <thead>
 						                <tr>
-						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen" disabled><i class="fa fa-trash"></i></button></th>
+						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
 											 <th>Suchname</th>
 											<th>Angelegt durch</th>
 											<th>Bearbeiter</th>

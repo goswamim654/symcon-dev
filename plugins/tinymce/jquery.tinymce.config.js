@@ -1,19 +1,36 @@
 $(function() {
 
-
 	var tinymce_options = {
 
 		height : '145px',
 
 		language : 'de',
 
-		toolbar : " bold italic underline AddSpace ",
+		entity_encoding : "raw",
 
+		style_formats : [
+			{
+				title : 'Sperrschrift',
+				inline : 'span', 
+				classes : 'text-sperrschrift'
+			},
+			{
+		      title: 'Bild links',
+		      selector: 'img',
+					classes : 'image-left'
+		    },
+		    {
+		      title: 'Bild rechts',
+		      selector: 'img',
+					classes : 'image-right'
+		    }
+		],
+
+		plugins : [ "responsivefilemanager,table,image,imagetools,charmap,link,code,textcolor,searchreplace,paste,visualchars" ],
+
+		toolbar : "undo redo | styleselect | bold italic AddSpace | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image responsivefilemanager",
+		
 		content_css : [ "../../plugins/tinymce/css/text.css" ],
-
-		menubar:false,
-
-    	statusbar: false,
 
 		formats: {
 	       custom_format: {inline: 'span', attributes: {class: 'text-sperrschrift'}}
@@ -22,7 +39,6 @@ $(function() {
 		setup: function(editor) {
 	        editor.addButton('AddSpace', {
 	            icon: 'space fa fa-fw fa-arrows-h',
-	            //image: '../../plugins/tinymce/icons/icons8-add-white-space-30.png',
 	            tooltip: "Add Space",
 	            onPostRender: function() {
 				    var _this = this;   // reference to the button itself

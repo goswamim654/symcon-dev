@@ -32,6 +32,8 @@
 </div>
 <!-- ./wrapper -->
 
+
+  <div class="cd-cover-layer"></div> <!-- cover main content when search form is open -->
 <!-- jQuery 3 -->
 <script src="<?php echo $absoluteUrl;?>plugins/jquery/dist/jquery.min.js"></script>
 
@@ -71,9 +73,21 @@
 <script src="<?php echo $absoluteUrl;?>assets/js/common.js"></script>
 
 <script src="<?php echo $absoluteUrl;?>assets/js/pages/zeitschriften.js"></script>
+<script src="<?php echo $absoluteUrl;?>assets/js/advanceSearch.js"></script>
+<script src="<?php echo $absoluteUrl;?>assets/js/modernizr.js"></script>
 
 <script src="<?php echo $absoluteUrl;?>assets/js/pages/autor.js"></script>
-	
+
+<?php
+if(isset($_SESSION['validationError'])) { ?>
+<script>
+	$(document).ready(function () {
+		$('.formValid').submit();
+	});
+</script>
+<?php
+unset($_SESSION['validationError']);
+} ?>
 
 </body>
 </html>

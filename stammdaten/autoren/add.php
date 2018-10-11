@@ -30,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addAutorenForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		            <form role="form" class="formValid" id="addAutorenForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
@@ -61,12 +61,12 @@ include '../../inc/sidebar.php';
 									<label for="Geburtsjahr">Geburtsjahr/ datum</label>
 									<input type="text" class="form-control" name="Geburtsjahr" value="<?php if(isset($_POST['Geburtsjahr'])) echo $_POST['Geburtsjahr'];?>" id="Geburtsjahr" data-mask="99/99/9999">
 								</div>
-							</div>
-							<div class="col-md-6">
 								<div class="form-group">
 									<label for="Todesjahr">Todesjahr/ datum</label>
 									<input type="text" class="form-control" name="Todesjahr" value="<?php if(isset($_POST['Todesjahr'])) echo $_POST['Todesjahr'];?>" id="Todesjahr" data-mask="99/99/9999">
 								</div>
+							</div>
+							<div class="col-md-6">
 								<div class="form-group">
 									<label for="Kommentar">Kommentar</label>
 									<textarea id="Kommentar" name="Kommentar" value="<?php if(isset($_POST['Kommentar'])) echo $_POST['Kommentar'];?>" class="form-control texteditor" aria-hidden="true"></textarea>
