@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['access_token'])) {
+    header('Location: '.$absoluteUrl.'login.php');
+}
 include 'mainCall.php';
 $autoren = '';
 $get_data = '';

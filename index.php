@@ -1,9 +1,9 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 include 'lang/GermanWords.php';
 include 'config/route.php';
+if(!isset($_SESSION['access_token'])) {
+    header('Location: '.$absoluteUrl.'login.php');
+}
 include 'inc/header.php';
 include 'inc/sidebar.php';
 ?>

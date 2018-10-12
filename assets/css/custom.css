@@ -1,3 +1,10 @@
+
+/* login Page */
+.login-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .skin-black .main-header .logo {
     background-color: #222d32;
 }

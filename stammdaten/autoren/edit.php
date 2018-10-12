@@ -34,20 +34,18 @@ include '../../inc/sidebar.php';
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
-								<div class="row">
-									<div class="form-group col-xs-5 col-sm-4">
-										<label for="Titel">Titel</label>
-										<select class="form-control" name="Titel" id="Titel" autofocus>
-											<option value="">Titel wählen</option>
-											<?php foreach ($autorTitels as $key => $autorTitel) { ?>
-											<option value="<?php echo $autorTitel;?>" <?php echo ($autoren['Titel'] == $autorTitel ? 'selected' : ''); ?>><?php echo $autorTitel;?></option>
-											<?php } ?>
-										</select>
-									</div>
-									<div class="form-group col-xs-7 col-sm-8">
-										<label for="Vorname">Vorname</label>
-										<input type="text" class="form-control" value="<?php echo $autoren['Vorname']; ?>" name="Vorname" id="Vorname">
-									</div>
+								<div class="form-group">
+									<label for="Titel">Titel</label>
+									<select class="form-control" name="Titel" id="Titel" autofocus>
+										<option value="">Titel wählen</option>
+										<?php foreach ($autorTitels as $key => $autorTitel) { ?>
+										<option value="<?php echo $autorTitel;?>" <?php echo ($autoren['Titel'] == $autorTitel ? 'selected' : ''); ?>><?php echo $autorTitel;?></option>
+										<?php } ?>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="Vorname">Vorname</label>
+									<input type="text" class="form-control" value="<?php echo $autoren['Vorname']; ?>" name="Vorname" id="Vorname">
 								</div>
 								<div class="form-group">
 									<label for="Nachname">Nachname*</label><span class="error-text"></span>
@@ -61,13 +59,12 @@ include '../../inc/sidebar.php';
 									<label for="Geburtsjahr">Geburtsjahr/ datum</label>
 									<input type="text" class="form-control" name="Geburtsjahr" id="Geburtsjahr" data-mask="99/99/9999" value="<?php echo $autoren['Geburtsdatum']; ?>">
 								</div>
+							</div>
+							<div class="col-md-6">
 								<div class="form-group">
 									<label for="Todesjahr">Todesjahr/ datum</label>
 									<input type="text" class="form-control" name="Todesjahr" id="Todesjahr" data-mask="99/99/9999" value="<?php echo $autoren['Sterbedatum']; ?>">
 								</div>
-							</div>
-							<div class="col-md-6">
-								
 								<div class="form-group">
 									<label for="Kommentar">Kommentar</label>
 									<textarea id="Kommentar" name="Kommentar" class="form-control texteditor" aria-hidden="true"><?php echo $autoren['Kommentar']; ?></textarea>

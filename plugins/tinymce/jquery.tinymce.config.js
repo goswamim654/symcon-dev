@@ -2,7 +2,7 @@ $(function() {
 
 	var tinymce_options = {
 
-		height : '145px',
+		height : '154px',
 
 		language : 'de',
 
