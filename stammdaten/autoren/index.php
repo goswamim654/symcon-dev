@@ -24,6 +24,7 @@ include '../../inc/sidebar.php';
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-success">
+					<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1 ) { ?>
 		            <div class="box-header with-border">
 		            	<?php if(isset($_SESSION['success'])) { ?>
 		              	<div class="alert alert-success alert-dismissible alert-hide">
@@ -43,6 +44,7 @@ include '../../inc/sidebar.php';
 							<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Autor/ Herausgeber</a>
 						</h3>
 		            </div>
+		            <?php  } ?>
 		            <!-- /.box-header -->
 		            <div class="box-body">
 			            <form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
@@ -50,11 +52,15 @@ include '../../inc/sidebar.php';
 					            <table id="autoren" class="table-loader table table-bordered table-striped display table-hover custom-table">
 					                <thead>
 						                <tr>
+						                	<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1 ) { ?>
 						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
+						                	<?php  } ?>
 											 <th>Suchname</th>
+											 <?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1 ) { ?>
 											<th>Angelegt durch</th>
 											<th>Bearbeiter</th>
 											<th class="no-sort">Aktionen</th>
+											<?php  } ?>
 						                </tr>
 					                </thead>
 					                <tbody data-link="row" class="rowlink">
@@ -63,15 +69,19 @@ include '../../inc/sidebar.php';
 					                		foreach ($autoren as $key => $autor) { ?>
 
 							                <tr>
+							                	<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1 ) { ?>
 							                	<td class="rowlink-skip"><?php echo $autor['AutorID']; ?></td>
+							                	<?php  } ?>
 												<td><a href="#rowlinkModal" 
 														data-autorId="<?php echo $autor['AutorID']; ?>"
 														data-toggle="modal"><?php if( $autor['Suchname'] ) echo $autor['Suchname']; else echo $autor['Vorname'].$autor['Nachname'];  ?></a></td>
+												<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1 ) { ?>
 												<td><?php echo $autor['Ersteller']; ?></td>
 												<td><?php echo $autor['Bearbeiter']; ?></td>
 												<td class="rowlink-skip">
 													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/autoren/edit.php?autorId=<?php echo $autor['AutorID']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>
+			            	       	            <?php  } ?>
 							                </tr>
 							            <?php } 
 							            } ?>

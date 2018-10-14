@@ -4,7 +4,7 @@ $(document).ready(function () {
         $("#autoren").removeClass('table-loader').show();
 	});
 	setTimeout(function() {
-		table = $('#autoren').DataTable({
+			table = $('#autoren').DataTable({
 			//'ajax': 'https://api.myjson.com/bins/1us28',  
 			"responsive": true,
 	    	"language": {
@@ -14,17 +14,14 @@ $(document).ready(function () {
 			 'targets': 0,
 			 'searchable': false,
 			 'orderable': false,
-			 'className': 'dt-body-center',
-			 'render': function (data, type, full, meta){
-			     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
-			 }
+			 'className': 'dt-body-center'
 			}]
     	});
 	}, 2000);
 
 	// Handle click on checkbox 
 	$('#custom-table input[type="checkbox"]').change( function() {
-		alert('checked')
+		alert('checked');
 	});
 
 	$('#listViewForm').on('submit', function(e) {

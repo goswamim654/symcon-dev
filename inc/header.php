@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/jquery-ui/themes/base/jquery-ui.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- sweet alert 2 -->
+  <link rel="stylesheet" type="text/css" href="<?php echo $absoluteUrl;?>plugins/sweetalert2/sweetalert2.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/select2/dist/css/select2.min.css">
   <!-- Theme style -->
@@ -37,6 +39,11 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style type="text/css">
+    .swal2-popup{
+      font-size: unset;
+    }
+  </style>
 </head>
 <body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
@@ -97,86 +104,82 @@
         </ul>
       </div>
     </nav>
-    <div id="search" class="cd-main-search container">
-      <form role="form" id="advanceSearch">
-        <div class="row">
-          <div class="col-xs-2"></div>
-          <div class="col-xs-8">
-            <input type="search" placeholder="Suche...">
-            <div class="col-xs-2"></div>
-          </div>
+    <div id="search" class="cd-main-search">
+      <form>
+        <div class="search-input">
+          <input type="search" placeholder="Search...">
         </div>
+
         <div class="cd-search-suggestions">
           <div class="box-body">
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="form-group">
-                    <label for="arznei" class="sr-only">Arznei</label>
-                    <select id="arznei" class="form-control" name="arznei">
-                      <option value="">Arznei Wahlen</option>
-                      <option value="AFG">Afghanistan</option>
-                      <option value="ALB">Albania</option>
-                      <option value="DZA">Algeria</option>
-                    </select>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                        <label for="arznei" class="sr-only">Arznei</label>
+                        <select id="arznei" class="form-control" name="arznei">
+                          <option value="">Arznei Wahlen</option>
+                          <option value="AFG">Afghanistan</option>
+                          <option value="ALB">Albania</option>
+                          <option value="DZA">Algeria</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="kapitel" class="sr-only">Kapitel</label>
+                        <select id="kapitel" class="form-control" name="kapitel">
+                          <option value="">Kapitel Wahlen</option>
+                          <option value="AFG">Afghanistan</option>
+                          <option value="ALB">Albania</option>
+                          <option value="DZA">Algeria</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="potenz" class="sr-only">potenz</label>
+                        <select id="potenz" class="form-control" name="potenz">
+                          <option value="">Potenz Wahlen</option>
+                          <option value="AFG">Afghanistan</option>
+                          <option value="ALB">Albania</option>
+                          <option value="DZA">Algeria</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                        <label for="quella" class="sr-only">quella</label>
+                        <select id="quella" class="form-control" name="quella">
+                          <option value="">Quella Wahlen</option>
+                          <option value="AFG">Afghanistan</option>
+                          <option value="ALB">Albania</option>
+                          <option value="DZA">Algeria</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="version" class="sr-only">version</label>
+                        <select id="version" class="form-control" name="version">
+                          <option value="">Version Wahlen</option>
+                          <option value="AFG">Afghanistan</option>
+                          <option value="ALB">Albania</option>
+                          <option value="DZA">Algeria</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="Unklarheiten" class="sr-only">Unklarheiten</label>
+                        <select id="Unklarheiten" class="form-control" name="Unklarheiten">
+                          <option value="">Unklarheiten</option>
+                          <option value="ja">Ja</option>
+                          <option value="nein">Nein</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label for="kapitel" class="sr-only">Kapitel</label>
-                    <select id="kapitel" class="form-control" name="kapitel">
-                      <option value="">Kapitel Wahlen</option>
-                      <option value="AFG">Afghanistan</option>
-                      <option value="ALB">Albania</option>
-                      <option value="DZA">Algeria</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="potenz" class="sr-only">potenz</label>
-                    <select id="potenz" class="form-control" name="potenz">
-                      <option value="">Potenz Wahlen</option>
-                      <option value="AFG">Afghanistan</option>
-                      <option value="ALB">Albania</option>
-                      <option value="DZA">Algeria</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="form-group">
-                    <label for="quella" class="sr-only">quella</label>
-                    <select id="quella" class="form-control" name="quella">
-                      <option value="">Quella Wahlen</option>
-                      <option value="AFG">Afghanistan</option>
-                      <option value="ALB">Albania</option>
-                      <option value="DZA">Algeria</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="version" class="sr-only">version</label>
-                    <select id="version" class="form-control" name="version">
-                      <option value="">Version Wahlen</option>
-                      <option value="AFG">Afghanistan</option>
-                      <option value="ALB">Albania</option>
-                      <option value="DZA">Algeria</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="Unklarheiten" class="sr-only">Unklarheiten</label>
-                    <select id="Unklarheiten" class="form-control" name="Unklarheiten">
-                      <option value="">Unklarheiten</option>
-                      <option value="ja">Ja</option>
-                      <option value="nein">Nein</option>
-                    </select>
-                  </div>
-                </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <button class="btn btn-success" type="submit" id="saveFormBtn">Suche</button>
+                      <button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
+                    </div>
+                  </div>  
+              
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <button class="btn btn-success" type="submit" id="saveFormBtn">Suche</button>
-                  <button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
-                </div>
-              </div>  
-          
-          </div>
-        
-          </div> <!-- .cd-search-suggestions -->
+        </div> <!-- .cd-search-suggestions -->
 
         <a class="close"></a>
       </form>

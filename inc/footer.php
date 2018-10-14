@@ -54,7 +54,14 @@
 <!-- DataTables -->
 <script src="<?php echo $absoluteUrl;?>plugins/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo $absoluteUrl;?>plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0 ) { ?>
+<script src="<?php echo $absoluteUrl;?>assets/js/dataTablesConfigPublic.js"></script>
+<?php  } ?>
+<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1 ) { ?>
 <script src="<?php echo $absoluteUrl;?>assets/js/dataTablesConfig.js"></script>
+<?php  } ?>
+<!-- sweet alert 2 -->
+<script src="<?php echo $absoluteUrl;?>plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Select2 -->
 <script src="<?php echo $absoluteUrl;?>plugins/select2/dist/js/select2.full.min.js"></script>
 <!-- FastClick -->
@@ -88,6 +95,8 @@ if(isset($_SESSION['validationError'])) { ?>
 <?php
 unset($_SESSION['validationError']);
 } ?>
-
+<script type="text/javascript">
+	
+</script>
 </body>
 </html>

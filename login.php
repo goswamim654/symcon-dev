@@ -11,7 +11,7 @@ include 'api/login.php';
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Symcom | Log in</title>
+    <title>Symcom | Login</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -43,24 +43,24 @@ include 'api/login.php';
                 </div>
                 <div class="sc-bQQHgq elQaKU">
                     <div class="sc-gjAXCV irlZp">
-                        <label class="sc-dOkuiw iMAhFM">Password</label><span class="error-text"></span>
+                        <label class="sc-dOkuiw iMAhFM">Kennwort</label><span class="error-text"></span>
                         <input class="sc-hMjcWo dxJQAa" name="password" placeholder="●●●●●●●●" type="password" value="">
                         <div class="row">
                             <div class="col-xs-6">
                                 <div class="checkbox icheck">
                                     <label>
-                                      <input type="checkbox"> Remember Me
+                                      <input type="checkbox"> Erinnere dich an mich
                                     </label>
                                 </div>
                             </div>
-                            <div class="sc-eAudoH fbHQWt col-xs-6"><a href="#">Forgot password?</a></div>
+                            <div class="sc-eAudoH fbHQWt col-xs-6"><a href="#">Ihr Kennwort vergessen?</a></div>
                         </div>
                     </div>
                 </div>
-                <button class="sc-frpTsy iQoeKm sc-dxgOiQ crAxhg">Log In</button>
+                <button class="sc-frpTsy iQoeKm sc-dxgOiQ crAxhg">Einloggen</button>
             </form>
             <div class="sc-cFMgCN cndWlt">
-                <a href="#" class="sc-jbxdUx jWPjDn">Don't Have An Account?</a>
+                <a href="#" class="sc-jbxdUx jWPjDn">Habe kein Konto?</a>
             </div>
         </div>
     </div>
