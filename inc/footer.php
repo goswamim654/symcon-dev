@@ -54,10 +54,10 @@
 <!-- DataTables -->
 <script src="<?php echo $absoluteUrl;?>plugins/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo $absoluteUrl;?>plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0 ) { ?>
+<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 3 ) { ?>
 <script src="<?php echo $absoluteUrl;?>assets/js/dataTablesConfigPublic.js"></script>
 <?php  } ?>
-<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1 ) { ?>
+<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2 )) { ?>
 <script src="<?php echo $absoluteUrl;?>assets/js/dataTablesConfig.js"></script>
 <?php  } ?>
 <!-- sweet alert 2 -->
@@ -84,7 +84,7 @@
 <script src="<?php echo $absoluteUrl;?>assets/js/modernizr.js"></script>
 
 <script src="<?php echo $absoluteUrl;?>assets/js/pages/autor.js"></script>
-
+<script src="<?php echo $absoluteUrl;?>assets/js/formValidation.js"></script>
 <?php
 if(isset($_SESSION['validationError'])) { ?>
 <script>
@@ -95,8 +95,26 @@ if(isset($_SESSION['validationError'])) { ?>
 <?php
 unset($_SESSION['validationError']);
 } ?>
-<script type="text/javascript">
-	
+<?php
+if(isset($_SESSION['loginSuccess'])) { ?>
+<script>
+    $(document).ready(function () {
+        var loginSuccess = "<?php echo $_SESSION['loginSuccess'];?>"
+        const toast = swal.mixin({
+			toast: true,
+			position: 'top-end',
+			showConfirmButton: false,
+			timer: 3000
+			});
+
+			toast({
+			type: 'success',
+			title: loginSuccess
+		})
+    });
 </script>
+<?php
+unset($_SESSION['loginSuccess']);
+} ?>
 </body>
 </html>

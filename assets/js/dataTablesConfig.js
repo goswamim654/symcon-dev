@@ -1,10 +1,10 @@
 $(document).ready(function () {
 	var table= '';
-	$('#autoren').on('init.dt',function() {
-        $("#autoren").removeClass('table-loader').show();
+	$('#dataTable').on('init.dt',function() {
+        $("#dataTable").removeClass('table-loader').show();
 	});
 	setTimeout(function() {
-		table = $('#autoren').DataTable({
+		table = $('#dataTable').DataTable({
 			//'ajax': 'https://api.myjson.com/bins/1us28',  
 			"responsive": true,
 	    	"language": {
@@ -42,7 +42,7 @@ $(document).ready(function () {
 				   $(form).append(
 				      $('<input>')
 				         .attr('type', 'hidden')
-				         .attr('name', 'autorId[]')
+				         .attr('name', 'delete_array_id[]')
 				         .val(this.value)
 				   );
 				   count++;

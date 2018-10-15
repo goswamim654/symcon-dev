@@ -30,44 +30,44 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addAutorenForm" class="formValid" action="<?php echo $_SERVER['PHP_SELF'].'?autorId='.$autorId; ?>" method="POST">
+		            <form role="form" id="addAutorenForm" class="formValid" action="<?php echo $_SERVER['PHP_SELF'].'?autor_id='.$autor_id; ?>" method="POST">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="Titel">Titel</label>
-									<select class="form-control" name="Titel" id="Titel" autofocus>
+									<label for="titel">Titel</label>
+									<select class="form-control" name="titel" id="titel" autofocus>
 										<option value="">Titel wählen</option>
 										<?php foreach ($autorTitels as $key => $autorTitel) { ?>
-										<option value="<?php echo $autorTitel;?>" <?php echo ($autoren['Titel'] == $autorTitel ? 'selected' : ''); ?>><?php echo $autorTitel;?></option>
+										<option value="<?php echo $autorTitel;?>" <?php echo ($autoren['titel'] == $autorTitel ? 'selected' : ''); ?>><?php echo $autorTitel;?></option>
 										<?php } ?>
 									</select>
 								</div>
 								<div class="form-group">
-									<label for="Vorname">Vorname</label>
-									<input type="text" class="form-control" value="<?php echo $autoren['Vorname']; ?>" name="Vorname" id="Vorname">
+									<label for="vorname">Vorname</label>
+									<input type="text" class="form-control" value="<?php echo $autoren['vorname']; ?>" name="vorname" id="vorname">
 								</div>
 								<div class="form-group">
-									<label for="Nachname">Nachname*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="Nachname" name="Nachname" value="<?php echo $autoren['Nachname']; ?>" required>
+									<label for="nachname">Nachname*</label><span class="error-text"></span>
+									<input type="text" class="form-control" id="nachname" name="nachname" value="<?php echo $autoren['nachname']; ?>" required>
 								</div>
 								<div class="form-group">
-									<label for="Suchname">Suchname</label>
-									<input type="text" class="form-control" name="Suchname" id="Suchname" value="<?php echo $autoren['Suchname']; ?>">
+									<label for="suchname">Suchname</label>
+									<input type="text" class="form-control" name="suchname" id="suchname" value="<?php echo $autoren['suchname']; ?>">
 								</div>
 								<div class="form-group">
-									<label for="Geburtsjahr">Geburtsjahr/ datum</label>
-									<input type="text" class="form-control" name="Geburtsjahr" id="Geburtsjahr" data-mask="99/99/9999" value="<?php echo $autoren['Geburtsdatum']; ?>">
+									<label for="geburtsjahr">Geburtsjahr/ datum</label>
+									<input type="text" class="form-control" name="geburtsjahr" id="geburtsjahr" data-mask="99/99/9999" value="<?php echo $autoren['geburtsdatum']; ?>">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="Todesjahr">Todesjahr/ datum</label>
-									<input type="text" class="form-control" name="Todesjahr" id="Todesjahr" data-mask="99/99/9999" value="<?php echo $autoren['Sterbedatum']; ?>">
+									<label for="todesjahr">Todesjahr/ datum</label>
+									<input type="text" class="form-control" name="todesjahr" id="todesjahr" data-mask="99/99/9999" value="<?php echo $autoren['sterbedatum']; ?>">
 								</div>
 								<div class="form-group">
-									<label for="Kommentar">Kommentar</label>
-									<textarea id="Kommentar" name="Kommentar" class="form-control texteditor" aria-hidden="true"><?php echo $autoren['Kommentar']; ?></textarea>
+									<label for="kommentar">Kommentar</label>
+									<textarea id="kommentar" name="kommentar" class="form-control texteditor" aria-hidden="true"><?php echo $autoren['kommentar']; ?></textarea>
 								</div>
 							</div>
 						</div>

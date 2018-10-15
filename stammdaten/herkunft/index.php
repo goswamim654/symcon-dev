@@ -1,7 +1,7 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
-include '../../api/autoren.php';
+include '../../api/herkunft.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
@@ -10,11 +10,11 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Autoren
+        Herkunft
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
-        <li class="active">Autoren</li>
+        <li class="active">Herkunft</li>
       </ol>
     </section>
 
@@ -41,7 +41,7 @@ include '../../inc/sidebar.php';
 			             </div>
 		              	<?php unset($_SESSION['validationError']); } ?>
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Autor/ Herausgeber</a>
+							<a href="<?php echo $absoluteUrl;?>stammdaten/herkunft/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Herkunft</a>
 						</h3>
 		            </div>
 		            <?php  } ?>
@@ -53,37 +53,31 @@ include '../../inc/sidebar.php';
 					                <thead>
 						                <tr>
 						                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
-						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
+						                	<th class="rowlink-skip dt-body-center no-sort"><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
 						                	<?php  } ?>
-											 <th>Suchname</th>
-											 <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
-											<?php if($_SESSION['user_type'] == 1 ) { ?>
-											<th>Angelegt durch</th>
-											<th>Bearbeiter</th>
-											<?php  } ?>
+											<th>Code</th>
+											<th>Titel</th>
+											<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 											<th class="no-sort">Aktionen</th>
 											<?php  } ?>
 						                </tr>
 					                </thead>
 					                <tbody data-link="row" class="rowlink">
 					                	<?php 
-					                	if($autoren != null && $autoren != '') { 
-					                		foreach ($autoren as $key => $autor) { ?>
+					                	if($herkunfte != null && $herkunfte != '') { 
+					                		foreach ($herkunfte as $key => $herkunft) { ?>
 
 							                <tr>
 							                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
-							                	<td class="rowlink-skip"><?php echo $autor['autor_id']; ?></td>
+							                	<td class="rowlink-skip"><?php echo $herkunft['herkunft_id']; ?></td>
 							                	<?php  } ?>
 												<td><a href="#rowlinkModal" 
-														data-autor_id="<?php echo $autor['autor_id']; ?>"
-														data-toggle="modal"><?php if( $autor['suchname'] ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></a></td>
+														data-herkunft_id="<?php echo $herkunft['herkunft_id']; ?>"
+														data-toggle="modal"><?php echo $herkunft['code']; ?></a></td>
+												<td><?php echo $herkunft['titel']; ?></td>
 												<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
-												<?php if($_SESSION['user_type'] == 1 ) { ?>
-												<td><?php echo $autor['ersteller']; ?></td>
-												<td><?php echo $autor['bearbeiter']; ?></td>
-												<?php } ?>
 												<td class="rowlink-skip">
-													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/autoren/edit.php?autor_id=<?php echo $autor['autor_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/herkunft/edit.php?herkunft_id=<?php echo $herkunft['herkunft_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>
 			            	       	            <?php  } ?>
 							                </tr>

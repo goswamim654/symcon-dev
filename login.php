@@ -18,6 +18,8 @@ include 'api/login.php';
     <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/font-awesome/css/font-awesome.min.css">
+    <!-- sweet alert 2 -->
+    <link rel="stylesheet" type="text/css" href="<?php echo $absoluteUrl;?>plugins/sweetalert2/sweetalert2.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/Ionicons/css/ionicons.min.css">
     <!-- Theme style -->
@@ -89,5 +91,21 @@ include 'api/login.php';
             });
         });
     </script>
+    <!-- sweet alert 2 -->
+    <script src="<?php echo $absoluteUrl;?>plugins/sweetalert2/sweetalert2.min.js"></script>
+    <?php
+    if(isset($loginError)) { ?>
+    <script>
+        $(document).ready(function () {
+            var loginError = "<?php echo $loginError;?>"
+            swal({
+              type: 'error',
+              title: 'Oops...',
+              text: loginError+ '!'
+            })
+        });
+    </script>
+    <?php
+    } ?>
 </body>
 </html>

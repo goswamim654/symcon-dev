@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	//datepicker init
-	$('#Todesjahr, #Geburtsjahr').datepicker(
+	$('#todesjahr, #geburtsjahr').datepicker(
 	{
       	changeMonth: true,
 			changeYear: true,
@@ -9,21 +9,21 @@ $(document).ready(function () {
 		$.datepicker.regional[ "de" ]
 	);
 
-	$('#Todesjahr').change(function() {
-		if ($('#Geburtsjahr').val() !== '' && ($.datepicker.parseDate("dd/mm/yy",$('#Geburtsjahr').val()) > $.datepicker.parseDate("dd/mm/yy",$('#Todesjahr').val()))) {
-			$('#Todesjahr').val('');
-			$('#Geburtsjahr').val('');
-			$('#Geburtsjahr').focus();
-			alert("Geburtsjahr cannot be greater than Todesjahr");
+	$('#todesjahr').change(function() {
+		if ($('#geburtsjahr').val() !== '' && ($.datepicker.parseDate("dd/mm/yy",$('#geburtsjahr').val()) > $.datepicker.parseDate("dd/mm/yy",$('#todesjahr').val()))) {
+			$('#todesjahr').val('');
+			$('#geburtsjahr').val('');
+			$('#geburtsjahr').focus();
+			alert("geburtsjahr cannot be greater than todesjahr");
 		}
 	});
 
-	$('#Geburtsjahr').change(function() {
-		if ($('#Todesjahr').val() !== '' && ($.datepicker.parseDate("dd/mm/yy",$('#Geburtsjahr').val()) > $.datepicker.parseDate("dd/mm/yy",$('#Todesjahr').val()))) {
-			$('#Todesjahr').val('');
-			$('#Geburtsjahr').val('');
-			$('#Geburtsjahr').focus();
-			alert("Geburtsjahr cannot be greater than Todesjahr");
+	$('#geburtsjahr').change(function() {
+		if ($('#todesjahr').val() !== '' && ($.datepicker.parseDate("dd/mm/yy",$('#geburtsjahr').val()) > $.datepicker.parseDate("dd/mm/yy",$('#todesjahr').val()))) {
+			$('#todesjahr').val('');
+			$('#geburtsjahr').val('');
+			$('#geburtsjahr').focus();
+			alert("geburtsjahr cannot be greater than todesjahr");
 		}
 	});
 
@@ -34,10 +34,10 @@ $(document).ready(function () {
 		error.appendTo(element.prev("span"));
 		},
 	 	rules: {
-            'Nachname': "required",
+            'nachname': "required",
         },
         messages: {
-            'Nachname': "Nachname ist eine Pflichtangabe"
+            'nachname': "Nachname ist eine Pflichtangabe"
         }
 	});
 
@@ -47,9 +47,9 @@ $(document).ready(function () {
         
     }, 5000).on('show.bs.modal', function(event) {
     	var $this = $(this);
-    	var autorId = $(event.relatedTarget).data('autorid');
+    	var autor_id = $(event.relatedTarget).data('autor_id');
     	$.ajax({
-		    url: absoluteUrl+'/ajax/autoren.php?autorId='+autorId,
+		    url: absoluteUrl+'/ajax/autoren.php?autor_id='+autor_id,
 			beforeSend:function() {
 				$this.find('.modal-title').html('Loading...');
 				var modalLoader = `<div class="overlay" style="height: 150px;">
@@ -72,39 +72,39 @@ $(document).ready(function () {
 					$this.find('#rowlinkModalDetails').html(responseData.message);
 					break;
 				case 2:
-					var Vorname= '';
-					var Nachname='';
-					var Suchname='';
-					var Geburtsdatum='';
-					var Sterbedatum='';
-					var Kommentar='';
+					var vorname= '';
+					var nachname='';
+					var suchname='';
+					var geburtsdatum='';
+					var sterbedatum='';
+					var kommentar='';
 					var notAvailable = 'Nicht verfügba';
 					$.each( responseData.content.data, function( key, value ) {
-						if(key == 'Vorname') Vorname = value;
-						if(key == 'Nachname') Nachname = value;
-						if(key == 'Suchname') Suchname = value;
-						if(key == 'Geburtsdatum') Geburtsdatum = value;
-						if(key == 'Sterbedatum') Sterbedatum = value;
-						if(key == 'Kommentar') Kommentar = value;
+						if(key == 'vorname') vorname = value;
+						if(key == 'nachname') nachname = value;
+						if(key == 'suchname') suchname = value;
+						if(key == 'geburtsdatum') geburtsdatum = value;
+						if(key == 'sterbedatum') sterbedatum = value;
+						if(key == 'kommentar') kommentar = value;
 				    });
-				    if(Vorname == null || Vorname == null) Vorname = notAvailable;
-			    	if(Nachname == null || Nachname == null) Nachname = notAvailable;
-			    	if(Suchname == null || Suchname == null) Suchname = notAvailable;
-			    	if(Geburtsdatum == null || Geburtsdatum == null) Geburtsdatum = notAvailable;
-			    	if(Sterbedatum == null || Sterbedatum == null) Sterbedatum = notAvailable;
-			    	if(Kommentar == null || Kommentar == '' ) Kommentar = notAvailable;
+				    if(vorname == null || vorname == null) vorname = notAvailable;
+			    	if(nachname == null || nachname == null) nachname = notAvailable;
+			    	if(suchname == null || suchname == null) suchname = notAvailable;
+			    	if(geburtsdatum == null || geburtsdatum == null) geburtsdatum = notAvailable;
+			    	if(sterbedatum == null || sterbedatum == null) sterbedatum = notAvailable;
+			    	if(kommentar == null || kommentar == '' ) kommentar = notAvailable;
 
-			    	let autor = { Vorname:Vorname, Nachname:Nachname, Suchname:Suchname, Geburtsdatum:Geburtsdatum, Sterbedatum:Sterbedatum, Kommentar:Kommentar };
+			    	let autor = { 'Vorname':vorname, 'Nachname':nachname, 'Suchname':suchname, 'Geburtsjahr/ datum':geburtsdatum, 'Todesjahr/ datum':sterbedatum, 'Kommentar':kommentar };
 			        let modalContents = '';
 			        for(let key in autor) {
 			        	modalContents += `<div class="row">
-							<div class="col-xs-2"><label>${key}:</label></div>
-							<div class="col-xs-10">${autor[key]}</div>
+							<div class="col-xs-3"><label>${key}:</label></div>
+							<div class="col-xs-9 autor-value">${autor[key]}</div>
 						</div>`;
 			        }
 			        $this.find('.modal-title').html('Anzeigen Autor/ Herausgeber');
 					$this.find('#rowlinkModalDetails').html(modalContents);
-			        $this.find('.col-xs-10').each(function () {
+			        $this.find('.autor-value').each(function () {
 			        	if($(this).html() === notAvailable) {
 			        		$(this).css( "color", "#A1C180" );
 			        	}

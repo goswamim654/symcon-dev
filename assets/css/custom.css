@@ -566,7 +566,10 @@ Content cover layer
 }
 
 .no-sort { 
-  pointer-events: none!important; cursor: default!important; 
+  padding-right: 8px !important;
+}
+.swal2-popup {
+  font-size: unset;
 }
 /* Large desktop */
 @media (min-width: 1440px) and (max-width: 1920px) { 

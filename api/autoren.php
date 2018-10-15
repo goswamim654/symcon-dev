@@ -21,8 +21,8 @@ if($response['status'] == 0) {
 
 // list autoren
 if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absoluteUrl.'stammdaten/autoren/index.php') {
-	if(isset($_POST['autorId'])) {
-		$data_array =  array("autorId" => $_POST['autorId']);
+	if(isset($_POST['delete_array_id'])) {
+		$data_array =  array("autor_id" => $_POST['delete_array_id']);
 		$get_data = callAPI('POST', $baseApiURL.'autor/delete', json_encode($data_array));
 		$response = json_decode($get_data, true);
 		$status = $response['status'];
@@ -44,19 +44,24 @@ if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absolu
 	$get_data = callAPI('GET', $baseApiURL.'autor/all?is_paginate=0', false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
-	if($response['status'] == 0) {
-		echo $response['message'];
-		die();
-	} else if($response['status'] == 2) {
-		$autoren = $response['content']['data'];	
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			die();
+			break;
+		case 2:
+			$autoren = $response['content']['data'];
+			break;
+		default:
+			break;
 	}
 }
 
 // get a single autor
 
-if(isset($_GET['autorId'])) {
-	$autorId = $_GET['autorId'];
-	$autorEditUrl = $baseApiURL.'autor/view?autorId='.$autorId;
+if(isset($_GET['autor_id'])) {
+	$autor_id = $_GET['autor_id'];
+	$autorEditUrl = $baseApiURL.'autor/view?autor_id='.$autor_id;
 	$get_data = callAPI('GET',$autorEditUrl , false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
@@ -71,24 +76,24 @@ if(isset($_GET['autorId'])) {
 // add and edit a autor
 
 if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
-	$Code = isset($_POST['Code']) ? $_POST['Code'] : '';
-	$Suchname = isset($_POST['Suchname']) ? $_POST['Suchname'] : '';
-	$Titel = isset($_POST['Titel']) ? $_POST['Titel'] : '';
-	$Vorname = isset($_POST['Vorname']) ? $_POST['Vorname'] : '';
-	$Nachname = isset($_POST['Nachname']) ? $_POST['Nachname'] : '';
-	$Geburtsdatum = isset($_POST['Geburtsjahr']) ? $_POST['Geburtsjahr'] : '';
-	$Sterbedatum = isset($_POST['Todesjahr']) ? $_POST['Todesjahr'] : '';
-	$Kommentar = isset($_POST['Kommentar']) ? $_POST['Kommentar'] : '';
+	$code = isset($_POST['code']) ? $_POST['code'] : '';
+	$suchname = isset($_POST['suchname']) ? $_POST['suchname'] : '';
+	$titel = isset($_POST['titel']) ? $_POST['titel'] : '';
+	$vorname = isset($_POST['vorname']) ? $_POST['vorname'] : '';
+	$nachname = isset($_POST['nachname']) ? $_POST['nachname'] : '';
+	$geburtsdatum = isset($_POST['geburtsjahr']) ? $_POST['geburtsjahr'] : '';
+	$sterbedatum = isset($_POST['todesjahr']) ? $_POST['todesjahr'] : '';
+	$kommentar = isset($_POST['kommentar']) ? $_POST['kommentar'] : '';
 
 	$data_array =  array(
-		"Code"      => $Code,
-		"Suchname"  => $Suchname,
-		"Titel"     => $Titel,
-		"Vorname"   => $Vorname,
-		"Nachname"  => $Nachname,
-		"Geburtsdatum" => $Geburtsdatum,
-		"Sterbedatum" => $Sterbedatum,
-		"Kommentar" => $Kommentar
+		"code"      => $code,
+		"suchname"  => $suchname,
+		"titel"     => $titel,
+		"vorname"   => $vorname,
+		"nachname"  => $nachname,
+		"geburtsdatum" => $geburtsdatum,
+		"sterbedatum" => $sterbedatum,
+		"kommentar" => $kommentar
 	);
 	// add autor
 
@@ -98,7 +103,7 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 	// edit autor
 
 	if(isset($_POST['ÄnderungenSpeichern'])) {
-		$get_data = callAPI('POST',  $baseApiURL.'autor/update?autorId='.$autorId, json_encode($data_array));
+		$get_data = callAPI('POST',  $baseApiURL.'autor/update?autor_id='.$autor_id, json_encode($data_array));
 	}
 	$response = json_decode($get_data, true);
 	$status = $response['status'];

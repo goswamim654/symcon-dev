@@ -51,8 +51,8 @@ include '../../inc/sidebar.php';
 								    </select>
 								</div>
 								<div class="form-group">
-									<label for="Kommentar">Kommentar</label>
-									<textarea id="Kommentar" name="Kommentar" class="texteditor" aria-hidden="true"></textarea>
+									<label for="kommentar">kommentar</label>
+									<textarea id="kommentar" name="kommentar" class="texteditor" aria-hidden="true"></textarea>
 								</div>
 							</div>
 							<div class="col-md-6">

@@ -35,8 +35,8 @@ include '../../inc/sidebar.php';
 		              	<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="Titel">Titel</label>
-									<select class="form-control" name="Titel" id="Titel" autofocus>
+									<label for="titel">Titel</label>
+									<select class="form-control" name="titel" id="titel" autofocus>
 										<option value="">Titel wählen</option>
 										<?php foreach ($autorTitels as $key => $autorTitel) { ?>
 										<option value="<?php echo $autorTitel;?>"><?php echo $autorTitel;?></option>
@@ -44,31 +44,31 @@ include '../../inc/sidebar.php';
 									</select>
 								</div>
 								<div class="form-group">
-									<label for="Vorname">Vorname</label>
-									<input type="text" class="form-control" name="Vorname" value="<?php if(isset($_POST['Vorname'])) echo $_POST['Vorname'];?>" id="Vorname">
+									<label for="vorname">Vorname</label>
+									<input type="text" class="form-control" name="vorname" value="<?php if(isset($_POST['vorname'])) echo $_POST['vorname'];?>" id="vorname">
 								</div>
 								<div class="form-group">
-									<label for="Nachname">Nachname*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="Nachname" name="Nachname" value="<?php if(isset($_POST['Nachname'])) echo $_POST['Nachname'];?>" required>
+									<label for="nachname">Nachname*</label><span class="error-text"></span>
+									<input type="text" class="form-control" id="nachname" name="nachname" value="<?php if(isset($_POST['nachname'])) echo $_POST['nachname'];?>" required>
 								</div>
 								<div class="form-group">
-									<label for="Suchname">Suchname</label>
-									<input type="text" class="form-control"  name="Suchname" value="<?php if(isset($_POST['Suchname'])) echo $_POST['Suchname'];?>" id="Suchname">
+									<label for="suchname">Suchname</label>
+									<input type="text" class="form-control"  name="suchname" value="<?php if(isset($_POST['suchname'])) echo $_POST['suchname'];?>" id="suchname">
 								</div>
 								<div class="form-group">
-									<label for="Geburtsjahr">Geburtsjahr/ datum</label>
-									<input type="text" class="form-control" name="Geburtsjahr" value="<?php if(isset($_POST['Geburtsjahr'])) echo $_POST['Geburtsjahr'];?>" id="Geburtsjahr" data-mask="99/99/9999">
+									<label for="geburtsjahr">Geburtsjahr/ datum</label>
+									<input type="text" class="form-control" name="geburtsjahr" value="<?php if(isset($_POST['geburtsjahr'])) echo $_POST['geburtsjahr'];?>" id="geburtsjahr" data-mask="99/99/9999">
 								</div>
 								
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="Todesjahr">Todesjahr/ datum</label>
-									<input type="text" class="form-control" name="Todesjahr" value="<?php if(isset($_POST['Todesjahr'])) echo $_POST['Todesjahr'];?>" id="Todesjahr" data-mask="99/99/9999">
+									<label for="todesjahr">Todesjahr/ datum</label>
+									<input type="text" class="form-control" name="todesjahr" value="<?php if(isset($_POST['todesjahr'])) echo $_POST['todesjahr'];?>" id="todesjahr" data-mask="99/99/9999">
 								</div>
 								<div class="form-group">
-									<label for="Kommentar">Kommentar</label>
-									<textarea id="Kommentar" name="Kommentar" value="<?php if(isset($_POST['Kommentar'])) echo $_POST['Kommentar'];?>" class="form-control texteditor" aria-hidden="true"></textarea>
+									<label for="kommentar">Kommentar</label>
+									<textarea id="kommentar" name="kommentar" value="<?php if(isset($_POST['kommentar'])) echo $_POST['kommentar'];?>" class="form-control texteditor" aria-hidden="true"></textarea>
 								</div>
 							</div>
 						</div>
