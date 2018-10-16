@@ -240,7 +240,7 @@ ul.sidebar-menu.tree a {
         0 0,
         0 0,
         0 0;
-    animation: shine 0.3s infinite;
+    animation: shine 0.1s infinite;
 }
 
 @keyframes shine {

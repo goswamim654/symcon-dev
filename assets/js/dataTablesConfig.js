@@ -20,7 +20,7 @@ $(document).ready(function () {
 			 }
 			}]
     	});
-	}, 2000);
+	}, 500);
 
 	// Handle click on checkbox 
 	$('#custom-table input[type="checkbox"]').change( function() {

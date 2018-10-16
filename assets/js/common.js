@@ -7,11 +7,11 @@ $(document).ready(function () {
 	$('.select2').select2();
 
 	//datepicker init
-	$('#Jahr').datepicker(
+	$('#jahr').datepicker(
 		{
-	  	changeMonth: true,
+	  		changeMonth: false,
 			changeYear: true,
-			dateFormat: 'dd/mm/yy'
+			dateFormat: 'yy'
 		},
 		$.datepicker.regional[ "de" ]
 	);
@@ -34,7 +34,5 @@ $(document).ready(function () {
 	        $("#rowlinkModal").modal('hide');
 	    } 
 	});
-
-	$('.alert-hide').fadeOut(5000);
 
 });

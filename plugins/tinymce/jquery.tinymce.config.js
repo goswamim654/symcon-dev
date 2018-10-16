@@ -26,6 +26,8 @@ $(function() {
 		    }
 		],
 
+		statusbar: false,
+
 		plugins : [ "responsivefilemanager,table,image,imagetools,charmap,link,code,textcolor,searchreplace,paste,visualchars" ],
 
 		toolbar : "undo redo | styleselect | bold italic AddSpace | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image responsivefilemanager",

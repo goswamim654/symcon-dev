@@ -1,8 +1,10 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
+include '../../api/quellen.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
+
 ?>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -29,97 +31,95 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addQuelleForm">
-		              <div class="box-body">
-		              	<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="Kürzel">Kürzel*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="Kürzel" name="code" autofocus required>
+		            <form role="form" class="formValid" id="addQuelleForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+		              	<div class="box-body">
+			              	<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="code">Kürzel*</label><span class="error-text"></span>
+										<input type="text" class="form-control" value="<?php if(isset($code)) echo $code;?>" id="code" name="code" autofocus required>
+									</div>
+									<div class="form-group">
+										<label for="titel">Titel*</label><span class="error-text"></span>
+										<input type="text" class="form-control" value="<?php if(isset($titel)) echo $titel;?>" name="titel" id="titel">
+									</div>
+									<div class="form-group">
+										<label for="sprache">Sprache*</label><span class="error-text"></span>
+										<select id="sprache" class="form-control" name="sprache">
+											<option value="">Sprache wählen</option>
+											<option value="deutsch">deutsch</option>
+											<option value="englisch">englisch</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="herkunft_id">Herkunft</label>
+										<select id="herkunft_id" class="form-control" name="herkunft_id">
+											<option value="">Herkunft wählen</option>
+											<?php foreach ($herkunfte as $key => $herkunft) { ?>
+											<option value="<?php echo $herkunft['herkunft_id'];?>"><?php echo $herkunft['titel'];?></option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="quelle_schema_id">Schema</label>
+										<select id="quelle_schema_id" class="form-control" name="quelle_schema_id">
+											<option value="">Schema wählen</option>
+											<?php foreach ($schemas as $key => $schema) { ?>
+											<option value="<?php echo $key;?>"><?php echo $schema;?></option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="jahr">Jahr*</label><span class="error-text"></span>
+										<input type="text" class="form-control pull-right" id="jahr" name="jahr">
+									</div>
 								</div>
-								<div class="form-group">
-									<label for="Titel">Titel*</label><span class="error-text"></span>
-									<input type="text" class="form-control" name="Titel" id="Titel">
-								</div>
-								<div class="form-group">
-									<label for="Sprache">Sprache*</label><span class="error-text"></span>
-									<select id="Sprache" class="form-control" name="Sprache">
-										<option value="">Sprache wählen</option>
-										<option value="294">deutsch</option>
-										<option value="295">englisch</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="Herkunft">Herkunft</label>
-									<select id="Herkunft" class="form-control">
-										<option value="">Herkunft wählen</option>
-										<option value="294">deutsch</option>
-										<option value="295">englisch</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="Schema">Schema</label>
-									<select id="Schema" class="form-control">
-										<option value="">Herkunft wählen</option>
-										<option value="294">deutsch</option>
-										<option value="295">englisch</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="Jahr">Jahr*</label><span class="error-text"></span>
-									<input type="text" class="form-control pull-right" id="Jahr" name="Jahr">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="Band">Band</label>
-									<input type="text" class="form-control" id="Band" name="Band">
-								</div>
-								<div class="form-group">
-									<label for="Nummer">Nummer</label>
-									<input type="text" class="form-control" id="Nummer" name="Nummer">
-								</div>
-								<div class="form-group">
-									<label for="Auflage">Auflage*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="Auflage" name="Auflage">
-								</div>
-								<div class="form-group">
-									<label for="Verlag">Verlag*</label><span class="error-text"></span>
-									<select id="Verlag" class="form-control" name="Verlag">
-										<option value="">Verlag wählen</option>
-										<option value="294">deutsch</option>
-										<option value="295">englisch</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="Autor_Herausgeber">Autor / Herausgeber</label>
-									<select id="Autor_Herausgeber" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="Autor_Herausgeber[]">
-								        <option value="AFG">Afghanistan</option>
-								        <option value="ALB">Albania</option>
-								        <option value="DZA">Algeria</option>
-								        <option value="AND">Andorra</option>
-								        <option value="ARG">Argentina</option>
-								        <option value="ARM">Armenia</option>
-								        <option value="ABW">Aruba</option>
-								        <option value="AUS">Australia</option>
-								    </select>
-								</div>
-								<div class="form-group">
-									<label>Datei</label>
-									<div class="custom-file">
-									  <input type="file" class="custom-file-input" id="customFile">
-									  <label class="custom-file-label" for="customFile">Datei</label>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="band">Band</label>
+										<input type="text" class="form-control" id="band" name="band">
+									</div>
+									<div class="form-group">
+										<label for="nummer">Nummer</label>
+										<input type="text" class="form-control" id="nummer" name="Nummer">
+									</div>
+									<div class="form-group">
+										<label for="auflage">Auflage*</label><span class="error-text"></span>
+										<input type="text" class="form-control" id="auflage" name="auflage">
+									</div>
+									<div class="form-group">
+										<label for="verlag_id">Verlag*</label><span class="error-text"></span>
+										<select id="verlag_id" class="form-control" name="verlag_id">
+											<option value="">Verlag wählen</option>
+											<?php foreach ($verlage as $key => $verlag) { ?>
+											<option value="<?php echo $verlag['verlag_id'];?>"><?php echo $verlag['titel'];?></option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="autor_id">Autor / Herausgeber</label>
+										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
+									        <?php foreach ($autoren as $key => $autor) { ?>
+											<option value="<?php echo $autor['autor_id'];?>"><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
+											<?php } ?>
+									    </select>
+									</div>
+									<div class="form-group">
+										<label>Datei</label>
+										<div class="custom-file">
+										  <input type="file" class="custom-file-input" id="customFile" name="file_url">
+										  <label class="custom-file-label" for="customFile">Datei</label>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-		              </div>
-		              <!-- /.box-body -->
+		              	</div>
+		              	<!-- /.box-body -->
 
-		              <div class="box-footer">
-		                <button class="btn btn-success" type="submit" id="saveFormBtn">Speichern</button>
-						<button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
-		              </div>
+		              	<div class="box-footer">
+		               		<input class="btn btn-success" type="submit" value="Speichern" name="Speichern" id="saveFormBtn">
+							<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/quellen/" id="cancelBtn">Abbrechen</a>
+		              	</div>
 		            </form>
 		          </div>
 			</div>

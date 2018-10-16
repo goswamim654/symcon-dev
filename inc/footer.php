@@ -1,3 +1,4 @@
+
 	<footer class="main-footer">
 		<div class="pull-right hidden-xs">
 			<b><?php echo $version;?></b> 1.0.0
@@ -92,29 +93,18 @@ if(isset($_SESSION['validationError'])) { ?>
 		$('.formValid').submit();
 	});
 </script>
-<?php
-unset($_SESSION['validationError']);
-} ?>
-<?php
-if(isset($_SESSION['loginSuccess'])) { ?>
-<script>
-    $(document).ready(function () {
-        var loginSuccess = "<?php echo $_SESSION['loginSuccess'];?>"
-        const toast = swal.mixin({
-			toast: true,
-			position: 'top-end',
-			showConfirmButton: false,
-			timer: 3000
-			});
-
-			toast({
-			type: 'success',
-			title: loginSuccess
-		})
-    });
-</script>
-<?php
-unset($_SESSION['loginSuccess']);
-} ?>
+<?php unset($_SESSION['validationError']); } ?>
+<?php if(isset($_SESSION['success'])) { ?>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var successMessage = "<?php echo $_SESSION['success'];?>"
+			swal({
+			  type: 'success',
+			  title: 'Glückwunsch',
+			  text: successMessage,
+			})
+	    });
+	</script>
+<?php unset($_SESSION['success']); } ?>
 </body>
 </html>

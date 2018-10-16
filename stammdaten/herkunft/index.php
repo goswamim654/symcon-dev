@@ -26,13 +26,6 @@ include '../../inc/sidebar.php';
 				<div class="box box-success">
 					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
-		            	<?php if(isset($_SESSION['success'])) { ?>
-		              	<div class="alert alert-success alert-dismissible alert-hide">
-			                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-			                <h4><i class="icon fa fa-check"></i> Contrats!</h4>
-			                <?php echo $_SESSION['success'];?>.
-			             </div>
-		              	<?php unset($_SESSION['success']); } ?>
 		              	<?php if(isset($_SESSION['validationError'])) { ?>
 		              	<div class="alert alert-danger alert-dismissible alert-hide">
 			                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -72,7 +65,7 @@ include '../../inc/sidebar.php';
 							                	<td class="rowlink-skip"><?php echo $herkunft['herkunft_id']; ?></td>
 							                	<?php  } ?>
 												<td><a href="#rowlinkModal" 
-														data-herkunft_id="<?php echo $herkunft['herkunft_id']; ?>"
+														data-id="<?php echo $herkunft['herkunft_id']; ?>" data-type="herkunft" data-title="Herkünft"
 														data-toggle="modal"><?php echo $herkunft['code']; ?></a></td>
 												<td><?php echo $herkunft['titel']; ?></td>
 												<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>

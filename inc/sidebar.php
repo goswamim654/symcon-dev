@@ -47,7 +47,7 @@
             <li class="<?php if(preg_match("/autoren/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/autoren"><i class="fa fa-circle-o"></i> Autoren</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Prüfer</a></li>
             <li class="<?php if(preg_match("/herkunft/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/herkunft"><i class="fa fa-circle-o"></i> Herkunft</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Verlage</a></li>
+            <li class="<?php if(preg_match("/verlage/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/verlage"><i class="fa fa-circle-o"></i> Verlage</a></li>
           </ul>
         </li>
       </ul>

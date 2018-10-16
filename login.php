@@ -1,6 +1,7 @@
 <?php
 include 'lang/GermanWords.php';
 include 'config/route.php';
+
 if(isset($_SESSION['access_token'])) {
     header('Location: '.$absoluteUrl);
 }

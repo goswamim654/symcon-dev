@@ -17,7 +17,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 			die();
 			break;
 		case 2:
-			$_SESSION['loginSuccess'] = $response['message'];
+			//$_SESSION['success'] = $response['message'];
 			$_SESSION['token_type'] = $response['content']['token_type'];
 			$_SESSION['access_token'] = $response['content']['access_token'];
 			$_SESSION['username'] = $response['content']['username'];

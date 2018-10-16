@@ -43,19 +43,24 @@ if($actual_link == $absoluteUrl.'stammdaten/herkunft/' || $actual_link == $absol
 			break;
 	}
 }
-// get a single autor
+// get a single herkunft
 
 if(isset($_GET['herkunft_id'])) {
 	$herkunft_id = $_GET['herkunft_id'];
-	$herkunftEditUrl = $baseApiURL.'herkunft/view?herkunft_id='.$herkunft_id;
-	$get_data = callAPI('GET',$herkunftEditUrl , false);
+	$url = $baseApiURL.'herkunft/view?herkunft_id='.$herkunft_id;
+	$get_data = callAPI('GET',$url , false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
-	if($response['status'] == 0) {
-		echo $response['message'];
-		die();
-	} else if($response['status'] == 2) {
-		$herkunft = $response['content']['data'];	
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			die();
+			break;
+		case 2:
+			$herkunft = $response['content']['data'];
+			break;
+		default:
+			break;
 	}																
 }
 // add and edit a herkunft
@@ -76,19 +81,22 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 	// edit herkunft
 
 	if(isset($_POST['ÄnderungenSpeichern'])) {
+		$herkunft_id = $_POST['herkunft_id'];
 		$get_data = callAPI('POST',  $baseApiURL.'herkunft/update?herkunft_id='.$herkunft_id, json_encode($data_array));
 	}
 	$response = json_decode($get_data, true);
-	echo $status = $response['status'];
-	die();
+	$status = $response['status'];
 	switch ($status) {
 		case 0:
 			echo $response['message'];
 			die();
 			break;
 		case 2:
+			$code = '';
+			$titel = '';
 			$_SESSION['success'] = $response['message'];
-			header('Location: '.$absoluteUrl. 'stammdaten/herkunft/index.php');
+			$herkunft = $response['content'];
+			//header('Location: '.$absoluteUrl. 'stammdaten/herkunft/index.php');
 			break;	
 		case 3:
 			$_SESSION['validationError'] = $response['message'];

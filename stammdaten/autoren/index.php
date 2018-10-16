@@ -6,7 +6,7 @@ include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -26,13 +26,6 @@ include '../../inc/sidebar.php';
 				<div class="box box-success">
 					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
-		            	<?php if(isset($_SESSION['success'])) { ?>
-		              	<div class="alert alert-success alert-dismissible alert-hide">
-			                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-			                <h4><i class="icon fa fa-check"></i> Contrats!</h4>
-			                <?php echo $_SESSION['success'];?>.
-			             </div>
-		              	<?php unset($_SESSION['success']); } ?>
 		              	<?php if(isset($_SESSION['validationError'])) { ?>
 		              	<div class="alert alert-danger alert-dismissible alert-hide">
 			                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -53,7 +46,7 @@ include '../../inc/sidebar.php';
 					                <thead>
 						                <tr>
 						                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
-						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
+						                	<th class="rowlink-skip dt-body-center no-sort"><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
 						                	<?php  } ?>
 											 <th>Suchname</th>
 											 <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
@@ -75,7 +68,7 @@ include '../../inc/sidebar.php';
 							                	<td class="rowlink-skip"><?php echo $autor['autor_id']; ?></td>
 							                	<?php  } ?>
 												<td><a href="#rowlinkModal" 
-														data-autor_id="<?php echo $autor['autor_id']; ?>"
+														data-id="<?php echo $autor['autor_id']; ?>" data-type="autoren" data-title="Anzeigen Autor/ Herausgeber" 
 														data-toggle="modal"><?php if( $autor['suchname'] ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></a></td>
 												<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 												<?php if($_SESSION['user_type'] == 1 ) { ?>
@@ -101,7 +94,7 @@ include '../../inc/sidebar.php';
 
     </section>
     <!-- /.content -->
-  </div>
+</div>
   <!-- /.content-wrapper -->
 <?php
 include '../../inc/footer.php';

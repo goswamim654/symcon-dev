@@ -65,11 +65,16 @@ if(isset($_GET['autor_id'])) {
 	$get_data = callAPI('GET',$autorEditUrl , false);
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
-	if($response['status'] == 0) {
-		echo $response['message'];
-		die();
-	} else if($response['status'] == 2) {
-		$autoren = $response['content']['data'];	
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			die();
+			break;
+		case 2:
+			$autoren = $response['content']['data'];
+			break;
+		default:
+			break;
 	}																
 }
 
@@ -103,6 +108,7 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 	// edit autor
 
 	if(isset($_POST['ÄnderungenSpeichern'])) {
+		$autor_id = $_POST['autor_id'];
 		$get_data = callAPI('POST',  $baseApiURL.'autor/update?autor_id='.$autor_id, json_encode($data_array));
 	}
 	$response = json_decode($get_data, true);
@@ -113,8 +119,17 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 			die();
 			break;
 		case 2:
+			$code = '';
+			$suchname = '';
+			$titel = '';
+			$vorname = '';
+			$nachname = '';
+			$geburtsdatum = '';
+			$sterbedatum = '';
+			$kommentar = '';
 			$_SESSION['success'] = $response['message'];
-			header('Location: '.$absoluteUrl. 'stammdaten/autoren/index.php');
+			$autoren = $response['content']['data'];
+			//header('Location: '.$absoluteUrl. 'stammdaten/autoren/index.php');
 			break;	
 		case 3:
 			$_SESSION['validationError'] = $response['message'];

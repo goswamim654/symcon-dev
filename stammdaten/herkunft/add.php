@@ -36,11 +36,11 @@ include '../../inc/sidebar.php';
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="code">Code*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="code" name="code" value="<?php if(isset($_POST['code'])) echo $_POST['code'];?>" required>
+									<input type="text" class="form-control" id="code" name="code" value="<?php if(isset($code)) echo $code;?>" required autofocus>
 								</div>
 								<div class="form-group">
 									<label for="titel">Titel*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="titel" name="titel" value="<?php if(isset($_POST['titel'])) echo $_POST['titel'];?>" required>
+									<input type="text" class="form-control" id="titel" name="titel" value="<?php if(isset($titel)) echo $titel;?>" required>
 								</div>
 							</div>
 						</div>

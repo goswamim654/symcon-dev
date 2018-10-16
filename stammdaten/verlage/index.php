@@ -1,20 +1,20 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
-include '../../api/quellen.php';
+include '../../api/verlage.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
  <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quellen
+        Verlage
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
-        <li class="active">Quellen</li>
+        <li class="active">Verlage</li>
       </ol>
     </section>
 
@@ -24,7 +24,7 @@ include '../../inc/sidebar.php';
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-success">
-		            <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
+					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 		              	<?php if(isset($_SESSION['validationError'])) { ?>
 		              	<div class="alert alert-danger alert-dismissible alert-hide">
@@ -34,13 +34,13 @@ include '../../inc/sidebar.php';
 			             </div>
 		              	<?php unset($_SESSION['validationError']); } ?>
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>stammdaten/quellen/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Quelle</a>
+							<a href="<?php echo $absoluteUrl;?>stammdaten/verlage/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Verlage</a>
 						</h3>
 		            </div>
 		            <?php  } ?>
 		            <!-- /.box-header -->
 		            <div class="box-body">
-		            	<form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+			            <form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 		            		<div class="table-responsive">
 					            <table id="dataTable" class="table-loader table table-bordered table-striped display table-hover custom-table">
 					                <thead>
@@ -48,12 +48,12 @@ include '../../inc/sidebar.php';
 						                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 						                	<th class="rowlink-skip dt-body-center no-sort"><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
 						                	<?php  } ?>
-											<th>Kürzel</th>
 											<th>Titel</th>
-											<th>Jahr</th>
-											 <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
+											<th>PLZ</th>
+											<th>ORT</th>
+											<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 											<?php if($_SESSION['user_type'] == 1 ) { ?>
-											<th>Autor / Herausgeber</th>
+											<th>Angelegt durch</th>
 											<th>Bearbeiter</th>
 											<?php  } ?>
 											<th class="no-sort">Aktionen</th>
@@ -62,25 +62,25 @@ include '../../inc/sidebar.php';
 					                </thead>
 					                <tbody data-link="row" class="rowlink">
 					                	<?php 
-					                	if($quellen != null && $quellen != '') { 
-					                		foreach ($quellen as $key => $quelle) { ?>
+					                	if($verlages != null && $verlages != '') { 
+					                		foreach ($verlages as $key => $verlage) { ?>
 
 							                <tr>
 							                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
-							                	<td class="rowlink-skip"><?php echo $quelle['quelle_id']; ?></td>
+							                	<td class="rowlink-skip"><?php echo $verlage['verlag_id']; ?></td>
 							                	<?php  } ?>
 												<td><a href="#rowlinkModal" 
-														data-id="<?php echo $quelle['quelle_id']; ?>" data-type="quelle" data-title="Quelle" 
-														data-toggle="modal"><?php echo $quelle['code'];  ?></a></td>
-												<td><?php echo $quelle['titel']; ?></td>
-												<td><?php echo $quelle['jahr']; ?></td>
+														data-id="<?php echo $verlage['verlag_id']; ?>" data-type="verlag" data-title="Anzeigen Verlage"
+														data-toggle="modal"><?php echo $verlage['titel']; ?></a></td>
+												<td><?php echo $verlage['plz']; ?></td>
+												<td><?php echo $verlage['ort']; ?></td>
 												<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 												<?php if($_SESSION['user_type'] == 1 ) { ?>
-												<td><?php echo $quelle['ersteller']; ?></td>
-												<td><?php echo $quelle['bearbeiter']; ?></td>
+												<td><?php echo $verlage['ersteller']; ?></td>
+												<td><?php echo $verlage['bearbeiter']; ?></td>
 												<?php } ?>
 												<td class="rowlink-skip">
-													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/quellen/edit.php?quelle_id=<?php echo $quelle['quelle_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/verlage/edit.php?verlag_id=<?php echo $verlage['verlag_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>
 			            	       	            <?php  } ?>
 							                </tr>
@@ -89,22 +89,16 @@ include '../../inc/sidebar.php';
 						            </tbody>
 					            </table>
 					        </div>
-				        </form>    
+				        </form> 
 			        </div>
 			            <!-- /.box-body -->
 		        </div>
 			</div>
-		</div>
-      <!-- /.row -->
-      <!-- Main row -->
-      <div class="row">
-        
-      </div>
-      <!-- /.row (main row) -->
+		</div> <!-- /.row (main row) -->
 
     </section>
     <!-- /.content -->
-</div>
+  </div>
   <!-- /.content-wrapper -->
 <?php
 include '../../inc/footer.php';

@@ -1,4 +1,17 @@
 $(document).ready(function () {
+    // form validation
+    
+    var addAutorenForm = $("#addAutorenForm").validate({
+        errorPlacement: function(error, element) {
+        error.appendTo(element.prev("span"));
+        },
+        rules: {
+            'nachname': "required",
+        },
+        messages: {
+            'nachname': "Nachname ist eine Pflichtangabe"
+        }
+    });
 	var changePassword = $("#changePassword").validate({
 		errorPlacement: function(error, element) {
 		error.appendTo(element.prev("span"));
@@ -74,4 +87,50 @@ $(document).ready(function () {
             }
         }
     });
+
+    var addVerlageForm = $("#addVerlageForm").validate({
+        errorPlacement: function(error, element) {
+        error.appendTo(element.prev("span"));
+        },
+        rules: {
+            titel : {
+                required: true
+            },
+            email: {
+                email: true
+            }
+        },     
+        messages: {
+            titel : {
+                required: "Titel ist eine Pflichtangabe"
+            },
+            email: {
+                email: "Bitte geben Sie eine gültige Email-Adresse ein" 
+            }
+        }
+    });
+
+    var addQuelleForm = $("#addQuelleForm").validate({
+        errorPlacement: function(error, element) {
+            error.appendTo(element.prev("span"));
+        },
+
+        rules: {
+            code: "required",
+            titel: "required",
+            sprache: "required",
+            jahr: "required",
+            auflage: "required",
+            verlag_id: "required"
+        },
+        messages: {
+            code: "Kurzel ist eine Pflichtangabe",
+            titel: "Titel ist eine Pflichtangabe",
+            sprache: 'Sprache ist eine Pflichtangabe',
+            jahr: "Jahr ist eine Pflichtangabe",
+            auflage: "Auflage ist eine Pflichtangabe",
+            verlag_id: "Verlag ist eine Pflichtangabe"
+        }
+    });
+
 });

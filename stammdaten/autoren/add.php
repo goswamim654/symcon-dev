@@ -45,30 +45,30 @@ include '../../inc/sidebar.php';
 								</div>
 								<div class="form-group">
 									<label for="vorname">Vorname</label>
-									<input type="text" class="form-control" name="vorname" value="<?php if(isset($_POST['vorname'])) echo $_POST['vorname'];?>" id="vorname">
+									<input type="text" class="form-control" name="vorname" value="<?php if(isset($vorname)) echo $vorname;?>" id="vorname">
 								</div>
 								<div class="form-group">
 									<label for="nachname">Nachname*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="nachname" name="nachname" value="<?php if(isset($_POST['nachname'])) echo $_POST['nachname'];?>" required>
+									<input type="text" class="form-control" id="nachname" name="nachname" value="<?php if(isset($nachname)) echo $nachname;?>" required>
 								</div>
 								<div class="form-group">
 									<label for="suchname">Suchname</label>
-									<input type="text" class="form-control"  name="suchname" value="<?php if(isset($_POST['suchname'])) echo $_POST['suchname'];?>" id="suchname">
+									<input type="text" class="form-control"  name="suchname" value="<?php if(isset($suchname)) echo $suchname;?>" id="suchname">
 								</div>
 								<div class="form-group">
 									<label for="geburtsjahr">Geburtsjahr/ datum</label>
-									<input type="text" class="form-control" name="geburtsjahr" value="<?php if(isset($_POST['geburtsjahr'])) echo $_POST['geburtsjahr'];?>" id="geburtsjahr" data-mask="99/99/9999">
+									<input type="text" class="form-control" name="geburtsjahr" value="<?php if(isset($geburtsjahr)) echo $geburtsjahr;?>" id="geburtsjahr" data-mask="99/99/9999">
 								</div>
 								
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="todesjahr">Todesjahr/ datum</label>
-									<input type="text" class="form-control" name="todesjahr" value="<?php if(isset($_POST['todesjahr'])) echo $_POST['todesjahr'];?>" id="todesjahr" data-mask="99/99/9999">
+									<input type="text" class="form-control" name="todesjahr" value="<?php if(isset($todesjahr)) echo $todesjahr;?>" id="todesjahr" data-mask="99/99/9999">
 								</div>
 								<div class="form-group">
 									<label for="kommentar">Kommentar</label>
-									<textarea id="kommentar" name="kommentar" value="<?php if(isset($_POST['kommentar'])) echo $_POST['kommentar'];?>" class="form-control texteditor" aria-hidden="true"></textarea>
+									<textarea id="kommentar" name="kommentar" value="<?php if(isset($kommentar)) echo $kommentar;?>" class="form-control texteditor" aria-hidden="true"></textarea>
 								</div>
 							</div>
 						</div>

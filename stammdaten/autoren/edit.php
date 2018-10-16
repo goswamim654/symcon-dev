@@ -30,8 +30,9 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addAutorenForm" class="formValid" action="<?php echo $_SERVER['PHP_SELF'].'?autor_id='.$autor_id; ?>" method="POST">
+		            <form role="form" id="addAutorenForm" class="formValid" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 		              <div class="box-body">
+		              	<input type="hidden" name="autor_id" value="<?php echo $autoren['autor_id'];?>">
 		              	<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">

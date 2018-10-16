@@ -31,12 +31,13 @@ include '../../inc/sidebar.php';
 		            <!-- /.box-header -->
 		            <!-- form start -->
 		            <form role="form" class="formValid" id="addHerkunftForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		            	<input type="hidden" name="herkunft_id" value="<?php echo $herkunft['herkunft_id'];?>">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="code">Code*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="code" name="code" value="<?php echo $herkunft['code']; ?>" required>
+									<input type="text" class="form-control" id="code" name="code" value="<?php echo $herkunft['code']; ?>" required autofocus>
 								</div>
 								<div class="form-group">
 									<label for="titel">Titel*</label><span class="error-text"></span>
