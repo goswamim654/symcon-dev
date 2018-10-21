@@ -38,9 +38,14 @@
 <!-- jQuery 3 -->
 <script src="<?php echo $absoluteUrl;?>plugins/jquery/dist/jquery.min.js"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo $absoluteUrl;?>plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Tinymce -->
+<script type="text/javascript" src="<?php echo $absoluteUrl;?>plugins/tinymce/jquery.tinymce.min.js"></script>
+<script type="text/javascript" src="<?php echo $absoluteUrl;?>plugins/tinymce/jquery.tinymce.config.js"></script>
+<script type="text/javascript" src="<?php echo $absoluteUrl;?>plugins/tinymce/tinymce.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+
 <script src="<?php echo $absoluteUrl;?>plugins/jquery-ui/ui/i18n/datepicker-de.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
@@ -48,10 +53,8 @@
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo $absoluteUrl;?>plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Tinymce -->
-<script type="text/javascript" src="<?php echo $absoluteUrl;?>plugins/tinymce/jquery.tinymce.min.js"></script>
-<script type="text/javascript" src="<?php echo $absoluteUrl;?>plugins/tinymce/jquery.tinymce.config.js"></script>
-<script type="text/javascript" src="<?php echo $absoluteUrl;?>plugins/tinymce/tinymce.min.js"></script>
+<!-- Dropify -->
+<script src="<?php echo $absoluteUrl;?>plugins/dropify/js/dropify.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo $absoluteUrl;?>plugins/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo $absoluteUrl;?>plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>

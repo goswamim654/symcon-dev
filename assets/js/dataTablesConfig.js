@@ -3,24 +3,23 @@ $(document).ready(function () {
 	$('#dataTable').on('init.dt',function() {
         $("#dataTable").removeClass('table-loader').show();
 	});
-	setTimeout(function() {
-		table = $('#dataTable').DataTable({
-			//'ajax': 'https://api.myjson.com/bins/1us28',  
-			"responsive": true,
-	    	"language": {
-	           "url": absoluteUrl+"lang/dataTableGerman.json"
-	       	},
-			'columnDefs': [{
-			 'targets': 0,
-			 'searchable': false,
-			 'orderable': false,
-			 'className': 'dt-body-center',
-			 'render': function (data, type, full, meta){
-			     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
-			 }
-			}]
-    	});
-	}, 500);
+	
+	table = $('#dataTable').DataTable({
+		//'ajax': 'https://api.myjson.com/bins/1us28',  
+		"responsive": true,
+    	"language": {
+           "url": absoluteUrl+"lang/dataTableGerman.json"
+       	},
+		'columnDefs': [{
+		 'targets': 0,
+		 'searchable': false,
+		 'orderable': false,
+		 'className': 'dt-body-center',
+		 'render': function (data, type, full, meta){
+		     return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+		 }
+		}]
+	});
 
 	// Handle click on checkbox 
 	$('#custom-table input[type="checkbox"]').change( function() {

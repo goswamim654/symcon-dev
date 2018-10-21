@@ -73,12 +73,12 @@ include '../../inc/sidebar.php';
 										<label for="jahr">Jahr*</label><span class="error-text"></span>
 										<input type="text" class="form-control pull-right" id="jahr" name="jahr">
 									</div>
-								</div>
-								<div class="col-md-6">
 									<div class="form-group">
 										<label for="band">Band</label>
 										<input type="text" class="form-control" id="band" name="band">
 									</div>
+								</div>
+								<div class="col-md-6">
 									<div class="form-group">
 										<label for="nummer">Nummer</label>
 										<input type="text" class="form-control" id="nummer" name="Nummer">
@@ -106,10 +106,7 @@ include '../../inc/sidebar.php';
 									</div>
 									<div class="form-group">
 										<label>Datei</label>
-										<div class="custom-file">
-										  <input type="file" class="custom-file-input" id="customFile" name="file_url">
-										  <label class="custom-file-label" for="customFile">Datei</label>
-										</div>
+										<input name="file_url" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-height="100" />
 									</div>
 								</div>
 							</div>

@@ -1,4 +1,15 @@
 $(document).ready(function () {
+	$('.dropify').dropify({
+	    messages: {
+	        'default': 'Ziehen Sie eine Datei hierher und klicken Sie auf',
+	        'replace': 'Drag & Drop oder Klick zum Ersetzen',
+	        'remove':  'Löschen',
+	        'error':   'Hoppla, etwas ist passiert.'
+	    },
+	    error: {
+	        'imageFormat': 'Die Datei ist nicht erlaubt ({{ value }} nur).'
+    	}
+	});
 	// extend juery validation rule
 	$.extend($.validator.messages, {
 		    required: '<i class = "icon-exclamation-sign"></i>'

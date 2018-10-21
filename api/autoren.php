@@ -1,63 +1,30 @@
 <?php
-if(!isset($_SESSION['access_token'])) {
-    header('Location: '.$absoluteUrl.'login.php');
+if(isset($_SESSION['access_token'])) {
+   header('Location: '.$absoluteUrl.'login.php');
 }
 include 'mainCall.php';
 $autoren = '';
 $get_data = '';
 $response = '';
 $autorTitels = '';
+
 // get titels
 
 $autorTitelsUrl = $baseApiURL.'autor/titels';
 $get_data = callAPI('GET',$autorTitelsUrl , false);
 $response = json_decode($get_data, true);
-if($response['status'] == 0) {
-	echo $response['message'];
-	die();
-} else if($response['status'] == 2) {
-	$autorTitels = $response['content']['data'];
+$status = $response['status'];
+switch ($status) {
+	case 0:
+		echo $response['message'];
+		die();
+		break;
+	case 2:
+		$autorTitels = $response['content']['data'];
+		break;
+	default:
+		break;
 }
-
-// list autoren
-if($actual_link == $absoluteUrl.'stammdaten/autoren/' || $actual_link == $absoluteUrl.'stammdaten/autoren/index.php') {
-	if(isset($_POST['delete_array_id'])) {
-		$data_array =  array("autor_id" => $_POST['delete_array_id']);
-		$get_data = callAPI('POST', $baseApiURL.'autor/delete', json_encode($data_array));
-		$response = json_decode($get_data, true);
-		$status = $response['status'];
-		switch ($status) {
-			case 0:
-				echo $response['message'];
-				die();
-				break;
-			case 2:
-				$_SESSION['success'] = $response['message'];
-				break;	
-			case 3:
-				$_SESSION['validationError'] = $response['message'];
-				break;
-			default:
-				break;
-		}
-	}
-	$get_data = callAPI('GET', $baseApiURL.'autor/all?is_paginate=0', false);
-	$response = json_decode($get_data, true);
-	$status = $response['status'];
-	switch ($status) {
-		case 0:
-			echo $response['message'];
-			die();
-			break;
-		case 2:
-			$autoren = $response['content']['data'];
-			break;
-		default:
-			break;
-	}
-}
-
-// get a single autor
 
 if(isset($_GET['autor_id'])) {
 	$autor_id = $_GET['autor_id'];
@@ -81,6 +48,8 @@ if(isset($_GET['autor_id'])) {
 // add and edit a autor
 
 if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
+
+	
 	$code = isset($_POST['code']) ? $_POST['code'] : '';
 	$suchname = isset($_POST['suchname']) ? $_POST['suchname'] : '';
 	$titel = isset($_POST['titel']) ? $_POST['titel'] : '';
@@ -140,4 +109,3 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 	}
 }
 
-// delete a autor

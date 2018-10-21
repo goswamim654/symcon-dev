@@ -31,10 +31,6 @@ function callAPI($method, $url, $data){
          'Authorization: '.$_SESSION['token_type'].' '. $_SESSION['access_token'],
          'Content-Type: application/json',
       ));
-   } else {
-
-      curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-      curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
    }
    
    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

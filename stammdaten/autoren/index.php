@@ -1,7 +1,44 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
-include '../../api/autoren.php';
+include '../../api/mainCall.php';
+$autoren = '';
+$get_data = '';
+$response = '';
+if(isset($_POST['delete_array_id'])) {
+	$data_array =  array("autor_id" => $_POST['delete_array_id']);
+	$get_data = callAPI('POST', $baseApiURL.'autor/delete', json_encode($data_array));
+	$response = json_decode($get_data, true);
+	$status = $response['status'];
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			die();
+			break;
+		case 2:
+			$_SESSION['success'] = $response['message'];
+			break;	
+		case 3:
+			$_SESSION['validationError'] = $response['message'];
+			break;
+		default:
+			break;
+	}
+}
+$get_data = callAPI('GET', $baseApiURL.'autor/all?is_paginate=0', false);
+$response = json_decode($get_data, true);
+$status = $response['status'];
+switch ($status) {
+	case 0:
+		echo $response['message'];
+		die();
+		break;
+	case 2:
+		$autoren = $response['content']['data'];
+		break;
+	default:
+		break;
+}
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>

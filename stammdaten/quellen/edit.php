@@ -69,12 +69,13 @@ include '../../inc/sidebar.php';
 									<label for="Jahr">Jahr*</label><span class="error-text"></span>
 									<input type="text" class="form-control pull-right" id="Jahr" name="Jahr">
 								</div>
-							</div>
-							<div class="col-md-6">
 								<div class="form-group">
 									<label for="Band">Band</label>
 									<input type="text" class="form-control" id="Band" name="Band">
 								</div>
+							</div>
+							<div class="col-md-6">
+								
 								<div class="form-group">
 									<label for="Nummer">Nummer</label>
 									<input type="text" class="form-control" id="Nummer" name="Nummer">
@@ -106,10 +107,7 @@ include '../../inc/sidebar.php';
 								</div>
 								<div class="form-group">
 									<label>Datei</label>
-									<div class="custom-file">
-									  <input type="file" class="custom-file-input" id="customFile">
-									  <label class="custom-file-label" for="customFile">Datei</label>
-									</div>
+									<input name="file_url" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-default-file="url_of_your_file" data-height="100" />
 								</div>
 							</div>
 						</div>
@@ -117,8 +115,8 @@ include '../../inc/sidebar.php';
 		              <!-- /.box-body -->
 
 		              <div class="box-footer">
-		                <button class="btn btn-success" type="submit" id="saveFormBtn">Änderungen Speichern</button>
-						<button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
+		                <input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
+						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/autoren/" id="cancelBtn">Abbrechen</a>
 		              </div>
 		            </form>
 		          </div>

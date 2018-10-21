@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/bootstrap/dist/css/bootstrap.min.css">
+  <!-- dropify -->
+  <link rel="stylesheet" type="text/css" href="<?php echo $absoluteUrl;?>plugins/dropify/css/dropify.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -107,7 +109,7 @@
     <div id="search" class="cd-main-search">
       <form>
         <div class="search-input">
-          <input type="search" placeholder="Search...">
+          <input type="search" placeholder="Suche...">
         </div>
 
         <div class="cd-search-suggestions">

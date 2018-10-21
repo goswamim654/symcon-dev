@@ -67,43 +67,6 @@ switch ($status) {
 		break;
 }
 
-// list quellen
-if($actual_link == $absoluteUrl.'stammdaten/quellen/' || $actual_link == $absoluteUrl.'stammdaten/quellen/index.php') {
-	if(isset($_POST['delete_array_id'])) {
-		$data_array =  array("quelle_id" => $_POST['delete_array_id']);
-		$get_data = callAPI('POST', $baseApiURL.'quelle/delete', json_encode($data_array));
-		$response = json_decode($get_data, true);
-		$status = $response['status'];
-		switch ($status) {
-			case 0:
-				echo $response['message'];
-				die();
-				break;
-			case 2:
-				$_SESSION['success'] = $response['message'];
-				break;	
-			case 3:
-				$_SESSION['validationError'] = $response['message'];
-				break;
-			default:
-				break;
-		}
-	}
-	$get_data = callAPI('GET', $baseApiURL.'quelle/all?is_paginate=0', false);
-	$response = json_decode($get_data, true);
-	$status = $response['status'];
-	switch ($status) {
-		case 0:
-			echo $response['message'];
-			die();
-			break;
-		case 2:
-			$quellen = $response['content']['data'];
-			break;
-		default:
-			break;
-	}
-}
 
 // get a single quelle
 
@@ -201,5 +164,3 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 			break;
 	}
 }
-
-// delete a quelle
