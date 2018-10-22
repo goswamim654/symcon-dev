@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['access_token'])) {
+if(!isset($_SESSION['access_token'])) {
    header('Location: '.$absoluteUrl.'login.php');
 }
 include 'mainCall.php';

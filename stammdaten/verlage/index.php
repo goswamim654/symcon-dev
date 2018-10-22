@@ -14,7 +14,7 @@ if(isset($_POST['delete_array_id'])) {
 			die();
 			break;
 		case 2:
-			$_SESSION['success'] = $response['message'];
+			$_SESSION['success'] = 'Verlage wurde erfolgreich gelöscht';
 			break;	
 		case 3:
 			$_SESSION['validationError'] = $response['message'];

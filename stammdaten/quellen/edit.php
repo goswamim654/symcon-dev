@@ -108,7 +108,7 @@ include '../../inc/sidebar.php';
 									    </select>
 									</div>
 									<div class="form-group">
-										<label>Datei ( nur PDF, doc und docx Dateien sind erlaubt. )</label>
+										<label>Datei ( nur PDF, DOC und DOCX Dateien sind erlaubt. )</label>
 										<input name="file_url" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-height="100" />
 									</div>
 								</div>
@@ -117,7 +117,7 @@ include '../../inc/sidebar.php';
 		              <!-- /.box-body -->
 
 		              <div class="box-footer">
-		                <input class="btn btn-success" type="submit" value="Speichern" name="Speichern" id="saveFormBtn">
+		                <input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
 						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/quellen/" id="cancelBtn">Abbrechen</a>
 		              </div>
 		            </form>

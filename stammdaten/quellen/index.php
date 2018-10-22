@@ -13,7 +13,7 @@ if(isset($_POST['delete_array_id'])) {
 			die();
 			break;
 		case 2:
-			$_SESSION['success'] = $response['message'];
+			$_SESSION['success'] = 'Quelle (n) wurde erfolgreich gelöscht';
 			break;	
 		case 3:
 			$_SESSION['validationError'] = $response['message'];
@@ -22,8 +22,6 @@ if(isset($_POST['delete_array_id'])) {
 			break;
 	}
 }
-include '../../inc/header.php';
-include '../../inc/sidebar.php';
 $get_data = callAPI('GET', $baseApiURL.'quelle/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
@@ -38,6 +36,8 @@ switch ($status) {
 	default:
 		break;
 }
+include '../../inc/header.php';
+include '../../inc/sidebar.php';
 ?>
  <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

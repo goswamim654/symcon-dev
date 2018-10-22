@@ -105,7 +105,7 @@ include '../../inc/sidebar.php';
 									    </select>
 									</div>
 									<div class="form-group">
-										<label>Datei ( nur PDF, doc und docx Dateien sind erlaubt. )</label>
+										<label>Datei ( nur PDF, DOC und DOCX Dateien sind erlaubt. )</label>
 										<input type="file" data-allowed-file-extensions="pdf doc docx" name="file_url" class="dropify" data-height="100"/>
 									</div>
 								</div>

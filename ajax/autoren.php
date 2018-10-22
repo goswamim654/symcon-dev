@@ -105,7 +105,7 @@ if(isset($_GET['quelle_id'])) {
 				$autor_herausgeber = $autor_herausgeber.$autor['vorname']. ', ';
 			}
 			if($quelle['file_url']) {
-				$quelle_file_url = '<a href="'.$quelle['file_url'].'">Click to view</a>';
+				$quelle_file_url = '<a href="'.$quelle['file_url'].'"  target="_blank">Click to view</a>';
 			}
 			$data_array =  array(
 				"Kürzel"    	=> $quelle['code'],

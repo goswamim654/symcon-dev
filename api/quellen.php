@@ -122,6 +122,7 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 	$autor_id = isset($_POST['autor_id']) ? $_POST['autor_id'] : '';
 
 	//$tmpfile = $_FILES['file_url']['tmp_name'];
+	//$filename = basename($_FILES['file_url']['name']);
 	//$handle    = fopen($tmpfile, "r");
  	//$data      = fread($handle, filesize($tmpfile));
 
