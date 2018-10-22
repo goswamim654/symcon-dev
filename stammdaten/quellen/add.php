@@ -31,7 +31,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="formValid" id="addQuelleForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+		            <form role="form" class="formValid" id="addQuelleForm" method="POST" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
 		              	<div class="box-body">
 			              	<div class="row">
 								<div class="col-md-6">
@@ -71,21 +71,21 @@ include '../../inc/sidebar.php';
 									</div>
 									<div class="form-group">
 										<label for="jahr">Jahr*</label><span class="error-text"></span>
-										<input type="text" class="form-control pull-right" id="jahr" name="jahr">
+										<input type="text" class="form-control pull-right" id="jahr" name="jahr" value="<?php if(isset($jahr)) echo $jahr;?>">
 									</div>
 									<div class="form-group">
 										<label for="band">Band</label>
-										<input type="text" class="form-control" id="band" name="band">
+										<input type="text" class="form-control" id="band" name="band" value="<?php if(isset($band)) echo $band;?>">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="nummer">Nummer</label>
-										<input type="text" class="form-control" id="nummer" name="Nummer">
+										<input type="text" class="form-control" id="nummer" name="nummer" value="<?php if(isset($nummer)) echo $nummer;?>">
 									</div>
 									<div class="form-group">
 										<label for="auflage">Auflage*</label><span class="error-text"></span>
-										<input type="text" class="form-control" id="auflage" name="auflage">
+										<input type="text" class="form-control" id="auflage" name="auflage" value="<?php if(isset($auflage)) echo $auflage;?>">
 									</div>
 									<div class="form-group">
 										<label for="verlag_id">Verlag*</label><span class="error-text"></span>
@@ -99,14 +99,14 @@ include '../../inc/sidebar.php';
 									<div class="form-group">
 										<label for="autor_id">Autor / Herausgeber</label>
 										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
-									        <?php foreach ($autoren as $key => $autor) { ?>
+									        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
 											<option value="<?php echo $autor['autor_id'];?>"><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
 											<?php } ?>
 									    </select>
 									</div>
 									<div class="form-group">
-										<label>Datei</label>
-										<input name="file_url" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-height="100" />
+										<label>Datei ( nur PDF, doc und docx Dateien sind erlaubt. )</label>
+										<input type="file" data-allowed-file-extensions="pdf doc docx" name="file_url" class="dropify" data-height="100"/>
 									</div>
 								</div>
 							</div>

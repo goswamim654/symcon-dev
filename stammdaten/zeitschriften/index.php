@@ -29,7 +29,7 @@ include '../../inc/sidebar.php';
 		              </h3>
 		            </div>
 		            <!-- /.box-header -->
-		            <div class="box-body">
+		            <div class="box-body">   
 			             <form id="frm-example" action="/path/to/your/script" method="POST">
 		            		<div class="table-responsive">
 					            <table id="zeitschriften" class="table table-bordered table-striped display table-hover">

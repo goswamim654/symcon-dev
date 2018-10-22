@@ -61,7 +61,7 @@ switch ($status) {
 		die();
 		break;
 	case 2:
-		$autoren = $response['content']['data'];
+		$autorenSelectBox = $response['content']['data'];
 		break;
 	default:
 		break;
@@ -83,6 +83,23 @@ if(isset($_GET['quelle_id'])) {
 			break;
 		case 2:
 			$quellen = $response['content']['data'];
+			$code = $quellen['code'];
+			$titel = $quellen['titel'];
+			$sprache = $quellen['sprache'];
+			$herkunft_id = $quellen['herkunft_id'];
+			$quelle_schema_id = $quellen['quelle_schema_id'];
+			$jahr = $quellen['jahr'];
+			$band = $quellen['band'];
+			$nummer = $quellen['nummer'];
+			$auflage = $quellen['auflage'];
+			$verlag_id = $quellen['verlag_id'];
+			$autoren = $quellen['autoren'];
+			foreach ($autoren as $key => $autor) {
+				$autor_id_selected_values[] = $autor['autor_id'];
+			}
+			$file_url = $quellen['file_url'];
+			//print_r($get_data);
+			//die();
 			break;
 		default:
 			break;
@@ -103,8 +120,15 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 	$auflage = isset($_POST['auflage']) ? $_POST['auflage'] : '';
 	$verlag_id = isset($_POST['verlag_id']) ? $_POST['verlag_id'] : '';
 	$autor_id = isset($_POST['autor_id']) ? $_POST['autor_id'] : '';
-	$file_url = isset($_POST['file_url']) ? $_POST['file_url'] : '';
 
+	//$tmpfile = $_FILES['file_url']['tmp_name'];
+	//$handle    = fopen($tmpfile, "r");
+ 	//$data      = fread($handle, filesize($tmpfile));
+
+	//die();
+	//$filename = $_FILES['file_url']['name'];
+	//print_r($_FILES['file_url']);
+	//$file_url = curl_file_create( $tmpfile, mime_content_type($tmpfile), $filename);
 	$data_array =  array(
 		"code"      		=> $code,
 		"titel"     		=> $titel,
@@ -117,14 +141,17 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 		"auflage" 			=> $auflage,
 		"verlag_id" 		=> $verlag_id,
 		"autor_id" 			=> $autor_id,
-		"file_url" 			=> $file_url,
+		"file_url" 			=> ''
 	);
 
-	
+
 	// add quelle
 
 	if(isset($_POST['Speichern'])) {
+		//print_r($data_array);
 		$get_data = callAPI('POST', $baseApiURL.'quelle/add', json_encode($data_array));
+		//print_r($get_data);
+		//die();
 	}
 	// edit quelle
 
@@ -154,6 +181,10 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 			$file_url = '';
 			$_SESSION['success'] = $response['message'];
 			$quellen = $response['content']['data'];
+			$autoren = $quellen['autoren'];
+			foreach ($autoren as $key => $autor) {
+				$autor_id_selected_values[] = $autor['autor_id'];
+			}
 			//header('Location: '.$absoluteUrl. 'stammdaten/quellen/index.php');
 			break;	
 		case 3:

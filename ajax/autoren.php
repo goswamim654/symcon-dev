@@ -97,20 +97,29 @@ if(isset($_GET['quelle_id'])) {
 			echo $response['message'];
 			break;
 		case 2:
+			$autor_herausgeber = null;
+			$quelle_file_url = null;
 			$quelle = $response['content']['data'];
+			$autoren = $quelle['autoren'];
+			foreach ($autoren as $key => $autor) {
+				$autor_herausgeber = $autor_herausgeber.$autor['vorname']. ', ';
+			}
+			if($quelle['file_url']) {
+				$quelle_file_url = '<a href="'.$quelle['file_url'].'">Click to view</a>';
+			}
 			$data_array =  array(
 				"Kürzel"    	=> $quelle['code'],
 				"Titel"     	=> $quelle['titel'],
 				"Sprache"   	=> $quelle['sprache'],
-				"Herkunft"  	=> $quelle['herkunft'],
-				"Schema"  		=> $quelle['schema'],
+				"Herkunft"  	=> $quelle['herkunft']['titel'],
+				"Schema"  		=> $quelle['quelle_schema'],
 				"Jahr"  		=> $quelle['jahr'],
 				"Band"  		=> $quelle['band'],
-				"Nummer"  		=> $quelle['Nummer'],
+				"Nummer"  		=> $quelle['nummer'],
 				"Auflage"  		=> $quelle['auflage'],
-				"Verlag" 		=> $quelle['Verlag'],
-				"Autor / Herausgeber" 		=> $quelle['Autor / Herausgeber'],
-				"Datei" 		=> $quelle['datei'],
+				"Verlag" 		=> $quelle['verlag']['titel'],
+				"Autor / Herausgeber" 		=> $autor_herausgeber,
+				"Datei" 		=> $quelle_file_url,
 				"Bearbeiter" 	=> $quelle['bearbeiter']
 			);
 			echo json_encode($data_array);
