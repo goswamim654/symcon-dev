@@ -77,7 +77,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo $absoluteUrl;?>assets/js/demo.js"></script>
 
-<script type="text/javascript">var absoluteUrl = "<?php echo $absoluteUrl;?>"</script>
+<script type="text/javascript">
+	var absoluteUrl = "<?php echo $absoluteUrl;?>";
+	var baseApiURL = "<?php echo $baseApiURL;?>";
+</script>
 
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 
@@ -109,5 +112,99 @@ if(isset($_SESSION['validationError'])) { ?>
 	    });
 	</script>
 <?php unset($_SESSION['success']); } ?>
+<script type="text/javascript">
+$(document).ready(function(e){
+    $(".content-form").on('submit', function(e) {
+    	e.preventDefault();
+    	var form = $(this);
+    	var url = '';
+    	var formType = form.data('value');
+    	var pageType = form.data('type');
+    	
+    	if(formType == 'add') {
+    		url = baseApiURL+pageType+'/'+formType;
+    	} else {
+    		var id = form.data('id');
+    		var idType = form.data('idtype');
+    		url = baseApiURL+pageType+'/'+formType+'?'+idType+'_id='+id;
+    	}
+    	
+        if(! form.valid()) return false;
+        var request = $.ajax({
+            type: 'POST',
+            url: url,
+            headers: {
+		       "Authorization" : "Bearer <?php echo $_SESSION['access_token']; ?>"
+		    },
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend:function(){
+				// var loader = `<div class="overlay">
+				//               	<i class="fa fa-refresh fa-spin"></i>
+				//             </div>`;
+				// $('.content-form').append(loader);
+
+			},
+			complete:function(jqXHR, status){
+				//hideLoader();
+			}
+        });
+        request.done(function(response) {
+			var responseData = null;
+			try {
+				responseData = JSON.parse(response); 
+			} catch (e) {
+				responseData = response;
+			}
+			var status = responseData.status;
+			switch (status) { 
+				case 1: 
+					console.log(responseData.message);
+					break;
+				case 2:
+					console.log(responseData.content);
+					var message = '';
+					if(formType == 'add') {
+						$("#reset").trigger('click');
+						$('.dropify-clear').trigger('click');
+						$("#autor_id").val('').trigger('change');
+						message = pageType+'erfolgreich geupdated';
+					} else {
+						message = pageType+'erfolgreich erstellt';
+					}
+					swal({
+						type: 'success',
+						title: 'Glückwunsch',
+						text: message,
+					});
+					break;
+				case 3: 
+					console.log(responseData.message);
+					break;
+				case 4: 
+					console.log(responseData.message);
+					break;
+				case 5: 
+					console.log(responseData.message);
+					break;	
+				default:
+					console.log('Something went wrong! please try again later');
+			}
+		});
+
+		request.fail(function(jqXHR, textStatus) {
+			var errorData = null;
+			try {
+			  errorData = JSON.parse(jqXHR); 
+			} catch (e) {
+			  errorData = jqXHR;
+			}
+			console.log("Error : "+errorData);
+		});
+      });
+    });
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
 include '../../lang/GermanWords.php';
+include '../../api/zeitschriften.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
@@ -30,77 +31,74 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addZeitschriftForm">
-		              <div class="box-body">
-		              	<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="Herkunft">Herkunft</label>
-									<select id="Herkunft" class="form-control">
-										<option value="">Herkunft wählen</option>
-										<option value="294">deutsch</option>
-										<option value="295">englisch</option>
-									</select>
+		            <form role="form" class="formValid content-form" id="addZeitschriftForm" autocomplete="off" enctype="multipart/form-data" data-value="update" data-type="zeitschrift" data-id="<?php echo $zeitschriften['quelle_id'];?>" data-idtype="quelle">
+		            	<input type="hidden" id="zeitschrift_id" name="zeitschrift_id" value="<?php echo $zeitschriften['quelle_id'];?>">
+	              		<div class="box-body">
+			              	<div class="row">
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<label for="herkunft_id">Herkunft</label>
+										<select id="herkunft_id" class="form-control" name="herkunft_id" autofocus>
+											<option value="">Herkunft wählen</option>
+											<?php foreach ($herkunfte as $key => $herkunft) { ?>
+											<option value="<?php echo $herkunft['herkunft_id'];?>" <?php if($zeitschriften['herkunft_id'] == $herkunft['herkunft_id'])  echo 'selected'; ?>><?php echo $herkunft['titel'];?></option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="code">Kürzel*</label><span class="error-text"></span>
+										<input type="text" class="form-control" value="<?php echo $zeitschriften['code']; ?>" id="code" name="code" required>
+									</div>
+									<div class="form-group">
+										<label for="titel">Titel*</label><span class="error-text"></span>
+										<input type="text" class="form-control" value="<?php echo $zeitschriften['titel']; ?>" name="titel" id="titel">
+									</div>
+									<div class="form-group">
+										<label for="jahr">Jahr*</label><span class="error-text"></span>
+										<input type="text" class="form-control pull-right" id="jahr" name="jahr" value="<?php echo $zeitschriften['jahr'];?>">
+									</div>
+									<div class="form-group">
+										<label for="band">Band</label>
+										<input type="text" class="form-control" id="band" name="band" value="<?php echo $zeitschriften['band'];?>">
+									</div>
+									<div class="form-group">
+										<label for="jahrgang">Jahrgang</label>
+										<input type="text" class="form-control" id="jahrgang" name="jahrgang" value="<?php echo $zeitschriften['jahrgang'];?>">
+									</div>
 								</div>
-								<div class="form-group">
-									<label for="Kürzel">Kürzel*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="Kürzel" name="code" required>
-								</div>
-								<div class="form-group">
-									<label for="Titel">Titel*</label><span class="error-text"></span>
-									<input type="text" class="form-control" name="Titel" id="Titel">
-								</div>
-								<div class="form-group">
-									<label for="Jahr">Jahr*</label><span class="error-text"></span>
-									<input type="text" class="form-control date" id="Jahr" name="Jahr">
-								</div>
-								<div class="form-group">
-									<label for="Band">Band</label>
-									<input type="text" class="form-control" id="Band" name="Band">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="Jahrgang">Jahrgang</label>
-									<input type="text" class="form-control" id="Jahrgang" name="Jahrgang">
-								</div>
-								<div class="form-group">
-									<label for="Nummer">Heft / Stück / Nummer</label>
-									<input type="text" class="form-control" id="Nummer" name="Nummer">
-								</div>
-								<div class="form-group">
-									<label for="Supplementheft">Supplementheft</label>
-									<input type="text" class="form-control" id="Supplementheft" name="Supplementheft">
-								</div>
-								<div class="form-group">
-									<label for="Autor_Herausgeber">Autor / Herausgeber *</label><span class="error-text"></span>
-									<select id="Autor_Herausgeber" class="select2 form-control required" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="Autor_Herausgeber[]">
-								        <option value="AFG">Afghanistan</option>
-								        <option value="ALB">Albania</option>
-								        <option value="DZA">Algeria</option>
-								        <option value="AND">Andorra</option>
-								        <option value="ARG">Argentina</option>
-								        <option value="ARM">Armenia</option>
-								        <option value="ABW">Aruba</option>
-								        <option value="AUS">Australia</option>
-								    </select>
-								</div>
-								<div class="form-group">
-									<label>Datei</label>
-									<div class="custom-file">
-									  <input type="file" class="custom-file-input" id="customFile">
-									  <label class="custom-file-label" for="customFile">Datei</label>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="nummer">Heft / Stück / Nummer</label>
+										<input type="text" class="form-control" id="nummer" name="nummer" value="<?php echo $zeitschriften['nummer'];?>">
+									</div>
+									<div class="form-group">
+										<label for="supplementheft">Supplementheft</label>
+										<input type="text" class="form-control" id="supplementheft" name="supplementheft" value="<?php echo $zeitschriften['supplementheft'];?>">
+									</div>
+									<div class="form-group">
+										<label for="autor_id">Autor / Herausgeber</label><span class="error-text"></span>
+										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
+									        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
+											<option value="<?php echo $autor['autor_id'];?>" <?php foreach ($autor_id_selected_values as $autor_id_selected_value) {
+												if($autor_id_selected_value == $autor['autor_id']) echo 'selected';
+											}?>><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
+											<?php } ?>
+									    </select>
+									</div>
+									<div class="form-group">
+										<label>Datei ( nur PDF, DOC und DOCX Dateien sind erlaubt. )</label>
+										<input name="file_url" data-max-file-size="2M" data-default-file="<?php echo $zeitschriften['file_url'];?>" value="<?php echo $zeitschriften['file_url'];?>" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-height="100" />
 									</div>
 								</div>
 							</div>
-						</div>
-		              </div>
+			            </div>
 		              <!-- /.box-body -->
 
-		              <div class="box-footer">
-		                <button class="btn btn-success" type="submit" id="saveFormBtn">Änderungen Speichern</button>
-						<button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
-		              </div>
+			            <div class="box-footer">
+			                <input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
+							<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/zeitschriften/" id="cancelBtn">Abbrechen</a>
+			            </div>
 		            </form>
 		          </div>
 			</div>

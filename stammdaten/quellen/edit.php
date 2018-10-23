@@ -31,10 +31,9 @@ include '../../inc/sidebar.php';
 		            <!-- /.box-header -->
 		            <!-- form start -->
 		            <form role="form" class="formValid" id="addQuelleForm" method="POST" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
-		            	<input type="hidden" name="quelle_id" value="<?php echo $autoren['quelle_id'];?>">
-		              	<div class="box-body">
-		              <div class="box-body">
-		              	<div class="row">
+		            	<input type="hidden" name="quelle_id" value="<?php echo $quellen['quelle_id'];?>">
+			            <div class="box-body">
+			              	<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="code">Kürzel*</label><span class="error-text"></span>
@@ -113,13 +112,13 @@ include '../../inc/sidebar.php';
 									</div>
 								</div>
 							</div>
-		              </div>
-		              <!-- /.box-body -->
+			            </div>
+			              <!-- /.box-body -->
 
-		              <div class="box-footer">
-		                <input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
-						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/quellen/" id="cancelBtn">Abbrechen</a>
-		              </div>
+			            <div class="box-footer">
+			                <input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
+							<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/quellen/" id="cancelBtn">Abbrechen</a>
+			            </div>
 		            </form>
 		          </div>
 			</div>

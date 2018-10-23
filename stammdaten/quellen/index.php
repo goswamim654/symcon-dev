@@ -22,6 +22,7 @@ if(isset($_POST['delete_array_id'])) {
 			break;
 	}
 }
+$quellen = '';
 $get_data = callAPI('GET', $baseApiURL.'quelle/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];

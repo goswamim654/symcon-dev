@@ -149,7 +149,7 @@ if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
 	// add quelle
 
 	if(isset($_POST['Speichern'])) {
-		//print_r($data_array);
+		//print_r(json_encode($data_array));
 		$get_data = callAPI('POST', $baseApiURL.'quelle/add', json_encode($data_array));
 		//print_r($get_data);
 		//die();

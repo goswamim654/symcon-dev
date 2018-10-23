@@ -2,9 +2,6 @@
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
 include '../../api/mainCall.php';
-$autoren = '';
-$get_data = '';
-$response = '';
 if(isset($_POST['delete_array_id'])) {
 	$data_array =  array("autor_id" => $_POST['delete_array_id']);
 	$get_data = callAPI('POST', $baseApiURL.'autor/delete', json_encode($data_array));
@@ -25,6 +22,9 @@ if(isset($_POST['delete_array_id'])) {
 			break;
 	}
 }
+$autoren = '';
+$get_data = '';
+$response = '';
 $get_data = callAPI('GET', $baseApiURL.'autor/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
