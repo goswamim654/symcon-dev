@@ -30,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="formValid content-form" id="addArzneiForm" data-value="add" data-type="arznei" autocomplete="off">
+		            <form role="form" class="formValid content-form" id="addArzneiForm" data-action="add" data-source="arznei" autocomplete="off">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">

@@ -30,8 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="formValid" id="addHerkunftForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		            	<input type="hidden" name="herkunft_id" value="<?php echo $herkunft['herkunft_id'];?>">
+		            <form role="form" class="content-form" id="addHerkunftForm" data-action="update" data-source="herkunft" data-source_id_value="<?php echo $herkunft['herkunft_id'];?>" data-source_id_name="herkunft" autocomplete="off">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">

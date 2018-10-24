@@ -72,14 +72,11 @@
 <script src="<?php echo $absoluteUrl;?>plugins/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo $absoluteUrl;?>assets/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?php echo $absoluteUrl;?>assets/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo $absoluteUrl;?>assets/js/demo.js"></script>
 
 <script type="text/javascript">
 	var absoluteUrl = "<?php echo $absoluteUrl;?>";
 	var baseApiURL = "<?php echo $baseApiURL;?>";
+	var token = "<?php echo $_SESSION['access_token']; ?>";
 </script>
 
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
@@ -89,7 +86,6 @@
 <script src="<?php echo $absoluteUrl;?>assets/js/advanceSearch.js"></script>
 <script src="<?php echo $absoluteUrl;?>assets/js/modernizr.js"></script>
 
-<script src="<?php echo $absoluteUrl;?>assets/js/pages/autor.js"></script>
 <script src="<?php echo $absoluteUrl;?>assets/js/formValidation.js"></script>
 <script src="<?php echo $absoluteUrl;?>plugins/jquery.blockUI.js"></script>
 <?php
@@ -112,114 +108,6 @@ if(isset($_SESSION['validationError'])) { ?>
 	    });
 	</script>
 <?php unset($_SESSION['success']); } ?>
-<script type="text/javascript">
-$(document).ready(function(e){
-    $(".content-form").on('submit', function(e) {
-    	e.preventDefault();
-    	var form = $(this);
-    	var url = '';
-    	var formType = form.data('value');
-    	var pageType = form.data('type');
-    	
-    	if(formType == 'add') {
-    		url = baseApiURL+pageType+'/'+formType;
-    	} else if(formType == 'update') {
-    		var id = form.data('id');
-    		var idType = form.data('idtype');
-    		url = baseApiURL+pageType+'/'+formType+'?'+idType+'_id='+id;
-    	} else {
-    		url = baseApiURL+pageType+'/'+formType;
-    	}
-    	
-        if(! form.valid()) return false;
-        var request = $.ajax({
-            type: 'POST',
-            url: url,
-            headers: {
-		       "Authorization" : "Bearer <?php echo $_SESSION['access_token']; ?>"
-		    },
-            data: new FormData(this),
-            contentType: false,
-            cache: false,
-            processData:false,
-            beforeSend:function(){
-				$.blockUI({ message: '<h4><i class="fa fa-refresh fa-spin"></i> Just a moment...</h4>' }); 
-
-			},
-			complete:function(jqXHR, status){
-				$.unblockUI();
-			}
-        });
-        request.done(function(response) {
-			var responseData = null;
-			try {
-				responseData = JSON.parse(response); 
-			} catch (e) {
-				responseData = response;
-			}
-			var status = responseData.status;
-			switch (status) { 
-				case 1: 
-					console.log(responseData.message);
-					break;
-				case 2:
-					console.log(responseData.content);
-					var message = '';
-					if(formType == 'add') {
-						$("#reset").trigger('click');
-						$('.dropify-clear').trigger('click');
-						$(".select2").val('').trigger('change');
-						message = pageType+'erfolgreich geupdated';
-					} else if(formType == 'update') { 
-						message = pageType+'erfolgreich erstellt';
-					} else if(formType == 'change-password') {
-						$("#reset").trigger('click');
-						message = 'das Passwort wurde erfolgreich geändert';
-					} else {
-						message = pageType+'erfolgreich erstellt';
-					}
-					swal({
-						type: 'success',
-						title: 'Glückwunsch',
-						text: message,
-					});
-					break;
-				case 3:
-					$("#reset").trigger('click');
-					var errorMessage = '';
-					for(let key in responseData.content) { 
-						errorMessage += `<p>${responseData.content[key]}</p>`;
-					}
-					swal({
-						type: 'error',
-						title: 'Hoppla...',
-						html: errorMessage,
-					}); 
-					console.log(errorMessage);
-					console.log(responseData.message);
-					break;
-				case 4: 
-					console.log(responseData.message);
-					break;
-				case 5: 
-					console.log(responseData.message);
-					break;	
-				default:
-					console.log('Something went wrong! please try again later');
-			}
-		});
-
-		request.fail(function(jqXHR, textStatus) {
-			var errorData = null;
-			try {
-			  errorData = JSON.parse(jqXHR); 
-			} catch (e) {
-			  errorData = jqXHR;
-			}
-			console.log("Error : "+errorData);
-		});
-      });
-});
-</script>
+<script src="<?php echo $absoluteUrl;?>assets/js/ajaxFormSubmit.js"></script>
 </body>
 </html>

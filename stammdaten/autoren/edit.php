@@ -30,9 +30,8 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addAutorenForm" class="formValid" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+		            <form role="form" id="addAutorenForm" class="content-form" data-action="update" data-source="autor" data-source_id_value="<?php echo $autoren['autor_id'];?>" data-source_id_name="autor" autocomplete="off">
 		              <div class="box-body">
-		              	<input type="hidden" name="autor_id" value="<?php echo $autoren['autor_id'];?>">
 		              	<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -58,13 +57,13 @@ include '../../inc/sidebar.php';
 								</div>
 								<div class="form-group">
 									<label for="geburtsjahr">Geburtsjahr/ datum</label>
-									<input type="text" class="form-control" name="geburtsjahr" id="geburtsjahr" data-mask="99/99/9999" value="<?php echo $autoren['geburtsdatum']; ?>">
+									<input type="text" class="form-control" name="geburtsdatum" id="geburtsjahr" data-mask="99/99/9999" value="<?php echo $autoren['geburtsdatum']; ?>">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="todesjahr">Todesjahr/ datum</label>
-									<input type="text" class="form-control" name="todesjahr" id="todesjahr" data-mask="99/99/9999" value="<?php echo $autoren['sterbedatum']; ?>">
+									<input type="text" class="form-control" name="sterbedatum" id="todesjahr" data-mask="99/99/9999" value="<?php echo $autoren['sterbedatum']; ?>">
 								</div>
 								<div class="form-group">
 									<label for="kommentar">Kommentar</label>

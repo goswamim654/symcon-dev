@@ -30,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="formValid" id="addAutorenForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		            <form role="form" class="content-form" id="addAutorenForm" data-action="add" data-source="autor" autocomplete="off">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
@@ -57,14 +57,14 @@ include '../../inc/sidebar.php';
 								</div>
 								<div class="form-group">
 									<label for="geburtsjahr">Geburtsjahr/ datum</label>
-									<input type="text" class="form-control" name="geburtsjahr" value="<?php if(isset($geburtsjahr)) echo $geburtsjahr;?>" id="geburtsjahr" data-mask="99/99/9999">
+									<input type="text" class="form-control" name="geburtsdatum" value="<?php if(isset($geburtsjahr)) echo $geburtsjahr;?>" id="geburtsjahr" data-mask="99/99/9999">
 								</div>
 								
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="todesjahr">Todesjahr/ datum</label>
-									<input type="text" class="form-control" name="todesjahr" value="<?php if(isset($todesjahr)) echo $todesjahr;?>" id="todesjahr" data-mask="99/99/9999">
+									<input type="text" class="form-control" name="sterbedatum" value="<?php if(isset($todesjahr)) echo $todesjahr;?>" id="todesjahr" data-mask="99/99/9999">
 								</div>
 								<div class="form-group">
 									<label for="kommentar">Kommentar</label>
@@ -78,6 +78,7 @@ include '../../inc/sidebar.php';
 		              <div class="box-footer">
 		                <input class="btn btn-success" type="submit" value="Speichern" name="Speichern" id="saveFormBtn">
 						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/autoren/" id="cancelBtn">Abbrechen</a>
+						<button type="reset" id="reset" class="sr-only"></button>
 		              </div>
 		            </form>
 		          </div>

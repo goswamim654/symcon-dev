@@ -93,12 +93,13 @@ if(isset($_GET['quelle_id'])) {
 			$nummer = $quellen['nummer'];
 			$auflage = $quellen['auflage'];
 			$verlag_id = $quellen['verlag_id'];
-			$autoren = $quellen['autoren'];
-			foreach ($autoren as $key => $autor) {
-				$autor_id_selected_values[] = $autor['autor_id'];
+			$autor_id_selected_values = [];
+			$autoren_selected = $quellen['autoren'];
+			foreach ($autoren_selected as $key => $autor_selected) {
+				$autor_id_selected_values[] = $autor_selected['autor_id'];
 			}
 			$file_url = $quellen['file_url'];
-			//print_r($get_data);
+			//print_r($autor_id_selected_values);
 			//die();
 			break;
 		default:

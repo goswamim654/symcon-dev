@@ -31,7 +31,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="formValid content-form" id="addZeitschriftForm" autocomplete="off" enctype="multipart/form-data" data-value="update" data-type="zeitschrift" data-id="<?php echo $zeitschriften['quelle_id'];?>" data-idtype="quelle">
+		            <form role="form" class="formValid content-form" id="addZeitschriftForm" autocomplete="off" enctype="multipart/form-data" data-action="update" data-source="zeitschrift" data-source_id_value="<?php echo $zeitschriften['quelle_id'];?>" data-source_id_name="quelle">
 		            	<input type="hidden" id="zeitschrift_id" name="zeitschrift_id" value="<?php echo $zeitschriften['quelle_id'];?>">
 	              		<div class="box-body">
 			              	<div class="row">

@@ -31,7 +31,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="formValid content-form" id="addZeitschriftForm" autocomplete="off" enctype="multipart/form-data" data-value="add" data-type="zeitschrift">
+		            <form role="form" class="content-form" id="addZeitschriftForm" autocomplete="off" enctype="multipart/form-data" data-action="add" data-source="zeitschrift">
 		              	<div class="box-body">
 			              	<div class="row">
 								<div class="col-md-6">

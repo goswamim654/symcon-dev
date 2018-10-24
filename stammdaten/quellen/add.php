@@ -31,7 +31,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="formValid" id="addQuelleForm" method="POST" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+		            <form role="form" class="content-form" id="addQuelleForm" autocomplete="off" data-action="add" data-source="quelle" enctype="multipart/form-data">
 		              	<div class="box-body">
 			              	<div class="row">
 								<div class="col-md-6">
@@ -116,6 +116,7 @@ include '../../inc/sidebar.php';
 		              	<div class="box-footer">
 		               		<input class="btn btn-success" type="submit" value="Speichern" name="Speichern" id="saveFormBtn">
 							<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/quellen/" id="cancelBtn">Abbrechen</a>
+							<button type="reset" id="reset" class="sr-only"></button>
 		              	</div>
 		            </form>
 		          </div>

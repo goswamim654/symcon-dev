@@ -30,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="formValid" id="addQuelleForm" method="POST" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+		            <form role="form" class="content-form" id="addQuelleForm" data-action="update" data-source="quelle" data-source_id_value="<?php echo $quellen['quelle_id'];?>" data-source_id_name="quelle" autocomplete="off" enctype="multipart/form-data">
 		            	<input type="hidden" name="quelle_id" value="<?php echo $quellen['quelle_id'];?>">
 			            <div class="box-body">
 			              	<div class="row">
