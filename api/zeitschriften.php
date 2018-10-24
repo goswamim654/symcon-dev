@@ -1,6 +1,6 @@
 <?php
-if(!isset($_SESSION['access_token'])) {
-    header('Location: '.$absoluteUrl.'login.php');
+if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 3)) {
+	header('Location: '.$absoluteUrl);
 }
 include 'mainCall.php';
 $zeitschriften = '';
@@ -62,9 +62,10 @@ if(isset($_GET['zeitschrift_id'])) {
 			$nummer = $zeitschriften['nummer'];
 			$jahrgang = $zeitschriften['jahrgang'];
 			$supplementheft = $zeitschriften['supplementheft'];
-			$autoren = $zeitschriften['autoren'];
-			foreach ($autoren as $key => $autor) {
-				$autor_id_selected_values[] = $autor['autor_id'];
+			$autoren_selected = $zeitschriften['autoren'];
+			$autor_id_selected_values = [];
+			foreach ($autoren_selected as $key => $autor_selected) {
+				$autor_id_selected_values[] = $autor_selected['autor_id'];
 			}
 			$file_url = $zeitschriften['file_url'];
 			//print_r($get_data);

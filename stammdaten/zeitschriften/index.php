@@ -59,11 +59,13 @@ include '../../inc/sidebar.php';
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-success">
+					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 		              <h3 class="box-title">
 		              	<a href="<?php echo $absoluteUrl;?>stammdaten/zeitschriften/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Zeitschrift</a>
 		              </h3>
 		            </div>
+		            <?php  } ?>
 		            <!-- /.box-header -->
 		            <div class="box-body"> 
 		            	<form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">

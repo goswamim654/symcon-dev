@@ -1,6 +1,6 @@
 <?php
 include '../../lang/GermanWords.php';
-include '../../config/route.php';
+include '../../config/route.php'; 
 include '../../api/mainCall.php';
 if(isset($_POST['delete_array_id'])) {
 	$data_array =  array("quelle_id" => $_POST['delete_array_id']);

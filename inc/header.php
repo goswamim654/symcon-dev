@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-control" content="public">
   <title>Symcom | <?php echo $admin; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -175,8 +176,8 @@
                   </div>
                   <div class="row">
                     <div class="col-md-12">
-                      <button class="btn btn-success" type="submit" id="saveFormBtn">Suche</button>
-                      <button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
+                      <button class="btn btn-success" type="submit" id="advSearch">Suche</button>
+                      <button class="btn btn-default" type="button" id="advSearchCancelBtn">Abbrechen</button>
                     </div>
                   </div>  
               

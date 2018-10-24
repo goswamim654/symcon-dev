@@ -21,14 +21,14 @@ $(document).ready(function () {
                 required: true,
                 minlength: 6
             },
-            new_password: {
+            password: {
                 required: true,
                 minlength: 6
             },
-            confirm_password: {
+            password_confirmation: {
                 required: true,
                 minlength: 6,
-                equalTo : "#new_password"
+                equalTo : "#password"
             }
         },     
         messages: {
@@ -36,11 +36,11 @@ $(document).ready(function () {
                 required: "Derzeitiges Passwort ist eine Pflichtangabe",
                 minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" 
             },
-            new_password: {
+            password: {
                 required: "Neues Passwort ist eine Pflichtangabe",
                 minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" 
             },
-            confirm_password: {
+            password_confirmation: {
                 required: "Bestätige neues Passwort Passwort ist eine Pflichtangabe",
                 minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" ,
                 equalTo : "Passwort stimmt nicht überein !!!"
@@ -182,6 +182,18 @@ $(document).ready(function () {
             $("#addZeitschriftForm .select2-drop ul").addClass("error");
         } else {
             $("#addZeitschriftForm .select2-drop ul").removeClass("error");
+        }
+    });
+
+    var addArzneiForm = $("#addArzneiForm").validate({
+        errorPlacement: function(error, element) {
+        error.appendTo(element.prev("span"));
+        },
+        rules: {
+            'titel': "required",
+        },
+        messages: {
+            'titel': "Arznei ist eine Pflichtangabe"
         }
     });
 

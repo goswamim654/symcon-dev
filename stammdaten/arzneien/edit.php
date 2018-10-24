@@ -1,6 +1,7 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
+include '../../api/arznei.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
@@ -29,50 +30,51 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addArzneiForm">
+		            <form role="form" class="formValid content-form" id="addArzneiForm" autocomplete="off"data-value="update" data-type="arznei" data-id="<?php echo $arzneien['arznei_id'];?>" data-idtype="arznei">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="arzneien">Arznei*</label><span class="error-text"></span>
-									<input type="text" class="form-control" id="arzneien" name="code" required>
+									<label for="titel">Arznei*</label><span class="error-text"></span>
+									<input type="text" class="form-control" value="<?php echo $arzneien['titel'];?>" id="titel" name="titel" required autofocus>
 								</div>
 								<div class="form-group">
-									<label for="Quelle">Quelle</label><span class="error-text"></span>
-									<select id="Quelle" class="select2 form-control required" multiple="multiple" data-placeholder="Quelle wählen" name="Quelle[]">
-								        <option value="AFG">Afghanistan</option>
-								        <option value="ALB">Albania</option>
-								        <option value="DZA">Algeria</option>
-								        <option value="AND">Andorra</option>
-								        <option value="ARG">Argentina</option>
-								        <option value="ARM">Armenia</option>
-								        <option value="ABW">Aruba</option>
-								        <option value="AUS">Australia</option>
+									<label for="quelle">Quelle</label>
+									<select id="quelle" class="select2 form-control" multiple="multiple" data-placeholder="Quelle wählen" name="quelle_id[]">
+								        <?php foreach ($quellenSelectBox as $key => $quelle) { ?>
+											<option value="<?php echo $quelle['quelle_id'];?>" <?php foreach ($quelle_id_selected_values as $quelle_id_selected_value) {
+												if($quelle_id_selected_value == $quelle['quelle_id']) echo 'selected';
+											}?>><?php 
+												$quellen_value = null;
+												$quellen_value = $quellen_value.$quelle['code'];
+												if(!empty($quelle['jahr'])) $quellen_value .= ' '.$quelle['jahr'];
+												if(!empty($quelle['band'])) $quellen_value .= ', Band: '.$quelle['band'];
+												if(!empty($quelle['nummer'])) $quellen_value .= ', Nr.: '. $quelle['nummer'];
+												if(!empty($quelle['auflage'])) $quellen_value .= ', Auflage: '. $quelle['auflage'];
+												 echo $quellen_value; ?></option>
+										<?php } ?>
 								    </select>
 								</div>
 								<div class="form-group">
-									<label for="kommentar">kommentar</label>
-									<textarea id="kommentar" name="kommentar" class="texteditor" aria-hidden="true"></textarea>
+									<label for="kommentar">Kommentar</label>
+									<textarea id="kommentar" name="kommentar" class="texteditor" aria-hidden="true"><?php echo $arzneien['kommentar'];?></textarea>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="Unklarheiten">Unklarheiten</label>
-									<textarea id="Unklarheiten" name="Unklarheiten" class="texteditor" aria-hidden="true"></textarea>
+									<label for="unklarheiten">Unklarheiten</label>
+									<textarea id="unklarheiten" name="unklarheiten" class="texteditor" aria-hidden="true"><?php echo $arzneien['unklarheiten'];?></textarea>
 								</div>
 								<div class="form-group">
-									<label for="Autor_Herausgeber">Autor / Herausgeber </label>
-									<select id="Autor_Herausgeber" class="select2 form-control required" multiple="multiple" data-placeholder="Autor / Herausgeber wählen" name="Autor_Herausgeber[]">
-								        <option value="AFG">Afghanistan</option>
-								        <option value="ALB">Albania</option>
-								        <option value="DZA">Algeria</option>
-								        <option value="AND">Andorra</option>
-								        <option value="ARG">Argentina</option>
-								        <option value="ARM">Armenia</option>
-								        <option value="ABW">Aruba</option>
-								        <option value="AUS">Australia</option>
-								    </select>
-								</div>
+										<label for="autor_id">Autor / Herausgeber</label>
+										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
+									        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
+											<option value="<?php echo $autor['autor_id'];?>" <?php foreach ($autor_id_selected_values as $autor_id_selected_value) {
+												if($autor_id_selected_value == $autor['autor_id']) echo 'selected';
+											}?>><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
+											<?php } ?>
+									    </select>
+									</div>
 							</div>
 						</div>
 		              </div>

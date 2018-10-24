@@ -32,12 +32,12 @@ include 'inc/sidebar.php';
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" id="changePassword">
+                    <form role="form" id="changePassword" class="formValid content-form" data-type="user" data-value="change-password" autocomplete="off">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="callout callout-info">
-                                        <p>Bitte verwenden Sie ein starkes Passwort.</p>
+                                        <p>Bitte verwenden Sie ein starkes Passwort. Mindestens 6 Zeichen.</p>
                                     </div>
                                 </div>
                             </div>
@@ -48,12 +48,12 @@ include 'inc/sidebar.php';
                                         <input type="password" class="form-control" id="current_password" name="current_password" required autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <label for="new_password">Neues Passwort*</label><span class="error-text"></span>
-                                        <input type="password" class="form-control" id="new_password" name="new_password" required autofocus>
+                                        <label for="password">Neues Passwort*</label><span class="error-text"></span>
+                                        <input type="password" class="form-control" id="password" name="password" required autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <label for="confirm_password">Bestätige neues Passwort*</label><span class="error-text"></span>
-                                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required autofocus>
+                                        <label for="password_confirmation ">Bestätige neues Passwort*</label><span class="error-text"></span>
+                                        <input type="password" class="form-control" id="password_confirmation " name="password_confirmation" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -61,6 +61,7 @@ include 'inc/sidebar.php';
                         <div class="box-footer">
                             <input class="btn btn-success" type="submit" id="saveFormBtn" name="Aktualisieren" value="Aktualisieren">
                             <a href="<?php echo $absoluteUrl;?>profil" class="btn btn-default" id="cancelBtn">Abbrechen</a>
+                            <button type="reset" id="reset" class="sr-only"></button>
                         </div>
                     </form>
                 </div>

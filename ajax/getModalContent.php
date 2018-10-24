@@ -1,10 +1,11 @@
 <?php 
-include '../api/mainCall.php';
 include '../config/route.php';
+include '../api/mainCall.php';
+
 if(isset($_GET['autor_id'])) {
 	$autor_id = $_GET['autor_id'];
-	$autorEditUrl = $baseApiURL.'autor/view?autor_id='.$autor_id;
-	$get_data = callAPI('GET',$autorEditUrl , false);
+	$url = $baseApiURL.'autor/view?autor_id='.$autor_id;
+	$get_data = callAPI('GET',$url , false);
 	//echo $get_data;
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
@@ -162,6 +163,49 @@ if(isset($_GET['zeitschrift_id'])) {
 				"Autor / Herausgeber" 		=> $autor_herausgeber,
 				"Datei" 		=> $file_url,
 				"Bearbeiter" 	=> $zeitschrift['bearbeiter']
+			);
+			echo json_encode($data_array);
+			break;
+		default:
+			break;
+	}																
+}
+
+if(isset($_GET['arznei_id'])) {
+	$arznei_id = $_GET['arznei_id'];
+	$url = $baseApiURL.'arznei/view?arznei_id='.$arznei_id;
+	$get_data = callAPI('GET',$url , false);
+	//echo $get_data;
+	$response = json_decode($get_data, true);
+	$status = $response['status'];
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			break;
+		case 2:
+			$autor_herausgeber = null;
+			$quellen_value = null;
+			$arzneien = $response['content']['data'];
+			$quellen = $arzneien['quelle'];
+			foreach ($quellen as $key => $quelle) {
+				if($key > 0) $quellen_value .= ', ';
+				$quellen_value = $quellen_value.$quelle['code'];
+				if(!empty($quelle['jahr'])) $quellen_value .= ' '.$quelle['jahr'];
+				if(!empty($quelle['band'])) $quellen_value .= ' Band: '.$quelle['band'];
+				if(!empty($quelle['nummer'])) $quellen_value .= ' Nr.: '. $quelle['nummer'];
+				if(!empty($quelle['auflage'])) $quellen_value .= ', Auflage: '. $quelle['auflage'];
+			}
+			$autoren = $arzneien['autoren'];
+			foreach ($autoren as $key => $autor) {
+				if($key > 0) $autor_herausgeber .= ', ';
+				$autor_herausgeber = $autor_herausgeber.$autor['vorname'];
+			}
+			$data_array =  array(
+				"Arznei"      	=> $arzneien['titel'],
+				"Quelle"  	=> $quellen_value,
+				"Kommentar"     => $arzneien['kommentar'],
+				"Unklarheiten" 	=> $arzneien['unklarheiten'],
+				"Autor / Herausgeber" 		=> $autor_herausgeber,
 			);
 			echo json_encode($data_array);
 			break;

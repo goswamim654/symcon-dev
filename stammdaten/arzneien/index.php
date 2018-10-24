@@ -1,6 +1,44 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
+include '../../api/mainCall.php';
+if(isset($_POST['delete_array_id'])) {
+	$data_array =  array("arznei_id" => $_POST['delete_array_id']);
+	$get_data = callAPI('POST', $baseApiURL.'arznei/delete', json_encode($data_array));
+	$response = json_decode($get_data, true);
+	$status = $response['status'];
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			die();
+			break;
+		case 2:
+			$_SESSION['success'] = 'Arznei wurde erfolgreich gelöscht';
+			break;	
+		case 3:
+			$_SESSION['validationError'] = $response['message'];
+			break;
+		default:
+			break;
+	}
+}
+$arzneien = '';
+$get_data = '';
+$response = '';
+$get_data = callAPI('GET', $baseApiURL.'arznei/all?is_paginate=0', false);
+$response = json_decode($get_data, true);
+$status = $response['status'];
+switch ($status) {
+	case 0:
+		echo $response['message'];
+		die();
+		break;
+	case 2:
+		$arzneien = $response['content']['data'];
+		break;
+	default:
+		break;
+}
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
@@ -23,53 +61,57 @@ include '../../inc/sidebar.php';
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-success">
+					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 		              <h3 class="box-title">
 		              	<a href="<?php echo $absoluteUrl;?>stammdaten/arzneien/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Arzneien</a>
 		              </h3>
 		            </div>
+		            <?php  } ?>
 		            <!-- /.box-header -->
 		            <div class="box-body">
-			            <form id="frm-example" action="/path/to/your/script" method="POST">
+		            	 <form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 		            		<div class="table-responsive">
-					            <table id="arzneien" class="table table-bordered table-striped display table-hover">
+					            <table id="dataTable" class="table-loader table table-bordered table-striped display table-hover custom-table">
 					                <thead>
 						                <tr>
-						                	<th class="rowlink-skip dt-body-center no-sort"><!-- <input type="checkbox" name="select_all" value="1" id="example-select-all">  --><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
-											<th>Arzneien</th>
+						                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
+						                	<th class="rowlink-skip dt-body-center no-sort"><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
+						                	<?php  } ?>
+											 <th>Arzneien</th>
+											 <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
+											<?php if($_SESSION['user_type'] == 1 ) { ?>
 											<th>Angelegt durch</th>
 											<th>Bearbeiter</th>
+											<?php  } ?>
 											<th class="no-sort">Aktionen</th>
+											<?php  } ?>
 						                </tr>
 					                </thead>
 					                <tbody data-link="row" class="rowlink">
-						                <tr>
-						                	<td class="rowlink-skip"></td>
-											<td><a href="#rowlinkModal" data-toggle="modal">Trident</a></td>
-											<td>InternetExplorer 4.0</td>
-											<td>Win 95+</td>
-											<td class="rowlink-skip">
-												<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/quellen/edit.php" title="Ändern"><i class="fa fa-edit"></i></a>
-		            	       	            </td>
-						                </tr>
-						                <tr>
-						                	<td class="rowlink-skip"></td>
-											<td><a href="#rowlinkModal" data-toggle="modal">Trident</a></td>
-											<td>InternetExplorer 5.0</td>
-											<td>Win 95+</td>
-											<td class="rowlink-skip">
-												<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/quellen/edit.php" title="Ändern"><i class="fa fa-edit"></i></a>
-		            	       	            </td>
-						                </tr>
-						                <tr>
-						                	<td class="rowlink-skip"></td>
-											<td><a href="#rowlinkModal" data-toggle="modal">Trident</a></td>
-											<td>InternetExplorer 5.0</td>
-											<td>Win 95+</td>
-											<td class="rowlink-skip">
-												<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/quellen/edit.php" title="Ändern"><i class="fa fa-edit"></i></a>
-		            	       	            </td>
-						                </tr>
+					                	<?php 
+					                	if($arzneien != null && $arzneien != '') { 
+					                		foreach ($arzneien as $key => $arznei) { ?>
+
+							                <tr>
+							                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
+							                	<td class="rowlink-skip"><?php echo $arznei['arznei_id']; ?></td>
+							                	<?php  } ?>
+												<td><a href="#rowlinkModal" 
+														data-id="<?php echo $arznei['arznei_id']; ?>" data-type="arznei" data-title="Anzeigen Arznei" 
+														data-toggle="modal"><?php echo $arznei['titel'];?></a></td>
+												<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
+												<?php if($_SESSION['user_type'] == 1 ) { ?>
+												<td><?php echo $arznei['ersteller']; ?></td>
+												<td><?php echo $arznei['bearbeiter']; ?></td>
+												<?php } ?>
+												<td class="rowlink-skip">
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/arzneien/edit.php?arznei_id=<?php echo $arznei['arznei_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+			            	       	            </td>
+			            	       	            <?php  } ?>
+							                </tr>
+							            <?php } 
+							            } ?>
 						            </tbody>
 					            </table>
 					        </div>

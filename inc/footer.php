@@ -86,12 +86,12 @@
 
 <script src="<?php echo $absoluteUrl;?>assets/js/common.js"></script>
 
-<script src="<?php echo $absoluteUrl;?>assets/js/pages/zeitschriften.js"></script>
 <script src="<?php echo $absoluteUrl;?>assets/js/advanceSearch.js"></script>
 <script src="<?php echo $absoluteUrl;?>assets/js/modernizr.js"></script>
 
 <script src="<?php echo $absoluteUrl;?>assets/js/pages/autor.js"></script>
 <script src="<?php echo $absoluteUrl;?>assets/js/formValidation.js"></script>
+<script src="<?php echo $absoluteUrl;?>plugins/jquery.blockUI.js"></script>
 <?php
 if(isset($_SESSION['validationError'])) { ?>
 <script>
@@ -123,10 +123,12 @@ $(document).ready(function(e){
     	
     	if(formType == 'add') {
     		url = baseApiURL+pageType+'/'+formType;
-    	} else {
+    	} else if(formType == 'update') {
     		var id = form.data('id');
     		var idType = form.data('idtype');
     		url = baseApiURL+pageType+'/'+formType+'?'+idType+'_id='+id;
+    	} else {
+    		url = baseApiURL+pageType+'/'+formType;
     	}
     	
         if(! form.valid()) return false;
@@ -141,14 +143,11 @@ $(document).ready(function(e){
             cache: false,
             processData:false,
             beforeSend:function(){
-				// var loader = `<div class="overlay">
-				//               	<i class="fa fa-refresh fa-spin"></i>
-				//             </div>`;
-				// $('.content-form').append(loader);
+				$.blockUI({ message: '<h4><i class="fa fa-refresh fa-spin"></i> Just a moment...</h4>' }); 
 
 			},
 			complete:function(jqXHR, status){
-				//hideLoader();
+				$.unblockUI();
 			}
         });
         request.done(function(response) {
@@ -169,8 +168,13 @@ $(document).ready(function(e){
 					if(formType == 'add') {
 						$("#reset").trigger('click');
 						$('.dropify-clear').trigger('click');
-						$("#autor_id").val('').trigger('change');
+						$(".select2").val('').trigger('change');
 						message = pageType+'erfolgreich geupdated';
+					} else if(formType == 'update') { 
+						message = pageType+'erfolgreich erstellt';
+					} else if(formType == 'change-password') {
+						$("#reset").trigger('click');
+						message = 'das Passwort wurde erfolgreich geändert';
 					} else {
 						message = pageType+'erfolgreich erstellt';
 					}
@@ -180,7 +184,18 @@ $(document).ready(function(e){
 						text: message,
 					});
 					break;
-				case 3: 
+				case 3:
+					$("#reset").trigger('click');
+					var errorMessage = '';
+					for(let key in responseData.content) { 
+						errorMessage += `<p>${responseData.content[key]}</p>`;
+					}
+					swal({
+						type: 'error',
+						title: 'Hoppla...',
+						html: errorMessage,
+					}); 
+					console.log(errorMessage);
 					console.log(responseData.message);
 					break;
 				case 4: 
@@ -204,7 +219,7 @@ $(document).ready(function(e){
 			console.log("Error : "+errorData);
 		});
       });
-    });
+});
 </script>
 </body>
 </html>

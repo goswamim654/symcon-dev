@@ -2,7 +2,9 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+if(!isset($_SESSION['access_token'])) {
+    header('Location: '.$absoluteUrl.'login.php');
+}
 function callAPI($method, $url, $data){
 
    $curl = curl_init();

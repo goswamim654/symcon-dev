@@ -1,6 +1,6 @@
 <?php
-if(!isset($_SESSION['access_token'])) {
-    header('Location: '.$absoluteUrl.'login.php');
+if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 3)) {
+	header('Location: '.$absoluteUrl);
 }
 include 'mainCall.php';
 // herkunft selectbox options
