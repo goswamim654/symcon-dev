@@ -6,6 +6,27 @@ include '../../api/zeitschriften.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
+<style type="text/css">
+	.ui-datepicker-calendar {
+	   display: none;
+	}
+	.ui-datepicker-month {
+	   display: none;
+	}
+	.ui-datepicker-prev{
+	   display: none;
+	}
+	.ui-datepicker-next{
+	   display: none;
+	}
+	.ui-datepicker .ui-datepicker-buttonpane button {
+		width: 100%;
+		float: none;
+	}
+	.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+		display: none;
+	}
+</style>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

@@ -21,8 +21,14 @@ $(document).ready(function () {
 	$('#jahr').datepicker(
 		{
 	  		changeMonth: false,
-			changeYear: true,
-			dateFormat: 'yy'
+	        changeYear: true,
+	        showButtonPanel: true,
+	        yearRange: '1900:2099',
+	        dateFormat: 'yy',
+	        onClose: function(dateText, inst) { 
+	            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+	            $(this).datepicker('setDate', new Date(year, 0, 1));
+	        }
 		},
 		$.datepicker.regional[ "de" ]
 	);

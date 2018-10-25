@@ -6,7 +6,6 @@ $(document).ready(function () {
 		"responsive": true,
 		"language": {
 	       "url": absoluteUrl+"lang/dataTableGerman.json"
-	   	},
-	   	"ordering": true
+	   	}
 	});
 });

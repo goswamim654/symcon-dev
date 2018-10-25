@@ -20,7 +20,7 @@ function callAPI($method, $url, $data) {
    $result = curl_exec($curl);
 
    if(!$result) {
-      die("Connection Failure");
+       header('Location: '.$absoluteUrl.'connection-failure.php');
    }
    curl_close($curl);
    return $result;
@@ -52,7 +52,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 			header('Location: '.$absoluteUrl);
 			break;	
 		case 3:
-			$validationError = $response['message'];
+			$validationError = $response['content'];
 			break;
 		case 4:
 			$loginError = $response['message'];

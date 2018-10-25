@@ -103,7 +103,8 @@ if(isset($_GET['quelle_id'])) {
 			$quelle = $response['content']['data'];
 			$autoren = $quelle['autoren'];
 			foreach ($autoren as $key => $autor) {
-				$autor_herausgeber = $autor_herausgeber.$autor['vorname']. ', ';
+				if($key > 0) $autor_herausgeber .= ', ';
+				if( $autor['suchname'] ) $autor_herausgeber .= $autor['suchname']; else $autor_herausgeber .= $autor['vorname'].' '.$autor['nachname'];
 			}
 			if($quelle['file_url']) {
 				$file_url = '<a href="'.$quelle['file_url'].'"  target="_blank">Click to view</a>';
@@ -124,6 +125,7 @@ if(isset($_GET['quelle_id'])) {
 				"Bearbeiter" 	=> $quelle['bearbeiter']
 			);
 			echo json_encode($data_array);
+			//echo $titel;
 			break;
 		default:
 			break;
@@ -147,7 +149,8 @@ if(isset($_GET['zeitschrift_id'])) {
 			$zeitschrift = $response['content']['data'];
 			$autoren = $zeitschrift['autoren'];
 			foreach ($autoren as $key => $autor) {
-				$autor_herausgeber = $autor_herausgeber.$autor['vorname']. ', ';
+				if($key > 0) $autor_herausgeber .= ', ';
+				if( $autor['suchname'] ) $autor_herausgeber .= $autor['suchname']; else $autor_herausgeber .= $autor['vorname'].' '.$autor['nachname'];
 			}
 			if($zeitschrift['file_url']) {
 				$file_url = '<a href="'.$zeitschrift['file_url'].'"  target="_blank">Click to view</a>';
@@ -198,7 +201,7 @@ if(isset($_GET['arznei_id'])) {
 			$autoren = $arzneien['autoren'];
 			foreach ($autoren as $key => $autor) {
 				if($key > 0) $autor_herausgeber .= ', ';
-				$autor_herausgeber = $autor_herausgeber.$autor['vorname'];
+				if( $autor['suchname'] ) $autor_herausgeber .= $autor['suchname']; else $autor_herausgeber .= $autor['vorname'].' '.$autor['nachname'];
 			}
 			$data_array =  array(
 				"Arznei"      	=> $arzneien['titel'],
