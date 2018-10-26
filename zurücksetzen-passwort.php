@@ -4,6 +4,11 @@ include 'config/route.php';
 if(isset($_SESSION['access_token'])) {
     header('Location: '.$absoluteUrl);
 }
+$token = '';
+if(isset($_GET['token'])) {
+    $token = $_GET['token'];
+}
+include 'api/reset-password.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,17 +41,23 @@ if(isset($_SESSION['access_token'])) {
             <div class="sc-eQGPmX eCgWac logo-div">
                 <img alt="Acorns" src="<?php echo $absoluteUrl;?>assets/img/logo-big.png">
             </div>
-            <form class="sc-kVfTjK llGERO" id="forgetPasswordForm" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <?php if(isset($success)) { ?>
+                <p class="text-center"><?php echo $success;?></p>
+                <a href="<?php echo $absoluteUrl;?>login.php" class="sc-frpTsy iQoeKm sc-dxgOiQ crAxhg">Zurück zum Login</a>
+            <?php } else { ?>
+            <form class="sc-kVfTjK llGERO" id="resetPasswordForm" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <input type="hidden" name="token" value="<?php echo $token;?>">
                 <div class="sc-gjAXCV irlZp">
                     <label class="sc-dOkuiw iMAhFM">Neues Passwort*</label><span class="error-text"></span>
-                    <input class="sc-hMjcWo dxJQAa" name="password" type="text" id="password" autofocus>
+                    <input class="sc-hMjcWo dxJQAa" name="password" type="password" id="password" autofocus>
                 </div>
                 <div class="sc-gjAXCV irlZp">
-                    <label class="sc-dOkuiw iMAhFM">Bestätige neues Passwort*</label><span class="error-text"></span>
-                    <input class="sc-hMjcWo dxJQAa" name="password_confirmation" type="text" id="password_confirmation">
+                    <label class="sc-dOkuiw iMAhFM">Bestätige Passwort*</label><span class="error-text"></span>
+                    <input class="sc-hMjcWo dxJQAa" name="password_confirmation" type="password" id="password_confirmation">
                 </div>
                 <button class="sc-frpTsy iQoeKm sc-dxgOiQ crAxhg">Einreichen</button>
             </form>
+             <?php } ?>
         </div>
     </div>
     <!-- /.login-box -->
@@ -62,5 +73,17 @@ if(isset($_SESSION['access_token'])) {
     <!-- custom js -->
     <script src="<?php echo $absoluteUrl;?>/assets/js/login.js"></script>
    
+    <?php if(isset($error)) { ?>
+    <script>
+        $(document).ready(function () {
+            var error = "<?php echo $error;?>"
+            swal({
+              type: 'error',
+              title: 'Oops...',
+              text: error+ '!'
+            })
+        });
+    </script>
+    <?php } ?>
 </body>
 </html>

@@ -36,6 +36,10 @@ $(document).ready(function(e){
 			}
         });
         request.done(function(response) {
+        	function jsUcfirst(string) 
+			{
+    			return string.charAt(0).toUpperCase() + string.slice(1);
+			}
 			var responseData = null;
 			try {
 				responseData = JSON.parse(response); 
@@ -54,14 +58,14 @@ $(document).ready(function(e){
 						$("#reset").trigger('click');
 						$('.dropify-clear').trigger('click');
 						$(".select2").val('').trigger('change');
-						message = sourceType + ' erfolgreich erstellt';
+						message = jsUcfirst(sourceType) + ' erfolgreich erstellt';
 					} else if(actionType == 'update') { 
-						message = sourceType+' wurde erfolgreich aktualisiert';
+						message = jsUcfirst(sourceType) +' wurde erfolgreich aktualisiert';
 					} else if(actionType == 'change-password') {
 						$("#reset").trigger('click');
 						message = 'das Passwort wurde erfolgreich geändert';
 					} else {
-						message = sourceType+'erfolgreich erstellt';
+						message = jsUcfirst(sourceType)+'erfolgreich erstellt';
 					}
 					swal({
 						type: 'success',
@@ -84,13 +88,34 @@ $(document).ready(function(e){
 					console.log(responseData.message);
 					break;
 				case 4: 
+					var errorMessage = responseData.message;
+					swal({
+						type: 'error',
+						title: 'Hoppla...',
+						html: errorMessage,
+					});
 					console.log(responseData.message);
 					break;
 				case 5: 
+					var errorMessage = responseData.message;
+					swal({
+						type: 'error',
+						title: 'Hoppla...',
+						html: errorMessage,
+					});
 					console.log(responseData.message);
-					break;	
+					break;
+				case 6: 
+					var errorMessage = responseData.message;
+					swal({
+						type: 'error',
+						title: 'Hoppla...',
+						html: errorMessage,
+					});
+					console.log(responseData.message);
+					break;
 				default:
-					console.log('Something went wrong! please try again later');
+					console.log('Unexpected errors');
 			}
 		});
 
@@ -101,6 +126,11 @@ $(document).ready(function(e){
 			} catch (e) {
 			  errorData = jqXHR;
 			}
+			swal({
+				type: 'error',
+				title: 'Hoppla...',
+				html: errorData,
+			});
 			console.log("Error : "+errorData);
 		});
       });

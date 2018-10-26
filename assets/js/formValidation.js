@@ -41,7 +41,7 @@ $(document).ready(function () {
                 minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" 
             },
             password_confirmation: {
-                required: "Bestätige neues Passwort Passwort ist eine Pflichtangabe",
+                required: "Bestätige neues Passwort ist eine Pflichtangabe",
                 minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" ,
                 equalTo : "Passwort stimmt nicht überein !!!"
             } 

@@ -95,14 +95,14 @@ include 'api/login.php';
         console.log(validationError);
     </script>
     <?php }
-    if(isset($loginError)) { ?>
+    if(isset($error)) { ?>
     <script>
         $(document).ready(function () {
-            var loginError = "<?php echo $loginError;?>"
+            var error = "<?php echo $error;?>"
             swal({
               type: 'error',
               title: 'Oops...',
-              text: loginError+ '!'
+              text: error+ '!'
             })
         });
     </script>

@@ -216,3 +216,31 @@ if(isset($_GET['arznei_id'])) {
 			break;
 	}																
 }
+
+if(isset($_GET['pruefer_id'])) {
+	$pruefer_id = $_GET['pruefer_id'];
+	$url = $baseApiURL.'pruefer/view?pruefer_id='.$pruefer_id;
+	$get_data = callAPI('GET',$url , false);
+	$response = json_decode($get_data, true);
+	$status = $response['status'];
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			break;
+		case 2:
+			$pruefer = $response['content']['data'];
+			$data_array =  array(
+				"Vorname"      			=> $pruefer['vorname'],
+				"Nachname"  			=> $pruefer['nachname'],
+				"Suchname"     			=> $pruefer['suchname'],
+				"Kürzel (mehrere mit '|' trennen!)" => $pruefer['kuerzel'],
+				"Geburtsjahr/ datum"   => $pruefer['geburtsdatum'],
+				"Todesjahr/ datum"  => $pruefer['sterbedatum'],
+				"kommentar" => $pruefer['kommentar']
+			);
+			echo json_encode($data_array);
+			break;
+		default:
+			break;
+	}																
+}

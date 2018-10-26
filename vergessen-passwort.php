@@ -4,6 +4,7 @@ include 'config/route.php';
 if(isset($_SESSION['access_token'])) {
     header('Location: '.$absoluteUrl);
 }
+include 'api/forgot-password.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,6 +37,10 @@ if(isset($_SESSION['access_token'])) {
             <div class="sc-eQGPmX eCgWac logo-div">
                 <img alt="Acorns" src="<?php echo $absoluteUrl;?>assets/img/logo-big.png">
             </div>
+            <?php if(isset($success)) { ?>
+                <p class="text-center"><?php echo $success;?></p>
+                <a href="<?php echo $absoluteUrl;?>login.php" class="sc-frpTsy iQoeKm sc-dxgOiQ crAxhg">Zurück zum Login</a>
+            <?php } else { ?>
             <form class="sc-kVfTjK llGERO" id="forgetPasswordForm" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="sc-gjAXCV irlZp">
                     <label class="sc-dOkuiw iMAhFM">Email</label><span class="error-text"></span>
@@ -43,6 +48,7 @@ if(isset($_SESSION['access_token'])) {
                 </div>
                 <button class="sc-frpTsy iQoeKm sc-dxgOiQ crAxhg">Link zum Zurücksetzen des Passworts senden</button>
             </form>
+            <?php } ?>
         </div>
     </div>
     <!-- /.login-box -->
@@ -57,6 +63,17 @@ if(isset($_SESSION['access_token'])) {
     <script src="<?php echo $absoluteUrl;?>plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- custom js -->
     <script src="<?php echo $absoluteUrl;?>/assets/js/login.js"></script>
-   
+    <?php if(isset($error)) { ?>
+    <script>
+        $(document).ready(function () {
+            var error = "<?php echo $error;?>"
+            swal({
+              type: 'error',
+              title: 'Oops...',
+              text: error+ '!'
+            })
+        });
+    </script>
+    <?php } ?>
 </body>
 </html>

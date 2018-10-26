@@ -127,8 +127,8 @@ $(document).ready(function () {
 	      	if (typeof responseData == 'object') {
 		      	for(let key in responseData) { 
 		        	modalContents += `<div class="row">
-						<div class="col-xs-3"><label>${key}:</label></div>
-						<div class="col-xs-9 autor-value">${(responseData[key] == null || responseData[key] == '') ? 'Nicht verfügba' : responseData[key]}</div>
+						<div class="col-xs-4"><label>${key}:</label></div>
+						<div class="col-xs-8 autor-value">${(responseData[key] == null || responseData[key] == '') ? 'Nicht verfügba' : responseData[key]}</div>
 					</div>`;
 		        }
 		    } else {

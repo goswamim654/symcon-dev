@@ -42,6 +42,33 @@ $(document).ready(function () {
         }
     });
 
+    $("#resetPasswordForm").validate({
+        errorPlacement: function(error, element) {
+            error.appendTo(element.prev("span"));
+        },
+        rules: {
+            password: {
+                required: true,
+                minlength: 6
+            },
+            password_confirmation: {
+                required: true,
+                minlength: 6,
+                equalTo : "#password"
+            }
+        },     
+        messages: {
+            password: {
+                required: "Neues Passwort ist eine Pflichtangabe",
+                minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" 
+            },
+            password_confirmation: {
+                required: "Bestätige Passwort ist eine Pflichtangabe",
+                minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" ,
+                equalTo : "Passwort stimmt nicht überein !!!"
+            } 
+        }
+    });
      // remember me
     $('#rememberMe').click(function(){
         if ($(this).prop('checked')) {
