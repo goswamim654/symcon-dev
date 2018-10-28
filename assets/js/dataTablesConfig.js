@@ -5,7 +5,7 @@ $(document).ready(function () {
 	});
 	
 	table = $('#dataTable').DataTable({
-		//'ajax': 'https://api.myjson.com/bins/1us28',  
+		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],  
 		"responsive": true,
     	"language": {
            "url": absoluteUrl+"lang/dataTableGerman.json"

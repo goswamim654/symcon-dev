@@ -197,4 +197,61 @@ $(document).ready(function () {
         }
     });
 
+    var addBenutzerForm = $("#addBenutzerForm").validate({
+        errorPlacement: function(error, element) {
+        error.appendTo(element.prev("span"));
+        },
+        rules: { 
+            first_name: {
+                required: true
+            },
+            last_name: {
+                required: true
+            },
+            username: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                minlength: 6
+            },
+            password_confirmation: {
+                minlength: 6,
+                equalTo : "#password"
+            }
+        },     
+        messages: {
+            first_name: {
+                required: "Vorname ist eine Pflichtangabe"
+            },
+            last_name: {
+                required: "Nachname ist eine Pflichtangabe"
+            },
+            username: {
+                required: "Nachname ist eine Pflichtangabe"
+            },
+            email: {
+                required: "Email ist eine Pflichtangabe",
+                email: "Bitte geben Sie eine gültige Email-Adresse ein" 
+            },
+            password: {
+                minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" 
+            },
+            password_confirmation: {
+                minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" ,
+                equalTo : "Passwort stimmt nicht überein !!!"
+            } 
+        }
+    });
+    function errorMessagePopUp(message) {
+        swal({
+          type: 'error',
+          title: 'Oops...',
+          text: message+ '!'
+        });
+    }
+
 });

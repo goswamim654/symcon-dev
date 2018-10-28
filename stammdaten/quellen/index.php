@@ -9,30 +9,42 @@ if(isset($_POST['delete_array_id'])) {
 	$status = $response['status'];
 	switch ($status) {
 		case 0:
-			echo $response['message'];
-			die();
+			header('Location: '.$absoluteUrl.'unauthorised.php');
 			break;
 		case 2:
 			$_SESSION['success'] = 'Quelle (n) wurde erfolgreich gelöscht';
 			break;	
 		case 3:
-			$_SESSION['validationError'] = $response['message'];
+			$error = $response['message'];
+			break;
+		case 4:
+			$error = $response['message'];
+			break;
+		case 5:
+			$error = $response['message'];
+			break;
+		case 6:
+			$error = $response['message'];
 			break;
 		default:
 			break;
 	}
 }
 $quellen = '';
+$get_data = '';
+$response = '';
 $get_data = callAPI('GET', $baseApiURL.'quelle/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		echo $response['message'];
-		die();
+		header('Location: '.$absoluteUrl.'unauthorised.php');
 		break;
 	case 2:
 		$quellen = $response['content']['data'];
+		break;
+	case 6:
+		$error = $response['message'];
 		break;
 	default:
 		break;

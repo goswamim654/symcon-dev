@@ -25,6 +25,18 @@ if(isset($_GET['autor_id'])) {
 			);
 			echo json_encode($data_array);
 			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
+			break;
 		default:
 			break;
 	}																
@@ -48,6 +60,18 @@ if(isset($_GET['herkunft_id'])) {
 				"Titel"  => $herkunft['titel']
 			);
 			echo json_encode($data_array);
+			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
 			break;
 		default:
 			break;
@@ -80,6 +104,18 @@ if(isset($_GET['verlag_id'])) {
 				"Bemerkungen" 	=> $verlage['bemerkungen'],
 			);
 			echo json_encode($data_array);
+			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
 			break;
 		default:
 			break;
@@ -125,7 +161,18 @@ if(isset($_GET['quelle_id'])) {
 				"Bearbeiter" 	=> $quelle['bearbeiter']
 			);
 			echo json_encode($data_array);
-			//echo $titel;
+			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
 			break;
 		default:
 			break;
@@ -168,6 +215,18 @@ if(isset($_GET['zeitschrift_id'])) {
 				"Bearbeiter" 	=> $zeitschrift['bearbeiter']
 			);
 			echo json_encode($data_array);
+			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
 			break;
 		default:
 			break;
@@ -212,6 +271,18 @@ if(isset($_GET['arznei_id'])) {
 			);
 			echo json_encode($data_array);
 			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
+			break;
 		default:
 			break;
 	}																
@@ -239,6 +310,63 @@ if(isset($_GET['pruefer_id'])) {
 				"kommentar" => $pruefer['kommentar']
 			);
 			echo json_encode($data_array);
+			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
+			break;
+		default:
+			break;
+	}																
+}
+
+if(isset($_GET['benutzer_id'])) {
+	$benutzer_id = $_GET['benutzer_id'];
+	$url = $baseApiURL.'user/view?id='.$benutzer_id;
+	$get_data = callAPI('GET',$url , false);
+	$response = json_decode($get_data, true);
+	$status = $response['status'];
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			break;
+		case 2:
+			$benutzer = $response['content']['data'];
+			$user_type_value = $benutzer['user_type'];
+			if($user_type_value == 1) $user_type = 'Admin'; else if($user_type_value == 2) $user_type = 'Bearbeiter'; else $user_type = 'Gast';
+			$active_status_value = $benutzer['active'];
+			if($active_status_value == 1) $active_status = 'aktiv'; else $active_status = 'inaktiv';
+			$data_array =  array(
+				"Vorname"      		=> $benutzer['first_name'],
+				"Nachname"  		=> $benutzer['last_name'],
+				"Organisation"     	=> $benutzer['company'],
+				"Email" 			=> $benutzer['email'],
+				"Telefon"   		=> $benutzer['phone'],
+				"Benutzername"  	=> $benutzer['username'],
+				"Aktiviert" 		=> $active_status,
+				"Benutzertyp" 		=> $user_type
+			);
+			echo json_encode($data_array);
+			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
 			break;
 		default:
 			break;

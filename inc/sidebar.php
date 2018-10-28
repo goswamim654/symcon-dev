@@ -50,6 +50,20 @@
             <li class="<?php if(preg_match("/verlage/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/verlage"><i class="fa fa-circle-o"></i> Verlage</a></li>
           </ul>
         </li>
+        <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 )) { ?>
+        <li class="<?php if(preg_match("/einstellungen/", $actual_link)) echo 'active'; ?> treeview"> 
+          <a href="#">
+          <i class="fa fa-cog"></i>
+            <span>Einstellungen</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?php if(preg_match("/benutzer/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>einstellungen/benutzer"><i class="fa fa-circle-o"></i> Benutzer</a></li>
+          </ul>
+        </li>
+        <?php  } ?>
       </ul>
     </section>
     <!-- /.sidebar -->

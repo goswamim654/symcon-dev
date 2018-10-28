@@ -109,5 +109,8 @@ if(isset($_SESSION['validationError'])) { ?>
 	</script>
 <?php unset($_SESSION['success']); } ?>
 <script src="<?php echo $absoluteUrl;?>assets/js/ajaxFormSubmit.js"></script>
+<?php if(isset($error)) { ?>
+	<script> errorMessagePopUp(<?php echo $error;?>); </script>
+<?php } ?>
 </body>
 </html>

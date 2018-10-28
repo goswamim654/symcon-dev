@@ -11,7 +11,12 @@ $(document).ready(function(e){
     	} else if(actionType == 'update') {
     		var sourceIdValue = form.data('source_id_value');
     		var sourceIdName = form.data('source_id_name');
-    		url = baseApiURL+sourceType+'/'+actionType+'?'+sourceIdName+'_id='+sourceIdValue;
+    		if(sourceIdName == 'id') {
+    			url = baseApiURL+sourceType+'/'+actionType+'?'+sourceIdName+'='+sourceIdValue;
+    			sourceType = 'Benutzer';
+    		} else {
+    			url = baseApiURL+sourceType+'/'+actionType+'?'+sourceIdName+'_id='+sourceIdValue;
+    		}
     	} else {
     		url = baseApiURL+sourceType+'/'+actionType;
     	}
@@ -28,7 +33,7 @@ $(document).ready(function(e){
             cache: false,
             processData:false,
             beforeSend:function(){
-				$.blockUI({ message: '<h4><i class="fa fa-refresh fa-spin"></i> Just a moment...</h4>' }); 
+				$.blockUI({ message: '<h4><i class="fa fa-refresh fa-spin"></i> Einen Augenblick...</h4>' }); 
 
 			},
 			complete:function(jqXHR, status){

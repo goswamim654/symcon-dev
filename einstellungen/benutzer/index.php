@@ -1,10 +1,13 @@
 <?php
 include '../../lang/GermanWords.php';
 include '../../config/route.php';
+if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 3) && ($_SESSION['user_type'] == 2)) {
+	header('Location: '.$absoluteUrl);
+}
 include '../../api/mainCall.php';
-if(isset($_POST['delete_array_id'])) {
-	$data_array =  array("herkunft_id" => $_POST['delete_array_id']);
-	$get_data = callAPI('POST', $baseApiURL.'herkunft/delete', json_encode($data_array));
+if(isset($_POST['delete_array_id']) && ($_POST['delete_array_id'] != null) && ($_POST['delete_array_id'] != '')) {
+	$data_array =  array("id" => $_POST['delete_array_id']);
+	$get_data = callAPI('POST', $baseApiURL.'user/delete', json_encode($data_array));
 	$response = json_decode($get_data, true);
 	$status = $response['status'];
 	switch ($status) {
@@ -12,7 +15,7 @@ if(isset($_POST['delete_array_id'])) {
 			header('Location: '.$absoluteUrl.'unauthorised.php');
 			break;
 		case 2:
-			$_SESSION['success'] =  'Herkunft wurde erfolgreich gelöscht';
+			$_SESSION['success'] = 'Benutzer wurde erfolgreich gelöscht';
 			break;	
 		case 3:
 			$error = $response['message'];
@@ -30,10 +33,10 @@ if(isset($_POST['delete_array_id'])) {
 			break;
 	}
 }
-$herkunfte = '';
+$benutzer = '';
 $get_data = '';
 $response = '';
-$get_data = callAPI('GET', $baseApiURL.'herkunft/all?is_paginate=0', false);
+$get_data = callAPI('GET', $baseApiURL.'user/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
@@ -41,7 +44,7 @@ switch ($status) {
 		header('Location: '.$absoluteUrl.'unauthorised.php');
 		break;
 	case 2:
-		$herkunfte = $response['content']['data'];
+		$benutzer = $response['content']['data'];
 		break;
 	case 6:
 		$error = $response['message'];
@@ -53,15 +56,15 @@ include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Herkunft
+        Benutzer
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
-        <li class="active">Herkunft</li>
+        <li class="active">Benutzer</li>
       </ol>
     </section>
 
@@ -71,20 +74,11 @@ include '../../inc/sidebar.php';
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-success">
-					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
-		              	<?php if(isset($_SESSION['validationError'])) { ?>
-		              	<div class="alert alert-danger alert-dismissible alert-hide">
-			                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-			                <h4><i class="icon fa fa-check"></i> Error!</h4>
-			                <?php echo $_SESSION['validationError'];?>.
-			             </div>
-		              	<?php unset($_SESSION['validationError']); } ?>
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>stammdaten/herkunft/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Herkunft</a>
+							<a href="<?php echo $absoluteUrl;?>einstellungen/benutzer/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Benutzer</a>
 						</h3>
 		            </div>
-		            <?php  } ?>
 		            <!-- /.box-header -->
 		            <div class="box-body">
 			            <form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
@@ -92,34 +86,30 @@ include '../../inc/sidebar.php';
 					            <table id="dataTable" class="table-loader table table-bordered table-striped display table-hover custom-table">
 					                <thead>
 						                <tr>
-						                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 						                	<th class="rowlink-skip dt-body-center no-sort"><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
-						                	<?php  } ?>
-											<th>Code</th>
-											<th>Titel</th>
-											<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
+											 <th>Nuchname</th>
+											<th>Vorname</th>
+											<th>Organisation</th>
+											<th>Benutzername</th>
 											<th class="no-sort">Aktionen</th>
-											<?php  } ?>
 						                </tr>
 					                </thead>
 					                <tbody data-link="row" class="rowlink">
 					                	<?php 
-					                	if($herkunfte != null && $herkunfte != '') { 
-					                		foreach ($herkunfte as $key => $herkunft) { ?>
+					                	if($benutzer != null && $benutzer != '') { 
+					                		foreach ($benutzer as $key => $user) { ?>
 
 							                <tr>
-							                	<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
-							                	<td class="rowlink-skip"><?php echo $herkunft['herkunft_id']; ?></td>
-							                	<?php  } ?>
+							                	<td class="rowlink-skip"><?php echo $user['id']; ?></td>
 												<td><a href="#rowlinkModal" 
-														data-id="<?php echo $herkunft['herkunft_id']; ?>" data-type="herkunft" data-title="Herkünft"
-														data-toggle="modal"><?php echo $herkunft['code']; ?></a></td>
-												<td><?php echo $herkunft['titel']; ?></td>
-												<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
+														data-id="<?php echo $user['id']; ?>" data-type="benutzer" data-title="Benutzer" 
+														data-toggle="modal"><?php echo $user['last_name'];  ?></a></td>
+												<td><?php echo $user['first_name']; ?></td>
+												<td><?php echo $user['company']; ?></td>
+												<td><?php echo $user['username']; ?></td>
 												<td class="rowlink-skip">
-													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/herkunft/edit.php?herkunft_id=<?php echo $herkunft['herkunft_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>einstellungen/benutzer/edit.php?benutzer_id=<?php echo $user['id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>
-			            	       	            <?php  } ?>
 							                </tr>
 							            <?php } 
 							            } ?>
@@ -135,7 +125,7 @@ include '../../inc/sidebar.php';
 
     </section>
     <!-- /.content -->
-  </div>
+</div>
   <!-- /.content-wrapper -->
 <?php
 include '../../inc/footer.php';

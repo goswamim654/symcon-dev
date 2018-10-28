@@ -26,11 +26,6 @@ include 'inc/sidebar.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-success">
-                    <div class="box-header with-border">
-                        <a href="#" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Benutzer erstellen</a>
-                        <a href="#" class="btn btn-success">Benutzer anzeign</a>
-                        <a href="<?php echo $absoluteUrl;?>andere-passwort.php" class="btn btn-danger pull-right"  title="Löschen">Ändere das Passwort</a>
-                    </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" id="changeEmail" method="post">

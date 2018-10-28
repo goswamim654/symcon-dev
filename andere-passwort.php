@@ -49,11 +49,11 @@ include 'inc/sidebar.php';
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Neues Passwort*</label><span class="error-text"></span>
-                                        <input type="password" class="form-control" id="password" name="password" required autofocus>
+                                        <input type="password" class="form-control" id="password" name="password" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="password_confirmation ">Bestätige neues Passwort*</label><span class="error-text"></span>
-                                        <input type="password" class="form-control" id="password_confirmation " name="password_confirmation" required autofocus>
+                                        <input type="password" class="form-control" id="password_confirmation " name="password_confirmation" required>
                                     </div>
                                 </div>
                             </div>

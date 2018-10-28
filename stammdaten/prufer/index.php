@@ -15,7 +15,7 @@ if(isset($_POST['delete_array_id'])) {
 			$_SESSION['success'] = 'Prüfer wurde erfolgreich gelöscht';
 			break;	
 		case 3:
-			$validationErrors = $response['message'];
+			$error = $response['message'];
 			break;
 		case 4:
 			$error = $response['message'];
@@ -43,7 +43,7 @@ switch ($status) {
 	case 2:
 		$pruefer = $response['content']['data'];
 		break;
-	case 4:
+	case 6:
 		$error = $response['message'];
 		break;
 	default:
@@ -146,5 +146,5 @@ include '../../inc/sidebar.php';
 </div>
   <!-- /.content-wrapper -->
 <?php
-include '../../inc/footer.php';
+include '../../inc/footer.php'; 
 ?>
