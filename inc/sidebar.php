@@ -32,7 +32,7 @@
             <span>Materia Medica</span>
           </a>
         </li>
-        <li class="<?php if(preg_match("/stammdaten/", $actual_link)) echo 'active'; ?> treeview"> 
+        <li class="<?php if(preg_match("/stammdaten/", $actual_link)) echo 'active'; ?> reset-datatable-state treeview"> 
           <a href="#">
             <i class="fa fa-database"></i>
             <span>Stammdaten</span>

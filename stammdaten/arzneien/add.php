@@ -80,6 +80,7 @@ include '../../inc/sidebar.php';
 		                <button class="btn btn-success" type="submit" id="saveFormBtn">Speichern</button>
 						<button class="btn btn-default" type="button" id="cancelBtn">Abbrechen</button>
 						<button type="reset" id="reset" class="sr-only"></button>
+						<a href="<?php echo $absoluteUrl;?>stammdaten/arzneien/" class="pull-right btn btn-primary" style="background: #000;">Zurück</a>
 		              </div>
 		            </form>
 		          </div>

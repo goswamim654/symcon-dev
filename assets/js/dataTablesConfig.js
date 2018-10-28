@@ -5,6 +5,7 @@ $(document).ready(function () {
 	});
 	
 	table = $('#dataTable').DataTable({
+		"stateSave": true,
 		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],  
 		"responsive": true,
     	"language": {
@@ -21,6 +22,10 @@ $(document).ready(function () {
 		}]
 	});
 
+	$('.reset-datatable-state a').click( function() {
+		table.state.clear();
+		//window.location.reload();
+	});
 	// Handle click on checkbox 
 	$('#custom-table input[type="checkbox"]').change( function() {
 		alert('checked')

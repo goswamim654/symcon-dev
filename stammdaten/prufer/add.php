@@ -83,6 +83,7 @@ include '../../inc/sidebar.php';
 		                <input class="btn btn-success" type="submit" value="Speichern" name="Speichern" id="saveFormBtn">
 						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/prufer/" id="cancelBtn">Abbrechen</a>
 						<button type="reset" id="reset" class="sr-only"></button>
+						<a href="<?php echo $absoluteUrl;?>stammdaten/prufer/" class="pull-right btn btn-primary" style="background: #000;">Zurück</a>
 		              </div>
 		            </form>
 		          </div>
