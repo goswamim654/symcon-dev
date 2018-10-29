@@ -6,15 +6,25 @@ $(document).ready(function(e){
     	var actionType = form.data('action');
     	var sourceType = form.data('source');
     	
-    	if(actionType == 'add') {
+    	if(actionType == 'add') 
+    	{
     		url = baseApiURL+sourceType+'/'+actionType;
-    	} else if(actionType == 'update') {
+    		if(sourceType == 'user') 
+    		{
+    			sourceType = 'Benutzer';
+    		}
+    	} 
+    	else if(actionType == 'update') 
+    	{
     		var sourceIdValue = form.data('source_id_value');
     		var sourceIdName = form.data('source_id_name');
-    		if(sourceIdName == 'id') {
+    		if(sourceType == 'user') 
+    		{
     			url = baseApiURL+sourceType+'/'+actionType+'?'+sourceIdName+'='+sourceIdValue;
     			sourceType = 'Benutzer';
-    		} else {
+    		} 
+    		else 
+    		{
     			url = baseApiURL+sourceType+'/'+actionType+'?'+sourceIdName+'_id='+sourceIdValue;
     		}
     	} else {
@@ -59,17 +69,28 @@ $(document).ready(function(e){
 				case 2:
 					console.log(responseData.content);
 					var message = '';
-					if(actionType == 'add') {
+					if(actionType == 'add') 
+					{
 						$("#reset").trigger('click');
 						$('.dropify-clear').trigger('click');
 						$(".select2").val('').trigger('change');
 						message = jsUcfirst(sourceType) + ' erfolgreich erstellt';
-					} else if(actionType == 'update') { 
+					} 
+					else if(actionType == 'update') 
+					{ 
 						message = jsUcfirst(sourceType) +' wurde erfolgreich aktualisiert';
-					} else if(actionType == 'change-password') {
+					} 
+					else if(actionType == 'change-password') 
+					{
 						$("#reset").trigger('click');
-						message = 'das Passwort wurde erfolgreich geändert';
-					} else {
+						message = 'Das Passwort wurde erfolgreich geändert';
+					} 
+					else if(actionType == 'update-email') 
+					{
+						message = 'Das Email wurde erfolgreich geändert';
+					} 
+					else 
+					{
 						message = jsUcfirst(sourceType)+'erfolgreich erstellt';
 					}
 					swal({
@@ -79,7 +100,6 @@ $(document).ready(function(e){
 					});
 					break;
 				case 3:
-					$("#reset").trigger('click');
 					var errorMessage = '';
 					for(let key in responseData.content) { 
 						errorMessage += `<p>${responseData.content[key]}</p>`;

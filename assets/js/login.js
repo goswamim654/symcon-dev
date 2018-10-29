@@ -69,11 +69,24 @@ $(document).ready(function () {
             } 
         }
     });
+
+    var username = '';
+    var password = '';
+    $('#username').keyup(function() {
+        $('#rememberMe').prop("checked", false);
+        $.cookie('username', '');
+        $.cookie('password', '');
+        username = $(this).val();
+    });
+    $('#password').keyup(function() {
+        $('#rememberMe').prop("checked", false);
+        $.cookie('username', '');
+        $.cookie('password', '');
+        password = $(this).val();
+    })
      // remember me
     $('#rememberMe').click(function(){
         if ($(this).prop('checked')) {
-            var username = $('#username').val();
-            var password = $('#password').val();
             
             if(username.length != 0 && password.length != 0) {
                 $.cookie('username', username);
@@ -92,4 +105,5 @@ $(document).ready(function () {
             $.cookie('password', '');
         }  
     });
+
 });

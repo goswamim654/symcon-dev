@@ -571,6 +571,9 @@ Content cover layer
 .swal2-popup {
   font-size: unset;
 }
+.swal2-popup .swal2-content {
+  font-weight: 400;
+}
 /* Large desktop */
 @media (min-width: 1440px) and (max-width: 1920px) { 
     input#navbar-search-input {

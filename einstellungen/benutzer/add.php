@@ -61,11 +61,11 @@ include '../../inc/sidebar.php';
 									<input type="text" class="form-control" id="username" name="username" required>
 								</div>
 								<div class="form-group">
-                                    <label for="password">Neues Passwort</label><span class="error-text"></span>
+                                    <label for="password">Passwort*</label><span class="error-text"></span>
                                     <input type="password" class="form-control" id="password" name="password" >
                                 </div>
                                 <div class="form-group">
-                                    <label for="password_confirmation ">Bestätige neues Passwort</label><span class="error-text"></span>
+                                    <label for="password_confirmation ">Bestätige Passwort*</label><span class="error-text"></span>
                                     <input type="password" class="form-control" id="password_confirmation " name="password_confirmation">
                                 </div>
                                 <div class="from-group">
@@ -82,7 +82,7 @@ include '../../inc/sidebar.php';
                                     </div>
                                 </div>
                                 <div class="form-group">
-									<label for="user_type">Benutzertyp</label>
+									<label for="user_type">Benutzertyp*</label><span class="error-text"></span>
 									<select class="form-control" name="user_type" id="user_type" >
 										<option value="">Benutz wählen</option>
 										<option value="2">Bearbeiter</option>
@@ -96,7 +96,7 @@ include '../../inc/sidebar.php';
 
 		              <div class="box-footer">
 		                <input class="btn btn-success" type="submit" value="Speichern" name="Speichern" id="saveFormBtn">
-						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>einstellungen/autoren/" id="cancelBtn">Abbrechen</a>
+						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>einstellungen/benutzer/" id="cancelBtn">Abbrechen</a>
 						<button type="reset" id="reset" class="sr-only"></button>
 						<a href="<?php echo $absoluteUrl;?>einstellungen/benutzer/" class="pull-right btn btn-primary" style="background: #000;">Zurück</a>
 		              </div>

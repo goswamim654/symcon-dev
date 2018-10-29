@@ -88,29 +88,15 @@
 
 <script src="<?php echo $absoluteUrl;?>assets/js/formValidation.js"></script>
 <script src="<?php echo $absoluteUrl;?>plugins/jquery.blockUI.js"></script>
-<?php
-if(isset($_SESSION['validationError'])) { ?>
-<script>
-	$(document).ready(function () {
-		$('.formValid').submit();
-	});
-</script>
-<?php unset($_SESSION['validationError']); } ?>
-<?php if(isset($_SESSION['success'])) { ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			var successMessage = "<?php echo $_SESSION['success'];?>"
-			swal({
-			  type: 'success',
-			  title: 'Glückwunsch',
-			  text: successMessage,
-			})
-	    });
-	</script>
-<?php unset($_SESSION['success']); } ?>
+<!-- sweet alert message popup-->
+<script src="<?php echo $absoluteUrl;?>/assets/js/alertMessage.js"></script>
+
 <script src="<?php echo $absoluteUrl;?>assets/js/ajaxFormSubmit.js"></script>
 <?php if(isset($error)) { ?>
-	<script> errorMessagePopUp(<?php echo $error;?>); </script>
+	<script> 
+		var errorMessage = '<?php echo $error;?>';
+		errorMessagePopUp( errorMessage ); 
+	</script>
 <?php } ?>
 </body>
 </html>

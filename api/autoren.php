@@ -3,10 +3,9 @@ if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 3)) {
 	header('Location: '.$absoluteUrl);
 }
 include 'mainCall.php';
-$autoren = '';
-$get_data = '';
-$response = '';
-$autorTitels = '';
+$autoren = [];
+$response = [];
+$autorTitels = [];
 
 // get titels
 
@@ -16,11 +15,22 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		echo $response['message'];
-		die();
+		header('Location: '.$absoluteUrl.'unauthorised.php');
 		break;
 	case 2:
 		$autorTitels = $response['content']['data'];
+		break;
+	case 3:
+		$error = $response['message'];
+		break;
+	case 4:
+		$error = $response['message'];
+		break;
+	case 5:
+		$error = $response['message'];
+		break;
+	case 6:
+		$error = $response['message'];
 		break;
 	default:
 		break;
@@ -34,78 +44,25 @@ if(isset($_GET['autor_id'])) {
 	$status = $response['status'];
 	switch ($status) {
 		case 0:
-			echo $response['message'];
-			die();
+			header('Location: '.$absoluteUrl.'unauthorised.php');
 			break;
 		case 2:
 			$autoren = $response['content']['data'];
+			break;
+		case 3:
+			$error = $response['message'];
+			break;
+		case 4:
+			$error = $response['message'];
+			break;
+		case 5:
+			$error = $response['message'];
+			break;
+		case 6:
+			$error = $response['message'];
 			break;
 		default:
 			break;
 	}																
-}
-
-// add and edit a autor
-
-if(isset($_POST['Speichern']) || isset($_POST['ÄnderungenSpeichern'])) {
-
-	
-	$code = isset($_POST['code']) ? $_POST['code'] : '';
-	$suchname = isset($_POST['suchname']) ? $_POST['suchname'] : '';
-	$titel = isset($_POST['titel']) ? $_POST['titel'] : '';
-	$vorname = isset($_POST['vorname']) ? $_POST['vorname'] : '';
-	$nachname = isset($_POST['nachname']) ? $_POST['nachname'] : '';
-	$geburtsdatum = isset($_POST['geburtsjahr']) ? $_POST['geburtsjahr'] : '';
-	$sterbedatum = isset($_POST['todesjahr']) ? $_POST['todesjahr'] : '';
-	$kommentar = isset($_POST['kommentar']) ? $_POST['kommentar'] : '';
-
-	$data_array =  array(
-		"code"      => $code,
-		"suchname"  => $suchname,
-		"titel"     => $titel,
-		"vorname"   => $vorname,
-		"nachname"  => $nachname,
-		"geburtsdatum" => $geburtsdatum,
-		"sterbedatum" => $sterbedatum,
-		"kommentar" => $kommentar
-	);
-	// add autor
-
-	if(isset($_POST['Speichern'])) {
-		$get_data = callAPI('POST', $baseApiURL.'autor/add', json_encode($data_array));
-	}
-	// edit autor
-
-	if(isset($_POST['ÄnderungenSpeichern'])) {
-		$autor_id = $_POST['autor_id'];
-		$get_data = callAPI('POST',  $baseApiURL.'autor/update?autor_id='.$autor_id, json_encode($data_array));
-	}
-	$response = json_decode($get_data, true);
-	$status = $response['status'];
-	switch ($status) {
-		case 0:
-			echo $response['message'];
-			die();
-			break;
-		case 2:
-			$code = '';
-			$suchname = '';
-			$titel = '';
-			$vorname = '';
-			$nachname = '';
-			$geburtsdatum = '';
-			$sterbedatum = '';
-			$kommentar = '';
-			$_SESSION['success'] = $response['message'];
-			$autoren = $response['content']['data'];
-			//header('Location: '.$absoluteUrl. 'stammdaten/autoren/index.php');
-			break;	
-		case 3:
-			$_SESSION['validationError'] = $response['message'];
-			break;
-		default:
-			//header('Location: '.$absoluteUrl. 'stammdaten/autoren/index.php');
-			break;
-	}
 }
 

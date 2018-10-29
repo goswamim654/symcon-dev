@@ -1,6 +1,9 @@
 <?php
 include 'unauthenticated-main-call.php';
 
+$get_data = '';
+$response = [];
+
 if(isset($_POST['username']) && isset($_POST['password'])) 
 {
 	$data_array =  array("username" => $_POST['username'], "password" => $_POST['password'] );
@@ -21,9 +24,16 @@ if(isset($_POST['username']) && isset($_POST['password']))
 			header('Location: '.$absoluteUrl);
 			break;	
 		case 3:
-			$validationError = $response['content'];
+			$error = $response['message'];
 			break;
 		case 4:
+			$error = $response['message'];
+			//$error = 'Kein Benutzer mit diesem Benutzernamen gefunden';
+			break;
+		case 5:
+			$error = $response['message'];
+			break;
+		case 6:
 			$error = $response['message'];
 			break;
 		default:

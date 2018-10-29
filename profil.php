@@ -26,9 +26,13 @@ include 'inc/sidebar.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-success">
+                    <div class="box-header with-border">
+                        <a href="<?php echo $absoluteUrl;?>andere-passwort.php" class="btn btn-danger pull-right"  title="LÃ¶schen">Ändere das Passwort</a>
+                   </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" id="changeEmail" method="post">
+                    <form role="form" id="changeEmail" class="content-form" data-source="user" data-action="update-email">
+                        <input type="hidden" name="">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -41,7 +45,7 @@ include 'inc/sidebar.php';
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="admin_email">Email*</label><span class="error-text"></span>
-                                        <input type="email" class="form-control" value="<?php if(isset($_SESSION['email'])) echo $_SESSION['email']; ?>" id="admin_email" name="admin_email" required autofocus>
+                                        <input type="email" class="form-control" value="<?php if(isset($_SESSION['email'])) echo $_SESSION['email']; ?>" id="admin_email" name="email" required autofocus>
                                     </div>
                                 </div>
                             </div>

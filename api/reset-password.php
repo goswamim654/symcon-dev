@@ -1,5 +1,7 @@
 <?php
 include 'unauthenticated-main-call.php';
+$get_data = '';
+$response = [];
 
 if(isset($_POST['password']) && isset($_POST['password_confirmation'])) 
 {
@@ -15,12 +17,7 @@ if(isset($_POST['password']) && isset($_POST['password_confirmation']))
 			$success= 'Das Passwort wurde erfolgreich zurückgesetzt';
 			break;	
 		case 3:
-			$validationErrors = $response['content'];
-			foreach ($validationErrors as $key => $validationError) {
-				if($key == 'password') {
-					$error = 'Die Passwortbestätigung stimmt nicht überein';
-				}
-			}
+			$error = $response['message'];
 			break;
 		case 4:
 			$error = 'Der von Ihnen verwendete Link ist ungültig. Bitte fordern Sie einen neuen Link zum Zurücksetzen des Passworts an';

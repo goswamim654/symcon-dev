@@ -66,9 +66,14 @@ $(document).ready(function () {
 			  confirmButtonText: 'Ja, lösche es!',
 			  cancelButtonText: 'Stornieren',
 			}).then((result) => {
-			  if (result.value) {
-			  	form.submit();
-			   } 
+			  	if (result.value) {
+			  		form.submit();
+			   	}  else {
+				   	//console.log('cancel');
+				   	table.$('input[type="checkbox"]').each(function() {
+						$(this).prop("checked", false);
+			  		});
+			   }
 			})
 		}
 		

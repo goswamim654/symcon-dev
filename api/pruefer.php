@@ -3,10 +3,10 @@ if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 3)) {
 	header('Location: '.$absoluteUrl);
 }
 include 'mainCall.php';
-$pruefer = '';
+$pruefer = [];
 $get_data = '';
-$response = '';
-$autorTitels = '';
+$response = [];
+$autorTitels = [];
 
 // get titels
 
@@ -16,11 +16,22 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		echo $response['message'];
-		die();
+		header('Location: '.$absoluteUrl.'unauthorised.php');
 		break;
 	case 2:
 		$autorTitels = $response['content']['data'];
+		break;
+	case 3:
+		$error = $response['message'];
+		break;
+	case 4:
+		$error = $response['message'];
+		break;
+	case 5:
+		$error = $response['message'];
+		break;
+	case 6:
+		$error = $response['message'];
 		break;
 	default:
 		break;
@@ -34,11 +45,22 @@ if(isset($_GET['pruefer_id'])) {
 	$status = $response['status'];
 	switch ($status) {
 		case 0:
-			echo $response['message'];
-			die();
+			header('Location: '.$absoluteUrl.'unauthorised.php');
 			break;
 		case 2:
 			$pruefer = $response['content']['data'];
+			break;
+		case 3:
+			$error = $response['message'];
+			break;
+		case 4:
+			$error = $response['message'];
+			break;
+		case 5:
+			$error = $response['message'];
+			break;
+		case 6:
+			$error = $response['message'];
 			break;
 		default:
 			break;

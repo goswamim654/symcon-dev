@@ -1,5 +1,7 @@
 <?php
 include 'unauthenticated-main-call.php';
+$get_data = '';
+$response = [];
 
 if(isset($_POST['email'])) 
 {
@@ -13,7 +15,6 @@ if(isset($_POST['email']))
 			break;
 		case 2:
 			$success = 'Überprüfen Sie Ihre E-Mail auf einen Link, um Ihr Passwort zurückzusetzen. Wenn es nicht innerhalb weniger Minuten angezeigt wird, überprüfen Sie Ihren Spam-Ordner.';
-			//header('Location: '.$absoluteUrl);
 			break;	
 		case 3:
 			$error = 'Das E-Mail-Feld ist erforderlich';

@@ -51,7 +51,7 @@
           </ul>
         </li>
         <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 )) { ?>
-        <li class="<?php if(preg_match("/einstellungen/", $actual_link)) echo 'active'; ?> treeview"> 
+        <li class="<?php if(preg_match("/einstellungen/", $actual_link)) echo 'active'; ?> treeview reset-datatable-state"> 
           <a href="#">
           <i class="fa fa-cog"></i>
             <span>Einstellungen</span>

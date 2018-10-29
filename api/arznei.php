@@ -4,33 +4,56 @@ if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 3)) {
 }
 include 'mainCall.php';
 // selectbox
-$quellen = '';
+$quellenSelectBox = [];
 $get_data = callAPI('GET', $baseApiURL.'quelle/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		echo $response['message'];
-		die();
+		header('Location: '.$absoluteUrl.'unauthorised.php');
 		break;
 	case 2:
 		$quellenSelectBox = $response['content']['data'];
+		break;
+	case 3:
+		$error = $response['message'];
+		break;
+	case 4:
+		$error = $response['message'];
+		break;
+	case 5:
+		$error = $response['message'];
+		break;
+	case 6:
+		$error = $response['message'];
 		break;
 	default:
 		break;
 }
 
 // Autor selectbox 
+$autorenSelectBox = [];
 $get_data = callAPI('GET', $baseApiURL.'autor/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		echo $response['message'];
-		die();
+		header('Location: '.$absoluteUrl.'unauthorised.php');;
 		break;
 	case 2:
 		$autorenSelectBox = $response['content']['data'];
+		break;
+	case 3:
+		$error = $response['message'];
+		break;
+	case 4:
+		$error = $response['message'];
+		break;
+	case 5:
+		$error = $response['message'];
+		break;
+	case 6:
+		$error = $response['message'];
 		break;
 	default:
 		break;
@@ -44,8 +67,7 @@ if(isset($_GET['arznei_id'])) {
 	$status = $response['status'];
 	switch ($status) {
 		case 0:
-			echo $response['message'];
-			die();
+			header('Location: '.$absoluteUrl.'unauthorised.php');
 			break;
 		case 2:
 			$arzneien = $response['content']['data'];
@@ -60,7 +82,19 @@ if(isset($_GET['arznei_id'])) {
 				$quelle_id_selected_values[] = $quelle_selected['quelle_id'];
 			}
 			break;
+		case 3:
+			$error = $response['message'];
+			break;
+		case 4:
+			$error = $response['message'];
+			break;
+		case 5:
+			$error = $response['message'];
+			break;
+		case 6:
+			$error = $response['message'];
+			break;
 		default:
 			break;
-	}																
+		}																
 }

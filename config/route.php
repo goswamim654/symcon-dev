@@ -3,7 +3,7 @@ session_start();
 // Site domain
 
 //$absoluteUrl = 'https://www.alegralabs.com/mukesh/symcom/';
-$absoluteUrl = 'http://repertorium.loc/';
+$absoluteUrl = 'http://symcom.loc/';
 
 // full url of a page
 

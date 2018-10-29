@@ -92,7 +92,7 @@
         </ul>
       </div>
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav reset-datatable-state">
           <!-- User Account: style can be found in dropdown.less -->
           <li class="last-login"><a><?php if(isset($_SESSION['last_login_at']) && (!empty($_SESSION['last_login_at']))) echo 'Last login '.$_SESSION['last_login_at'];?></a></li>
           <li class="dropdown">

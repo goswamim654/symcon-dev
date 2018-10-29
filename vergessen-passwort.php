@@ -63,16 +63,12 @@ include 'api/forgot-password.php';
     <script src="<?php echo $absoluteUrl;?>plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- custom js -->
     <script src="<?php echo $absoluteUrl;?>/assets/js/login.js"></script>
+    <!-- sweet alert message popup-->
+    <script src="<?php echo $absoluteUrl;?>/assets/js/alertMessage.js"></script>
     <?php if(isset($error)) { ?>
     <script>
-        $(document).ready(function () {
-            var error = "<?php echo $error;?>"
-            swal({
-              type: 'error',
-              title: 'Oops...',
-              text: error+ '!'
-            })
-        });
+        var errorMessage = '<?php echo $error;?>';
+        errorMessagePopUp( errorMessage ); 
     </script>
     <?php } ?>
 </body>

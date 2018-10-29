@@ -53,13 +53,13 @@ $(document).ready(function () {
 		error.appendTo(element.prev("span"));
 		},
 		rules: {
-            admin_email: {
+            email: {
                 required: true,
                 email: true
             }
         },     
         messages: {
-            admin_email: {
+            email: {
                 required: "Email ist eine Pflichtangabe",
                 email: "Bitte geben Sie eine gültige Email-Adresse ein" 
             }
@@ -216,11 +216,75 @@ $(document).ready(function () {
                 email: true
             },
             password: {
+                required: true,
+                minlength: 6
+            },
+            password_confirmation: {
+                required: true,
+                minlength: 6,
+                equalTo : "#password"
+            },
+            user_type: {
+                required: true
+            }
+        },     
+        messages: {
+            first_name: {
+                required: "Vorname ist eine Pflichtangabe"
+            },
+            last_name: {
+                required: "Nachname ist eine Pflichtangabe"
+            },
+            username: {
+                required: "Nachname ist eine Pflichtangabe"
+            },
+            email: {
+                required: "Email ist eine Pflichtangabe",
+                email: "Bitte geben Sie eine gültige Email-Adresse ein" 
+            },
+            password: {
+                required: "Passwort ist eine Pflichtangabe",
+                minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" 
+            },
+            password_confirmation: {
+                required: "Bestätige Passwort ist eine Pflichtangabe",
+                minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" ,
+                equalTo : "Passwort stimmt nicht überein !!!"
+            },
+            user_type: {
+                required: "Benutzertyp ist eine Pflichtangabe"
+            }
+        }
+    });
+
+
+    var editBenutzerForm = $("#editBenutzerForm").validate({
+        errorPlacement: function(error, element) {
+        error.appendTo(element.prev("span"));
+        },
+        rules: { 
+            first_name: {
+                required: true
+            },
+            last_name: {
+                required: true
+            },
+            username: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
                 minlength: 6
             },
             password_confirmation: {
                 minlength: 6,
                 equalTo : "#password"
+            },
+            user_type: {
+                required: true
             }
         },     
         messages: {
@@ -243,15 +307,11 @@ $(document).ready(function () {
             password_confirmation: {
                 minlength: "Ihr aktuelles Passwort muss aus 6 Zeichen bestehen" ,
                 equalTo : "Passwort stimmt nicht überein !!!"
-            } 
+            },
+            user_type: {
+                required: "Benutzertyp ist eine Pflichtangabe"
+            }
         }
     });
-    function errorMessagePopUp(message) {
-        swal({
-          type: 'error',
-          title: 'Oops...',
-          text: message+ '!'
-        });
-    }
 
 });

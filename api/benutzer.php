@@ -3,9 +3,10 @@ if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 3) && ($_SESSION[
 	header('Location: '.$absoluteUrl);
 }
 include 'mainCall.php';
-$benutzer = '';
+$benutzer = [];
 $get_data = '';
-$response = '';
+$response = [];
+
 if(isset($_GET['benutzer_id'])) {
 	$id = $_GET['benutzer_id'];
 	$url = $baseApiURL.'user/view?id='.$id;
@@ -14,11 +15,22 @@ if(isset($_GET['benutzer_id'])) {
 	$status = $response['status'];
 	switch ($status) {
 		case 0:
-			echo $response['message'];
-			die();
+			header('Location: '.$absoluteUrl.'unauthorised.php');
 			break;
 		case 2:
 			$benutzer = $response['content']['data'];
+			break;
+		case 3:
+			$error = $response['message'];
+			break;
+		case 4:
+			$error = $response['message'];
+			break;
+		case 5:
+			$error = $response['message'];
+			break;
+		case 6:
+			$error = $response['message'];
 			break;
 		default:
 			break;
