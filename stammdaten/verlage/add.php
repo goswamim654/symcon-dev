@@ -30,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="content-form" id="addVerlageForm" data-action="add" data-source="verlage">
+		            <form class="content-form" id="addVerlageForm" data-action="add" data-source="verlage">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">
@@ -103,11 +103,6 @@ include '../../inc/sidebar.php';
 			</div>
 		</div>
       <!-- /.row -->
-      <!-- Main row -->
-      <div class="row">
-        
-      </div>
-      <!-- /.row (main row) -->
 
     </section>
     <!-- /.content -->

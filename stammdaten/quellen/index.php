@@ -2,37 +2,10 @@
 include '../../lang/GermanWords.php';
 include '../../config/route.php'; 
 include '../../api/mainCall.php';
-if(isset($_POST['delete_array_id'])) {
-	$data_array =  array("quelle_id" => $_POST['delete_array_id']);
-	$get_data = callAPI('POST', $baseApiURL.'quelle/delete', json_encode($data_array));
-	$response = json_decode($get_data, true);
-	$status = $response['status'];
-	switch ($status) {
-		case 0:
-			header('Location: '.$absoluteUrl.'unauthorised.php');
-			break;
-		case 2:
-			$_SESSION['success'] = 'Quelle (n) wurde erfolgreich gelöscht';
-			break;	
-		case 3:
-			$error = $response['message'];
-			break;
-		case 4:
-			$error = $response['message'];
-			break;
-		case 5:
-			$error = $response['message'];
-			break;
-		case 6:
-			$error = $response['message'];
-			break;
-		default:
-			break;
-	}
-}
-$quellen = '';
+
+$quellen = [];
 $get_data = '';
-$response = '';
+$response = [];
 $get_data = callAPI('GET', $baseApiURL.'quelle/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
@@ -73,13 +46,6 @@ include '../../inc/sidebar.php';
 				<div class="box box-success">
 		            <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
-		              	<?php if(isset($_SESSION['validationError'])) { ?>
-		              	<div class="alert alert-danger alert-dismissible alert-hide">
-			                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-			                <h4><i class="icon fa fa-check"></i> Error!</h4>
-			                <?php echo $_SESSION['validationError'];?>.
-			             </div>
-		              	<?php unset($_SESSION['validationError']); } ?>
 						<h3 class="box-title">
 							<a href="<?php echo $absoluteUrl;?>stammdaten/quellen/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Quelle</a>
 						</h3>
@@ -87,7 +53,7 @@ include '../../inc/sidebar.php';
 		            <?php  } ?>
 		            <!-- /.box-header -->
 		            <div class="box-body">
-		            	<form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+		            	<form id="listViewForm" data-action="delete" data-source="quelle" data-source_id_name="quelle_id">
 		            		<div class="table-responsive">
 					            <table id="dataTable" class="table-loader table table-bordered table-striped display table-hover custom-table">
 					                <thead>

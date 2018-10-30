@@ -30,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="content-form" id="addVerlageForm" data-action="update" data-source="verlage" data-source_id_value="<?php echo $verlage['verlag_id'];?>" data-source_id_name="verlag" autocomplete="off">
+		            <form class="content-form" id="addVerlageForm" data-action="update" data-source="verlage" data-source_id_value="<?php echo $verlage['verlag_id'];?>" data-source_id_name="verlag" autocomplete="off">
 		            <input type="hidden" name="verlag_id" value="<?php echo $verlage['verlag_id'];?>">
 		              <div class="box-body">
 		              	<div class="row">

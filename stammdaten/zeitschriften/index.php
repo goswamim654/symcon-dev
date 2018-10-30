@@ -2,37 +2,10 @@
 include '../../config/route.php';
 include '../../lang/GermanWords.php';
 include '../../api/mainCall.php';
-if(isset($_POST['delete_array_id'])) {
-	$data_array =  array("quelle_id" => $_POST['delete_array_id']);
-	$get_data = callAPI('POST', $baseApiURL.'zeitschrift/delete', json_encode($data_array));
-	$response = json_decode($get_data, true);
-	$status = $response['status'];
-	switch ($status) {
-		case 0:
-			header('Location: '.$absoluteUrl.'unauthorised.php');
-			break;
-		case 2:
-			$_SESSION['success'] = 'Zeitschrift (n) wurde erfolgreich gelöscht';
-			break;	
-		case 3:
-			$error = $response['message'];
-			break;
-		case 4:
-			$error = $response['message'];
-			break;
-		case 5:
-			$error = $response['message'];
-			break;
-		case 6:
-			$error = $response['message'];
-			break;
-		default:
-			break;
-	}
-}
-$zeitschriften = '';
+
+$zeitschriften = [];
 $get_data = '';
-$response = '';
+$response = [];
 $get_data = callAPI('GET', $baseApiURL.'zeitschrift/all?is_paginate=0', false);
 $response = json_decode($get_data, true);
 $status = $response['status'];
@@ -80,7 +53,7 @@ include '../../inc/sidebar.php';
 		            <?php  } ?>
 		            <!-- /.box-header -->
 		            <div class="box-body"> 
-		            	<form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+		            	<form id="listViewForm" data-action="delete" data-source="zeitschrift" data-source_id_name="quelle_id"
 		            		<div class="table-responsive">
 					            <table id="dataTable" class="table-loader table table-bordered table-striped display table-hover custom-table">
 					                <thead>

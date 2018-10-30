@@ -4,31 +4,9 @@ include '../../config/route.php';
 include '../../api/quellen.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
-
 ?>
-<style type="text/css">
-	.ui-datepicker-calendar {
-	   display: none;
-	}
-	.ui-datepicker-month {
-	   display: none;
-	}
-	.ui-datepicker-prev{
-	   display: none;
-	}
-	.ui-datepicker-next{
-	   display: none;
-	}
-	.ui-datepicker .ui-datepicker-buttonpane button {
-		width: 100%;
-		float: none;
-	}
-	.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
-		display: none;
-	}
-</style>
- <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -52,17 +30,17 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="content-form" id="addQuelleForm" autocomplete="off" data-action="add" data-source="quelle" enctype="multipart/form-data">
+		            <form class="content-form" id="addQuelleForm" autocomplete="off" data-action="add" data-source="quelle" enctype="multipart/form-data">
 		              	<div class="box-body">
 			              	<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="code">Kürzel*</label><span class="error-text"></span>
-										<input type="text" class="form-control" value="<?php if(isset($code)) echo $code;?>" id="code" name="code" autofocus required>
+										<input type="text" class="form-control" id="code" name="code" autofocus required>
 									</div>
 									<div class="form-group">
 										<label for="titel">Titel*</label><span class="error-text"></span>
-										<input type="text" class="form-control" value="<?php if(isset($titel)) echo $titel;?>" name="titel" id="titel">
+										<input type="text" class="form-control" name="titel" id="titel">
 									</div>
 									<div class="form-group">
 										<label for="sprache">Sprache*</label><span class="error-text"></span>
@@ -92,21 +70,21 @@ include '../../inc/sidebar.php';
 									</div>
 									<div class="form-group">
 										<label for="jahr">Jahr*</label><span class="error-text"></span>
-										<input type="text" class="form-control pull-right" id="jahr" name="jahr" value="<?php if(isset($jahr)) echo $jahr;?>">
+										<input type="text" class="form-control" id="jahr" name="jahr">
 									</div>
 									<div class="form-group">
 										<label for="band">Band</label>
-										<input type="text" class="form-control" id="band" name="band" value="<?php if(isset($band)) echo $band;?>">
+										<input type="text" class="form-control" id="band" name="band">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="nummer">Nummer</label>
-										<input type="text" class="form-control" id="nummer" name="nummer" value="<?php if(isset($nummer)) echo $nummer;?>">
+										<input type="text" class="form-control" id="nummer" name="nummer">
 									</div>
 									<div class="form-group">
 										<label for="auflage">Auflage*</label><span class="error-text"></span>
-										<input type="text" class="form-control" id="auflage" name="auflage" value="<?php if(isset($auflage)) echo $auflage;?>">
+										<input type="text" class="form-control" id="auflage" name="auflage">
 									</div>
 									<div class="form-group">
 										<label for="verlag_id">Verlag*</label><span class="error-text"></span>
@@ -145,16 +123,10 @@ include '../../inc/sidebar.php';
 			</div>
 		</div>
       <!-- /.row -->
-      <!-- Main row -->
-      <div class="row">
-        
-      </div>
-      <!-- /.row (main row) -->
-
-    </section>
+	</section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+ </div>
+ <!-- /.content-wrapper -->
 <?php
 include '../../inc/footer.php';
 ?>

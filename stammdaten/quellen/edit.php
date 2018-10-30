@@ -5,27 +5,6 @@ include '../../api/quellen.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
-<style type="text/css">
-	.ui-datepicker-calendar {
-	   display: none;
-	}
-	.ui-datepicker-month {
-	   display: none;
-	}
-	.ui-datepicker-prev{
-	   display: none;
-	}
-	.ui-datepicker-next{
-	   display: none;
-	}
-	.ui-datepicker .ui-datepicker-buttonpane button {
-		width: 100%;
-		float: none;
-	}
-	.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
-		display: none;
-	}
-</style>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -51,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="content-form" id="addQuelleForm" data-action="update" data-source="quelle" data-source_id_value="<?php echo $quellen['quelle_id'];?>" data-source_id_name="quelle" autocomplete="off" enctype="multipart/form-data">
+		            <form class="content-form" id="addQuelleForm" data-action="update" data-source="quelle" data-source_id_value="<?php echo $quellen['quelle_id'];?>" data-source_id_name="quelle" autocomplete="off" enctype="multipart/form-data">
 		            	<input type="hidden" name="quelle_id" value="<?php echo $quellen['quelle_id'];?>">
 			            <div class="box-body">
 			              	<div class="row">
@@ -92,7 +71,7 @@ include '../../inc/sidebar.php';
 									</div>
 									<div class="form-group">
 										<label for="jahr">Jahr*</label><span class="error-text"></span>
-										<input type="text" class="form-control pull-right" id="jahr" name="jahr" value="<?php echo $quellen['jahr'];?>">
+										<input type="text" class="form-control" id="jahr" name="jahr" value="<?php echo $quellen['jahr'];?>">
 									</div>
 									<div class="form-group">
 										<label for="band">Band</label>
@@ -129,7 +108,7 @@ include '../../inc/sidebar.php';
 									</div>
 									<div class="form-group">
 										<label>Datei ( nur PDF, DOC und DOCX Dateien sind erlaubt. )</label>
-										<input name="file_url" data-max-file-size="2M" data-default-file="<?php echo $quellen['file_url'];?>" value="<?php echo $quellen['file_url'];?>" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-height="100" />
+										<input name="file_url" data-max-file-size="2M" data-default-file="<?php echo $quellen['file_url'];?>" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-height="100" />
 									</div>
 								</div>
 							</div>

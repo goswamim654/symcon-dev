@@ -5,34 +5,6 @@ if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 3) && ($_SESSION[
 	header('Location: '.$absoluteUrl);
 }
 include '../../api/mainCall.php';
-if(isset($_POST['delete_array_id']) && ($_POST['delete_array_id'] != null) && ($_POST['delete_array_id'] != '')) {
-	$data_array =  array("id" => $_POST['delete_array_id']);
-	$get_data = callAPI('POST', $baseApiURL.'user/delete', json_encode($data_array));
-	$response = json_decode($get_data, true);
-	$status = $response['status'];
-	switch ($status) {
-		case 0:
-			header('Location: '.$absoluteUrl.'unauthorised.php');
-			break;
-		case 2:
-			$_SESSION['success'] = 'Benutzer wurde erfolgreich gelöscht';
-			break;	
-		case 3:
-			$error = $response['message'];
-			break;
-		case 4:
-			$error = $response['message'];
-			break;
-		case 5:
-			$error = $response['message'];
-			break;
-		case 6:
-			$error = $response['message'];
-			break;
-		default:
-			break;
-	}
-}
 $benutzer = '';
 $get_data = '';
 $response = '';
@@ -81,16 +53,16 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <div class="box-body">
-			            <form id="listViewForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+			            <form id="listViewForm" data-action="delete" data-source="user" data-source_id_name="id">
 		            		<div class="table-responsive">
 					            <table id="dataTable" class="table-loader table table-bordered table-striped display table-hover custom-table">
 					                <thead>
 						                <tr>
 						                	<th class="rowlink-skip dt-body-center no-sort"><button class="btn btn-danger btn-sm delete-row"  title="Löschen"><i class="fa fa-trash"></i></button></th>
-											 <th>Nuchname</th>
-											<th>Vorname</th>
-											<th>Organisation</th>
+											 <th>Name</th>
+											<th>Email</th>
 											<th>Benutzername</th>
+											<th>Benutzertyp</th>
 											<th class="no-sort">Aktionen</th>
 						                </tr>
 					                </thead>
@@ -103,10 +75,10 @@ include '../../inc/sidebar.php';
 							                	<td class="rowlink-skip"><?php echo $user['id']; ?></td>
 												<td><a href="#rowlinkModal" 
 														data-id="<?php echo $user['id']; ?>" data-type="benutzer" data-title="Benutzer" 
-														data-toggle="modal"><?php echo $user['last_name'];  ?></a></td>
-												<td><?php echo $user['first_name']; ?></td>
-												<td><?php echo $user['company']; ?></td>
+														data-toggle="modal"><?php echo $user['first_name']. ' ' .$user['last_name'];  ?></a></td>
+												<td><?php echo $user['email']; ?></td>
 												<td><?php echo $user['username']; ?></td>
+												<td><?php if($user['user_type'] == 2) echo 'Bearbeiter'; else echo 'Gast' ; ?></td>
 												<td class="rowlink-skip">
 													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>einstellungen/benutzer/edit.php?benutzer_id=<?php echo $user['id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>

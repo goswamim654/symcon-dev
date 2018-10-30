@@ -27,7 +27,9 @@ $(document).ready(function(e){
     		{
     			url = baseApiURL+sourceType+'/'+actionType+'?'+sourceIdName+'_id='+sourceIdValue;
     		}
-    	} else {
+    	} 
+    	else 
+    	{
     		url = baseApiURL+sourceType+'/'+actionType;
     	}
     	

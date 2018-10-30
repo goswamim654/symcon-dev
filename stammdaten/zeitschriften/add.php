@@ -6,27 +6,6 @@ include '../../api/zeitschriften.php';
 include '../../inc/header.php';
 include '../../inc/sidebar.php';
 ?>
-<style type="text/css">
-	.ui-datepicker-calendar {
-	   display: none;
-	}
-	.ui-datepicker-month {
-	   display: none;
-	}
-	.ui-datepicker-prev{
-	   display: none;
-	}
-	.ui-datepicker-next{
-	   display: none;
-	}
-	.ui-datepicker .ui-datepicker-buttonpane button {
-		width: 100%;
-		float: none;
-	}
-	.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
-		display: none;
-	}
-</style>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -52,7 +31,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" class="content-form" id="addZeitschriftForm" autocomplete="off" enctype="multipart/form-data" data-action="add" data-source="zeitschrift">
+		            <form class="content-form" id="addZeitschriftForm" autocomplete="off" enctype="multipart/form-data" data-action="add" data-source="zeitschrift">
 		              	<div class="box-body">
 			              	<div class="row">
 								<div class="col-md-6">
@@ -75,7 +54,7 @@ include '../../inc/sidebar.php';
 									</div>
 									<div class="form-group">
 										<label for="jahr">Jahr*</label><span class="error-text"></span>
-										<input type="text" class="form-control pull-right" id="jahr" name="jahr" value="<?php if(isset($jahr)) echo $jahr;?>">
+										<input type="text" class="form-control" id="jahr" name="jahr" value="<?php if(isset($jahr)) echo $jahr;?>">
 									</div>
 									<div class="form-group">
 										<label for="band">Band</label>

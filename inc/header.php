@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Cache-control" content="public">
   <title>Symcom | <?php echo $admin; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/jasny-bootstrap/jasny-bootstrap.min.css">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/bootstrap/dist/css/bootstrap.min.css">
   <!-- dropify -->
@@ -17,8 +16,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>assets/css/skins/_all-skins.min.css">
-  <!-- Date Picker -->
-  <!-- <link rel="stylesheet" href="<?php //echo $absoluteUrl;?>plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> -->
+  <!-- Jquery UI-->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/jquery-ui/themes/base/jquery-ui.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/datatables.net-bs/css/dataTables.bootstrap.min.css">
@@ -28,9 +26,6 @@
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>plugins/select2/dist/css/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>assets/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-
   <!-- custom css -->
   <link rel="stylesheet" href="<?php echo $absoluteUrl;?>assets/css/custom.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -39,14 +34,12 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  <?php if(preg_match("/quellen/", $actual_link) || preg_match("/zeitschriften/", $actual_link)) {
+  ?>
+  <link rel="stylesheet" href="<?php echo $absoluteUrl;?>assets/css/custom-datepicker.css">
+  <?php } ?>
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <style type="text/css">
-    .swal2-popup{
-      font-size: unset;
-    }
-  </style>
 </head>
 <body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
@@ -57,7 +50,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b>C</span>
       <!-- logo for regular state and mobile devices -->
-      <div class="logo-lg"><img class="img-responsive" src="<?php echo $absoluteUrl;?>assets/img/logo-big.png"></div>
+      <div class="logo-lg"><img class="img-responsive" src="<?php echo $absoluteUrl;?>assets/img/logo-big.png" alt="logo"></div>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top cd-main-nav-wrapper">
@@ -65,19 +58,6 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-      <!-- <div class="navbar-left-search">
-        <ul class="nav navbar-nav">
-          <li class="search-box">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search here">
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-success btn-flat"><i class="fa fa-search"></i></button>
-                  </span>
-            </div>
-          </li>
-          <li class="adv-search-link"><a href="#">Erweiterte Suche</a></li>
-        </ul>
-      </div> -->
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group search">

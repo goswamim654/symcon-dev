@@ -30,7 +30,7 @@ include '../../inc/sidebar.php';
 		            </div>
 		            <!-- /.box-header -->
 		            <!-- form start -->
-		            <form role="form" id="addAutorenForm" class="content-form" data-action="update" data-source="autor" data-source_id_value="<?php echo $autoren['autor_id'];?>" data-source_id_name="autor" autocomplete="off">
+		            <form id="addAutorenForm" class="content-form" data-action="update" data-source="autor" data-source_id_value="<?php echo $autoren['autor_id'];?>" data-source_id_name="autor" autocomplete="off">
 		              <div class="box-body">
 		              	<div class="row">
 							<div class="col-md-6">

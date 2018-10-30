@@ -32,7 +32,7 @@ include 'inc/sidebar.php';
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" id="changePassword" class="content-form" data-source="user" data-action="change-password" autocomplete="off">
+                    <form id="changePassword" class="content-form" data-source="user" data-action="change-password" autocomplete="off">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">

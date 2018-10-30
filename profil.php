@@ -31,7 +31,7 @@ include 'inc/sidebar.php';
                    </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" id="changeEmail" class="content-form" data-source="user" data-action="update-email">
+                    <form id="changeEmail" class="content-form" data-source="user" data-action="update-email">
                         <input type="hidden" name="">
                         <div class="box-body">
                             <div class="row">
