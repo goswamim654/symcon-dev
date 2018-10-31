@@ -14,8 +14,8 @@
       </form>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="mobile-show"><a href="#search" class="cd-search-trigger">Erweiterte Suche</a></li>
-        <li class="treeview">
-          <a href="#">
+        <li class="<?php if(preg_match("/quelleimport/", $actual_link)) echo 'active'; ?>">
+          <a href="<?php echo $absoluteUrl;?>quelleimport">
             <i class="fa fa-sign-in"></i>
             <span>Quellenimport</span>
           </a>

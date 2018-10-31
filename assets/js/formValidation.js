@@ -314,4 +314,32 @@ $(document).ready(function () {
         }
     });
 
+    var addQuelleimportForm = $("#addQuelleimportForm").validate({
+        errorPlacement: function(error, element) {
+        error.appendTo(element.prev("span"));
+        },
+        rules: {
+            arznei_id : {
+                required: true
+            },
+            quelle_id : {
+                required: true
+            },
+            symptomtext: {
+                required: true
+            }
+        },     
+        messages: {
+            arznei_id : {
+                required: "Arznei ist eine Pflichtangabe"
+            },
+            quelle_id : {
+                required: "Quelle ist eine Pflichtangabe"
+            },
+            symptomtext: {
+               required: "Symptomtext ist eine Pflichtangabe"
+            }
+        }
+    });
+
 });

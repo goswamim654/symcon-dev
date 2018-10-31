@@ -7,7 +7,8 @@
 	color: #2276d2;
 }
 .text-sperrschrift {
-	letter-spacing: 0.3em;
+	/*letter-spacing: 0.3em;*/
+	letter-spacing: 3pt;
 }
 .text-red {
 	color: #f00;

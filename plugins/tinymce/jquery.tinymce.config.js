@@ -32,6 +32,10 @@ $(function() {
 
 		toolbar : "undo redo | styleselect | bold italic AddSpace | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image responsivefilemanager",
 		
+		paste_word_valid_elements: "b,strong,i,em,h1,h2,u,p,ol,ul,li,a[href],span,color,font-size,font-color,font-family,mark,table,tr,td",
+    	
+    	paste_retain_style_properties: "letter-spacing font-weight",
+
 		content_css : [ "../../plugins/tinymce/css/text.css" ],
 
 		formats: {

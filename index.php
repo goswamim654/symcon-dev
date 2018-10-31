@@ -7,7 +7,6 @@ if(!isset($_SESSION['access_token'])) {
 include 'inc/header.php';
 include 'inc/sidebar.php';
 ?>
- 
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -21,9 +20,9 @@ include 'inc/sidebar.php';
     <!-- Main content -->
     <section class="content">
       <!-- Main row -->
-      <div class="row home-bg">
-        
-      </div>
+        <div class="row home-bg">
+
+        </div>
       <!-- /.row (main row) -->
 
     </section>
