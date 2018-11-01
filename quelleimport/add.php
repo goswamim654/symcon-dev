@@ -24,7 +24,7 @@ include '../inc/sidebar.php';
       <!-- Small boxes (Stat box) -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="box">
+				<div class="box box-success">
 		            <div class="box-header with-border">
 		            	<h3 class="box-title">Hinweis</h3>
 						<div class="box-tools pull-right">
@@ -69,8 +69,8 @@ include '../inc/sidebar.php';
 		              	<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="arznei">Arznei*</label><span class="error-text"></span>
-									<select id="arznei" class="form-control" name="arznei_id">
+									<label for="arznei_id">Arznei*</label><span class="error-text"></span>
+									<select id="arznei_id" class="form-control" name="arznei_id">
 										<option value="">Arznei wählen</option>
 								        <?php foreach ($arzneiSelectBox as $key => $arznei) { ?>
 										<option value="<?php echo $arznei['arznei_id'];?>"><?php echo $arznei['titel'];  ?></option>
@@ -78,10 +78,10 @@ include '../inc/sidebar.php';
 								    </select>
 								</div>
 								<div class="form-group">
-									<label for="quelle">Quelle*</label><span class="error-text"></span>
-									<select id="quelle" class="form-control" name="quelle_id">
+									<label for="quelle_id">Quelle*</label><span class="error-text"></span>
+									<select id="quelle_id" class="form-control quelle_id" name="quelle_id">
 										<option value="">Quelle wählen</option>
-								        <?php foreach ($quellenSelectBox as $key => $quelle) { ?>
+										<?php foreach ($quellenSelectBox as $key => $quelle) { ?>
 											<option value="<?php echo $quelle['quelle_id'];?>"><?php 
 												$quellen_value = null;
 												$quellen_value = $quellen_value.$quelle['code'];
@@ -95,10 +95,17 @@ include '../inc/sidebar.php';
 								</div>
 								<div class="form-group">
 									<label for="arznei">Quelle für 1:1 Zuordnung</label>
-									<select id="arznei" class="form-control" name="arznei_id">
+									<select id="arznei" class="form-control quelle_id" name="arznei_id">
 										<option value="">Quelle für 1:1 Zuordnung wählen</option>
-								        <?php foreach ($arzneiSelectBox as $key => $arznei) { ?>
-										<option value="<?php echo $arznei['arznei_id'];?>"><?php echo $arznei['titel'];  ?></option>
+								        <?php foreach ($quellenSelectBox as $key => $quelle) { ?>
+											<option value="<?php echo $quelle['quelle_id'];?>"><?php 
+												$quellen_value = null;
+												$quellen_value = $quellen_value.$quelle['code'];
+												if(!empty($quelle['jahr'])) $quellen_value .= ' '.$quelle['jahr'];
+												if(!empty($quelle['band'])) $quellen_value .= ', Band: '.$quelle['band'];
+												if(!empty($quelle['nummer'])) $quellen_value .= ', Nr.: '. $quelle['nummer'];
+												if(!empty($quelle['auflage'])) $quellen_value .= ', Auflage: '. $quelle['auflage'];
+												 echo $quellen_value; ?></option>
 										<?php } ?>
 								    </select>
 								</div>
@@ -147,3 +154,116 @@ include '../inc/sidebar.php';
 <?php
 include '../inc/footer.php';
 ?>
+<script type="text/javascript">
+	$('#arznei_id').change(function() {
+		var quelleSelectbox = $('.quelle_id');
+		var arznei_id = $(this).val();
+		if(arznei_id != '' ) 
+		{
+			var url = baseApiURL+'arznei/view?arznei_id='+arznei_id;
+			var request = $.ajax({
+				            type: 'GET',
+				            url: url,
+				            headers: {
+						       "Authorization" : "Bearer "+token
+						    },
+				            //data: new FormData(this),
+				            contentType: false,
+				            cache: false,
+				            processData:false,
+				            beforeSend:function() {
+								//$.blockUI({ message: '<h4><i class="fa fa-refresh fa-spin"></i> Einen Augenblick...</h4>' }); 
+
+							},
+							complete:function(jqXHR, status){
+								//$.unblockUI();
+							}
+				        });
+				        request.done(function(response) {
+				        	var responseData = null;
+							try {
+								responseData = JSON.parse(response); 
+							} catch (e) {
+								responseData = response;
+							}
+							var status = responseData.status;
+							switch (status) { 
+								case 1: 
+									console.log(responseData.message);
+									break;
+								case 2:
+									//console.log(responseData.content.data);
+									quelleSelectbox.each(function() {
+										$(this).children('option:not(:first)').remove();
+									})
+									var options = '';
+									for(let key in responseData.content.data.quelle) { 
+										options += `<option value="${responseData.content.data.quelle[key]['quelle_id']}">${responseData.content.data.quelle[key]['titel']}</option>`;
+									}
+									if(options != '') quelleSelectbox.removeAttr('disabled'); else quelleSelectbox.attr('disabled', 'disabled');
+									quelleSelectbox.append(options);
+									break;
+								case 3:
+									var errorMessage = '';
+									for(let key in responseData.content) { 
+										errorMessage += `<p>${responseData.content[key]}</p>`;
+									}
+									swal({
+										type: 'error',
+										title: 'Hoppla...',
+										html: errorMessage,
+									}); 
+									console.log(errorMessage);
+									console.log(responseData.message);
+									break;
+								case 4: 
+									var errorMessage = responseData.message;
+									swal({
+										type: 'error',
+										title: 'Hoppla...',
+										html: errorMessage,
+									});
+									console.log(responseData.message);
+									break;
+								case 5: 
+									var errorMessage = responseData.message;
+									swal({
+										type: 'error',
+										title: 'Hoppla...',
+										html: errorMessage,
+									});
+									console.log(responseData.message);
+									break;
+								case 6: 
+									var errorMessage = responseData.message;
+									swal({
+										type: 'error',
+										title: 'Hoppla...',
+										html: errorMessage,
+									});
+									console.log(responseData.message);
+									break;
+								default:
+									console.log('Unexpected errors');
+							}
+						});
+
+						request.fail(function(jqXHR, textStatus) {
+							var errorData = null;
+							try {
+							  errorData = JSON.parse(jqXHR); 
+							} catch (e) {
+							  errorData = jqXHR;
+							}
+							swal({
+								type: 'error',
+								title: 'Hoppla...',
+								html: errorData,
+							});
+							console.log("Error : "+errorData);
+						});
+		} else {
+			quelleSelectbox.attr('disabled', 'disabled');
+		}
+	})
+</script>

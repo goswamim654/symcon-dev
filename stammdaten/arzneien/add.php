@@ -64,13 +64,13 @@ include '../../inc/sidebar.php';
 									<textarea id="unklarheiten" name="unklarheiten" class="texteditor" aria-hidden="true"></textarea>
 								</div>
 								<div class="form-group">
-										<label for="autor_id">Autor / Herausgeber</label>
-										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
-									        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
-											<option value="<?php echo $autor['autor_id'];?>"><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
-											<?php } ?>
-									    </select>
-									</div>
+									<label for="autor_id">Autor / Herausgeber</label>
+									<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
+								        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
+										<option value="<?php echo $autor['autor_id'];?>"><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
+										<?php } ?>
+								    </select>
+								</div>
 							</div>
 						</div>
 		              </div>

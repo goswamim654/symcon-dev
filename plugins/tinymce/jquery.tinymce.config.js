@@ -36,7 +36,7 @@ $(function() {
     	
     	paste_retain_style_properties: "letter-spacing font-weight",
 
-		content_css : [ "../../plugins/tinymce/css/text.css" ],
+		content_css : [ absoluteUrl+"plugins/tinymce/css/text.css" ],
 
 		formats: {
 	       custom_format: {inline: 'span', attributes: {class: 'text-sperrschrift'}}
