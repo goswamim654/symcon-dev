@@ -16,12 +16,13 @@ if(isset($_GET['autor_id'])) {
 		case 2:
 			$autoren = $response['content']['data'];
 			$data_array =  array(
-				"Vorname"      => $autoren['vorname'],
-				"Nachname"  => $autoren['nachname'],
-				"Suchname"     => $autoren['suchname'],
-				"Geburtsjahr/ datum"   => $autoren['geburtsdatum'],
-				"Todesjahr/ datum"  => $autoren['sterbedatum'],
-				"kommentar" => $autoren['kommentar']
+				"Titel"					=> $autoren['titel'],
+				"Vorname"      			=> $autoren['vorname'],
+				"Nachname"  			=> $autoren['nachname'],
+				"Suchname"     			=> $autoren['suchname'],
+				"Geburtsjahr/ datum" 	=> $autoren['geburtsdatum'],
+				"Todesjahr/ datum"   	=> $autoren['sterbedatum'],
+				"kommentar" 			=> $autoren['kommentar']
 			);
 			echo json_encode($data_array);
 			break;

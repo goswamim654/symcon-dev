@@ -10,12 +10,12 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Neu Verlage
+        Neuer Verlag
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
         <li class=""> <a href="<?php echo $absoluteUrl;?>stammdaten/verlage/">Verlage</a></li>
-        <li class="active"> Neu Verlage</li>
+        <li class="active"> Neuer Verlag</li>
       </ol>
     </section>
 

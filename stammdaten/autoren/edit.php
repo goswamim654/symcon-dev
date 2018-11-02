@@ -10,12 +10,12 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Ändern Autor/ Herausgeber
+        Ändern Autor
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
         <li class=""> <a href="<?php echo $absoluteUrl;?>stammdaten/autoren/">Autoren</a></li>
-        <li class="active"> Ändern Autor/ Herausgeber</li>
+        <li class="active"> Ändern Autor</li>
       </ol>
     </section>
 
@@ -75,7 +75,7 @@ include '../../inc/sidebar.php';
 		              <!-- /.box-body -->
 
 		              <div class="box-footer">
-		              	<input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
+		              	<input class="btn btn-success" type="submit" value="Änderungen speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
 						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/autoren/" id="cancelBtn">Abbrechen</a>
 						<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/" class="pull-right btn btn-primary" style="background: #000;">Zurück</a>
 		              </div>

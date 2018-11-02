@@ -41,7 +41,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="<?php if(preg_match("/quellen/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/quellen"><i class="fa fa-circle-o"></i> Quellen</a></li>
+            <li class="<?php if(preg_match("/quellen/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/quellen"><i class="fa fa-circle-o"></i> Bücher</a></li>
             <li class="<?php if(preg_match("/zeitschriften/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/zeitschriften"><i class="fa fa-circle-o"></i> Zeitschriften</a></li>
             <li class="<?php if(preg_match("/arzneien/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/arzneien"><i class="fa fa-circle-o"></i> Arzneien</a></li>
             <li class="<?php if(preg_match("/autoren/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/autoren"><i class="fa fa-circle-o"></i> Autoren</a></li>

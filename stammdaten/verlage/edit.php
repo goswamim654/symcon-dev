@@ -94,7 +94,7 @@ include '../../inc/sidebar.php';
 		              <!-- /.box-body -->
 
 		              <div class="box-footer">
-		                <input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
+		                <input class="btn btn-success" type="submit" value="Änderungen speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
 						<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/verlage/" id="cancelBtn">Abbrechen</a>
 						<a href="<?php echo $absoluteUrl;?>stammdaten/verlage/" class="pull-right btn btn-primary" style="background: #000;">Zurück</a>
 		              </div>

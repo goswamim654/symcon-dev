@@ -23,7 +23,7 @@ $(document).ready(function () {
 	  		changeMonth: false,
 	        changeYear: true,
 	        showButtonPanel: true,
-	        yearRange: '1900:2099',
+	        yearRange: '1700:2099',
 	        dateFormat: 'yy',
 	        onClose: function(dateText, inst) { 
 	            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();

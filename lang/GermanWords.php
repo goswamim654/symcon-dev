@@ -1,7 +1,7 @@
 <?php
 
 $admin = 'Administrator';
-$home = 'Zuhause';
+$home = 'Home';
 $main_navigation = 'Hauptnavigation';
 $version = 'Ausführung';
 $dashboard = 'Instrumententafel';

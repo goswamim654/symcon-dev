@@ -47,7 +47,7 @@ include '../../inc/sidebar.php';
 					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Autor/ Herausgeber</a>
+							<a href="<?php echo $absoluteUrl;?>stammdaten/autoren/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neuer Autor</a>
 						</h3>
 		            </div>
 		            <?php  } ?>
@@ -81,7 +81,7 @@ include '../../inc/sidebar.php';
 							                	<td class="rowlink-skip"><?php echo $autor['autor_id']; ?></td>
 							                	<?php  } ?>
 												<td><a href="#rowlinkModal" 
-														data-id="<?php echo $autor['autor_id']; ?>" data-type="autoren" data-title="Anzeigen Autor/ Herausgeber" 
+														data-id="<?php echo $autor['autor_id']; ?>" data-type="autoren" data-title="Anzeige Autor" 
 														data-toggle="modal"><?php if( $autor['suchname'] ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></a></td>
 												<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 												<?php if($_SESSION['user_type'] == 1 ) { ?>

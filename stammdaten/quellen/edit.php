@@ -10,12 +10,12 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Ändern Quelle
+        Ändern Buch
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
-        <li class=""><a href="<?php echo $absoluteUrl;?>stammdaten/quellen">Quellen</a></li>
-        <li class="active"> Ändern Quelle</li>
+        <li class=""><a href="<?php echo $absoluteUrl;?>stammdaten/quellen">Bücher</a></li>
+        <li class="active"> Ändern Buch</li>
       </ol>
     </section>
 
@@ -42,6 +42,16 @@ include '../../inc/sidebar.php';
 									<div class="form-group">
 										<label for="titel">Titel*</label><span class="error-text"></span>
 										<input type="text" class="form-control" value="<?php echo $quellen['titel']; ?>" name="titel" id="titel">
+									</div>
+									<div class="form-group">
+										<label for="autor_id">Autor / Herausgeber</label>
+										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
+									        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
+											<option value="<?php echo $autor['autor_id'];?>" <?php foreach ($autor_id_selected_values as $autor_id_selected_value) {
+												if($autor_id_selected_value == $autor['autor_id']) echo 'selected';
+											}?>><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
+											<?php } ?>
+									    </select>
 									</div>
 									<div class="form-group">
 										<label for="sprache">Sprache*</label><span class="error-text"></span>
@@ -73,12 +83,12 @@ include '../../inc/sidebar.php';
 										<label for="jahr">Jahr*</label><span class="error-text"></span>
 										<input type="text" class="form-control" id="jahr" name="jahr" value="<?php echo $quellen['jahr'];?>">
 									</div>
+								</div>
+								<div class="col-md-6">
 									<div class="form-group">
 										<label for="band">Band</label>
 										<input type="text" class="form-control" id="band" name="band" value="<?php echo $quellen['band'];?>">
 									</div>
-								</div>
-								<div class="col-md-6">
 									<div class="form-group">
 										<label for="nummer">Nummer</label>
 										<input type="text" class="form-control" id="nummer" name="nummer" value="<?php echo $quellen['nummer'];?>">
@@ -97,18 +107,8 @@ include '../../inc/sidebar.php';
 										</select>
 									</div>
 									<div class="form-group">
-										<label for="autor_id">Autor / Herausgeber</label>
-										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
-									        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
-											<option value="<?php echo $autor['autor_id'];?>" <?php foreach ($autor_id_selected_values as $autor_id_selected_value) {
-												if($autor_id_selected_value == $autor['autor_id']) echo 'selected';
-											}?>><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
-											<?php } ?>
-									    </select>
-									</div>
-									<div class="form-group">
-										<label>Datei ( nur PDF, DOC und DOCX Dateien sind erlaubt. )</label>
-										<input name="file_url" data-max-file-size="2M" data-default-file="<?php echo $quellen['file_url'];?>" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-height="100" />
+										<label>Datei ( nur PDF, DOC und DOCX Dateien sind erlaubt. Maximale Dateigröße 30MB )</label>
+										<input name="file_url" data-max-file-size="30M" data-default-file="<?php echo $quellen['file_url'];?>" data-allowed-file-extensions="pdf doc docx" type="file" class="dropify" data-height="100" />
 									</div>
 								</div>
 							</div>
@@ -116,7 +116,7 @@ include '../../inc/sidebar.php';
 			              <!-- /.box-body -->
 
 			            <div class="box-footer">
-			                <input class="btn btn-success" type="submit" value="Änderungen Speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
+			                <input class="btn btn-success" type="submit" value="Änderungen speichern" name="ÄnderungenSpeichern" id="saveFormBtn">
 							<a class="btn btn-default" href="<?php echo $absoluteUrl;?>stammdaten/quellen/" id="cancelBtn">Abbrechen</a>
 							<a href="<?php echo $absoluteUrl;?>stammdaten/quellen/" class="pull-right btn btn-primary" style="background: #000;">Zurück</a>
 			            </div>

@@ -10,12 +10,12 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Neu Herkunft
+        Neue Herkunft
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
         <li class=""> <a href="<?php echo $absoluteUrl;?>stammdaten/herkunft/">Herkunft</a></li>
-        <li class="active"> Neu Herkunft</li>
+        <li class="active"> Neue Herkunft</li>
       </ol>
     </section>
 

@@ -10,12 +10,12 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Neu Autor/ Herausgeber
+        Neuer Autor
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
         <li class=""> <a href="<?php echo $absoluteUrl;?>stammdaten/autoren/">Autoren</a></li>
-        <li class="active"> Neu Autor/ Herausgeber</li>
+        <li class="active"> Neuer Autor</li>
       </ol>
     </section>
 

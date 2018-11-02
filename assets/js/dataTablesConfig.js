@@ -21,6 +21,14 @@ $(document).ready(function () {
 		 }
 		}]
 	});
+	// table
+	//     .order( [ 3, 'asc' ] )
+	//     .draw();
+
+
+	// table.on('search.dt', function() {
+	// 	 table.rows( { filter : 'applied'} ).order([ 3, 'asc' ]).draw();
+	// }); 
 
 	$('.reset-datatable-state a').click( function() {
 		table.state.clear();
@@ -58,13 +66,13 @@ $(document).ready(function () {
 		} else {
 			swal({
 			  title: 'Bist du sicher?',
-			  text: "Sie können dies nicht rückgängig machen!",
+			  text: "Du kannst diesen Vorgang nicht rückgängig machen!",
 			  type: 'warning',
 			  showCancelButton: true,
 			  confirmButtonColor: '#3085d6',
 			  cancelButtonColor: '#d33',
 			  confirmButtonText: 'Ja, lösche es!',
-			  cancelButtonText: 'Stornieren',
+			  cancelButtonText: 'Nein, abbrechen!',
 			}).then((result) => {
 			  	if (result.value) {
 			  		var request = $.ajax({
@@ -186,4 +194,5 @@ $(document).ready(function () {
 		}
 		
 	});
+	
 });

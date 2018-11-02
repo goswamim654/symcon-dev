@@ -10,12 +10,12 @@ include '../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Neu Quelleimport
+        Neuer Quellenimport
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
-        <li class=""> <a href="<?php echo $absoluteUrl;?>quelleimport">Quelleimport</a></li>
-        <li class="active"> Neu Quelleimport</li>
+        <li class=""> <a href="<?php echo $absoluteUrl;?>quelleimport">Quellenimport</a></li>
+        <li class="active"> Neuer Quellenimport</li>
       </ol>
     </section>
 

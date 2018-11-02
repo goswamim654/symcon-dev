@@ -47,7 +47,7 @@ include '../inc/sidebar.php';
 					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 		              <h3 class="box-title">
-		              	<a href="<?php echo $absoluteUrl;?>quelleimport/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Quelleimport</a>
+		              	<a href="<?php echo $absoluteUrl;?>quelleimport/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neuer Quellenimport</a>
 		              </h3>
 		            </div>
 		            <?php  } ?>

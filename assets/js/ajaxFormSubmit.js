@@ -13,6 +13,10 @@ $(document).ready(function(e){
     		{
     			sourceType = 'Benutzer';
     		}
+    		if(sourceType == 'pruefer') 
+    		{
+    			sourceType = 'Prüfer';
+    		}
     	} 
     	else if(actionType == 'update') 
     	{
@@ -22,6 +26,10 @@ $(document).ready(function(e){
     		{
     			url = baseApiURL+sourceType+'/'+actionType+'?'+sourceIdName+'='+sourceIdValue;
     			sourceType = 'Benutzer';
+    		}
+    		else if(sourceType == 'pruefer') 
+    		{
+    			sourceType = 'Prüfer';
     		} 
     		else 
     		{

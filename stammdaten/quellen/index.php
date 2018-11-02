@@ -30,11 +30,11 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quellen
+        Bücher
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
-        <li class="active">Quellen</li>
+        <li class="active">Bücher</li>
       </ol>
     </section>
 
@@ -47,7 +47,7 @@ include '../../inc/sidebar.php';
 		            <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>stammdaten/quellen/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Quelle</a>
+							<a href="<?php echo $absoluteUrl;?>stammdaten/quellen/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neues Buch</a>
 						</h3>
 		            </div>
 		            <?php  } ?>

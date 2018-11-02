@@ -10,12 +10,12 @@ include '../../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Neu Quelle
+        Neues Buch
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
-        <li class=""><a href="<?php echo $absoluteUrl;?>stammdaten/quellen">Quellen</a></li>
-        <li class="active"> Neu Quelle</li>
+        <li class=""><a href="<?php echo $absoluteUrl;?>stammdaten/quellen">Bücher</a></li>
+        <li class="active"> Neues Buch</li>
       </ol>
     </section>
 
@@ -41,6 +41,14 @@ include '../../inc/sidebar.php';
 									<div class="form-group">
 										<label for="titel">Titel*</label><span class="error-text"></span>
 										<input type="text" class="form-control" name="titel" id="titel">
+									</div>
+									<div class="form-group">
+										<label for="autor_id">Autor / Herausgeber</label>
+										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
+									        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
+											<option value="<?php echo $autor['autor_id'];?>"><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
+											<?php } ?>
+									    </select>
 									</div>
 									<div class="form-group">
 										<label for="sprache">Sprache*</label><span class="error-text"></span>
@@ -72,12 +80,12 @@ include '../../inc/sidebar.php';
 										<label for="jahr">Jahr*</label><span class="error-text"></span>
 										<input type="text" class="form-control" id="jahr" name="jahr">
 									</div>
+								</div>
+								<div class="col-md-6">
 									<div class="form-group">
 										<label for="band">Band</label>
 										<input type="text" class="form-control" id="band" name="band">
 									</div>
-								</div>
-								<div class="col-md-6">
 									<div class="form-group">
 										<label for="nummer">Nummer</label>
 										<input type="text" class="form-control" id="nummer" name="nummer">
@@ -96,16 +104,8 @@ include '../../inc/sidebar.php';
 										</select>
 									</div>
 									<div class="form-group">
-										<label for="autor_id">Autor / Herausgeber</label>
-										<select id="autor_id" class="select2 form-control" multiple="multiple" data-placeholder="Select Autor / Herausgeber" name="autor_id[]">
-									        <?php foreach ($autorenSelectBox as $key => $autor) { ?>
-											<option value="<?php echo $autor['autor_id'];?>"><?php if(!empty($autor['suchname']) ) echo $autor['suchname']; else echo $autor['vorname'].' '.$autor['nachname'];  ?></option>
-											<?php } ?>
-									    </select>
-									</div>
-									<div class="form-group">
-										<label>Datei ( nur PDF, DOC und DOCX Dateien sind erlaubt. )</label>
-										<input type="file" data-allowed-file-extensions="pdf doc docx" name="file_url" class="dropify" data-height="100"/>
+										<label>Datei ( nur PDF, DOC und DOCX Dateien sind erlaubt. Maximale Dateigröße 30MB )</label>
+										<input type="file" data-allowed-file-extensions="pdf doc docx" data-max-file-size="30M" name="file_url" class="dropify" data-height="100"/>
 									</div>
 								</div>
 							</div>
