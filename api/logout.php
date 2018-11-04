@@ -1,8 +1,12 @@
 <?php
 include '../config/route.php';
-if(isset($_SESSION['access_token'])) {
-    header('Location: '.$absoluteUrl);
+if(isset($_SESSION['current_page'])) {
+	$current_page = $_SESSION['current_page'];
 }
 session_destroy();
-header('Location: '.$absoluteUrl.'login.php');
+session_start();
+if(isset($current_page)) {
+	$_SESSION['current_page'] = $current_page; 
+}
+header('Location: '.$absoluteUrl.'login');
 ?>

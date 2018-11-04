@@ -13,7 +13,7 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		header('Location: '.$absoluteUrl.'unauthorised.php');
+		header('Location: '.$absoluteUrl.'unauthorised');
 		break;
 	case 2:
 		$benutzer = $response['content']['data'];
@@ -48,7 +48,7 @@ include '../../inc/sidebar.php';
 				<div class="box box-success">
 		            <div class="box-header with-border">
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>einstellungen/benutzer/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Benutzer</a>
+							<a href="<?php echo $absoluteUrl;?>einstellungen/benutzer/add" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neu Benutzer</a>
 						</h3>
 		            </div>
 		            <!-- /.box-header -->
@@ -80,7 +80,7 @@ include '../../inc/sidebar.php';
 												<td><?php echo $user['username']; ?></td>
 												<td><?php if($user['user_type'] == 2) echo 'Bearbeiter'; else echo 'Gast' ; ?></td>
 												<td class="rowlink-skip">
-													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>einstellungen/benutzer/edit.php?benutzer_id=<?php echo $user['id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>einstellungen/benutzer/edit?benutzer_id=<?php echo $user['id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>
 							                </tr>
 							            <?php } 

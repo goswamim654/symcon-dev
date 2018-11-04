@@ -63,7 +63,7 @@ include 'api/login.php';
                                     </label>
                                 </div>
                             </div>
-                            <div class="sc-eAudoH fbHQWt col-xs-6"><a href="<?php echo $absoluteUrl;?>vergessen-passwort.php">Ihr Kennwort vergessen?</a></div>
+                            <div class="sc-eAudoH fbHQWt col-xs-6"><a href="<?php echo $absoluteUrl;?>vergessen-passwort">Ihr Kennwort vergessen?</a></div>
                         </div>
                     </div>
                 </div>

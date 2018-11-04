@@ -1,6 +1,5 @@
 <?php
 include 'unauthenticated-main-call.php';
-
 $get_data = '';
 $response = [];
 
@@ -21,7 +20,13 @@ if(isset($_POST['username']) && isset($_POST['password']))
 			$_SESSION['email'] = $response['content']['email'];
 			$_SESSION['user_type'] = $response['content']['user_type'];
 			$_SESSION['last_login_at'] = $response['content']['last_login_at'];
-			header('Location: '.$absoluteUrl);
+			//echo $_SESSION['current_page'];
+			//die();
+			if(isset($_SESSION['current_page'])) {
+				header('Location: '.$_SESSION['current_page']);
+			} else {
+				header('Location: '.$absoluteUrl);
+			}
 			break;	
 		case 3:
 			$error = $response['message'];

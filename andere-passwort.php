@@ -2,7 +2,7 @@
 include 'lang/GermanWords.php';
 include 'config/route.php';
 if(!isset($_SESSION['access_token'])) {
-    header('Location: '.$absoluteUrl.'login.php');
+    header('Location: '.$absoluteUrl.'login');
 }
 include 'inc/header.php';
 include 'inc/sidebar.php';
@@ -60,7 +60,7 @@ include 'inc/sidebar.php';
                         </div>
                         <div class="box-footer">
                             <input class="btn btn-success" type="submit" id="saveFormBtn" name="Aktualisieren" value="Aktualisieren">
-                            <a href="<?php echo $absoluteUrl;?>profil.php" class="btn btn-default" id="cancelBtn">Abbrechen</a>
+                            <a href="<?php echo $absoluteUrl;?>profil" class="btn btn-default" id="cancelBtn">Abbrechen</a>
                             <button type="reset" id="reset" class="sr-only"></button>
                         </div>
                     </form>

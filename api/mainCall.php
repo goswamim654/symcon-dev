@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 if(!isset($_SESSION['access_token'])) {
-    header('Location: '.$absoluteUrl.'login.php');
+    header('Location: '.$absoluteUrl.'login');
 }
 function callAPI($method, $url, $data){
 
@@ -41,7 +41,7 @@ function callAPI($method, $url, $data){
    $result = curl_exec($curl);
 
    if(!$result) {
-      header('Location: '.$absoluteUrl.'connection-failure.php');
+      header('Location: '.$absoluteUrl.'connection-failure');
    }
    curl_close($curl);
    return $result;

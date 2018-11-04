@@ -314,7 +314,7 @@ $(document).ready(function () {
         }
     });
 
-    var addQuelleimportForm = $("#addQuelleimportForm").validate({
+    var addquellenimportForm = $("#addquellenimportForm").validate({
         errorPlacement: function(error, element) {
         error.appendTo(element.prev("span"));
         },

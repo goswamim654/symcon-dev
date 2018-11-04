@@ -2,7 +2,7 @@
 include 'lang/GermanWords.php';
 include 'config/route.php';
 if(!isset($_SESSION['access_token'])) {
-    header('Location: '.$absoluteUrl.'login.php');
+    header('Location: '.$absoluteUrl.'login');
 }
 include 'inc/header.php';
 include 'inc/sidebar.php';
@@ -27,7 +27,7 @@ include 'inc/sidebar.php';
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <a href="<?php echo $absoluteUrl;?>andere-passwort.php" class="btn btn-danger pull-right"  title="LÃ¶schen">Ändere das Passwort</a>
+                        <a href="<?php echo $absoluteUrl;?>andere-passwort" class="btn btn-danger pull-right"  title="LÃ¶schen">Ändere das Passwort</a>
                    </div>
                     <!-- /.box-header -->
                     <!-- form start -->

@@ -10,7 +10,7 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		header('Location: '.$absoluteUrl.'unauthorised.php');
+		header('Location: '.$absoluteUrl.'unauthorised');
 		break;
 	case 2:
 		$quellenSelectBox = $response['content']['data'];
@@ -38,7 +38,7 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		header('Location: '.$absoluteUrl.'unauthorised.php');;
+		header('Location: '.$absoluteUrl.'unauthorised');;
 		break;
 	case 2:
 		$autorenSelectBox = $response['content']['data'];
@@ -67,7 +67,7 @@ if(isset($_GET['arznei_id'])) {
 	$status = $response['status'];
 	switch ($status) {
 		case 0:
-			header('Location: '.$absoluteUrl.'unauthorised.php');
+			header('Location: '.$absoluteUrl.'unauthorised');
 			break;
 		case 2:
 			$arzneien = $response['content']['data'];

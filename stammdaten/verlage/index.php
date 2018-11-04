@@ -12,7 +12,7 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		header('Location: '.$absoluteUrl.'unauthorised.php');
+		header('Location: '.$absoluteUrl.'unauthorised');
 		break;
 	case 2:
 		$verlages = $response['content']['data'];
@@ -48,7 +48,7 @@ include '../../inc/sidebar.php';
 					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>stammdaten/verlage/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neuer Verlag</a>
+							<a href="<?php echo $absoluteUrl;?>stammdaten/verlage/add" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neuer Verlag</a>
 						</h3>
 		            </div>
 		            <?php  } ?>
@@ -94,7 +94,7 @@ include '../../inc/sidebar.php';
 												<td><?php echo $verlage['bearbeiter']; ?></td>
 												<?php } ?>
 												<td class="rowlink-skip">
-													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/verlage/edit.php?verlag_id=<?php echo $verlage['verlag_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/verlage/edit?verlag_id=<?php echo $verlage['verlag_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>
 			            	       	            <?php  } ?>
 							                </tr>

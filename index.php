@@ -2,7 +2,7 @@
 include 'lang/GermanWords.php';
 include 'config/route.php';
 if(!isset($_SESSION['access_token'])) {
-    header('Location: '.$absoluteUrl.'login.php');
+    header('Location: '.$absoluteUrl.'login');
 }
 include 'inc/header.php';
 include 'inc/sidebar.php';

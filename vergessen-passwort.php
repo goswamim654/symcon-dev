@@ -39,7 +39,7 @@ include 'api/forgot-password.php';
             </div>
             <?php if(isset($success)) { ?>
                 <p class="text-center"><?php echo $success;?></p>
-                <a href="<?php echo $absoluteUrl;?>login.php" class="sc-frpTsy iQoeKm sc-dxgOiQ crAxhg">Zurück zum Login</a>
+                <a href="<?php echo $absoluteUrl;?>login" class="sc-frpTsy iQoeKm sc-dxgOiQ crAxhg">Zurück zum Login</a>
             <?php } else { ?>
             <form class="sc-kVfTjK llGERO" id="forgetPasswordForm" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="sc-gjAXCV irlZp">

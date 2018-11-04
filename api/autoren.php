@@ -15,7 +15,7 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		header('Location: '.$absoluteUrl.'unauthorised.php');
+		header('Location: '.$absoluteUrl.'unauthorised');
 		break;
 	case 2:
 		$autorTitels = $response['content']['data'];
@@ -44,7 +44,7 @@ if(isset($_GET['autor_id'])) {
 	$status = $response['status'];
 	switch ($status) {
 		case 0:
-			header('Location: '.$absoluteUrl.'unauthorised.php');
+			header('Location: '.$absoluteUrl.'unauthorised');
 			break;
 		case 2:
 			$autoren = $response['content']['data'];

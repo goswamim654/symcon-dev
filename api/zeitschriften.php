@@ -14,7 +14,7 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		header('Location: '.$absoluteUrl.'unauthorised.php');
+		header('Location: '.$absoluteUrl.'unauthorised');
 		break;
 	case 2:
 		$herkunfte = $response['content']['data'];
@@ -43,7 +43,7 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		header('Location: '.$absoluteUrl.'unauthorised.php');
+		header('Location: '.$absoluteUrl.'unauthorised');
 		break;
 	case 2:
 		$autorenSelectBox = $response['content']['data'];
@@ -75,7 +75,7 @@ if(isset($_GET['zeitschrift_id'])) {
 	$status = $response['status'];
 	switch ($status) {
 		case 0:
-			header('Location: '.$absoluteUrl.'unauthorised.php');
+			header('Location: '.$absoluteUrl.'unauthorised');
 			break;
 		case 2:
 			$zeitschriften = $response['content']['data'];

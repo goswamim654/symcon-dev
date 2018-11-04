@@ -1,7 +1,7 @@
 <?php
 include '../lang/GermanWords.php';
 include '../config/route.php';
-include '../api/quelleimport.php';
+include '../api/quellenimport.php';
 include '../inc/header.php';
 include '../inc/sidebar.php';
 ?>

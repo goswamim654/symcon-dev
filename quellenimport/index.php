@@ -11,7 +11,7 @@ $arzneien = [];
 // $status = $response['status'];
 // switch ($status) {
 // 	case 0:
-// 		header('Location: '.$absoluteUrl.'unauthorised.php');
+// 		header('Location: '.$absoluteUrl.'unauthorised');
 // 		break;
 // 	case 2:
 // 		$arzneien = $response['content']['data'];
@@ -30,11 +30,11 @@ include '../inc/sidebar.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quelleimport
+        Quellenimport
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $absoluteUrl;?>"><i class="fa fa-dashboard"></i> <?php echo $home; ?></a></li>
-        <li class="active">Quelleimport</li>
+        <li class="active">Quellenimport</li>
       </ol>
     </section>
 
@@ -47,7 +47,7 @@ include '../inc/sidebar.php';
 					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 		              <h3 class="box-title">
-		              	<a href="<?php echo $absoluteUrl;?>quelleimport/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neuer Quellenimport</a>
+		              	<a href="<?php echo $absoluteUrl;?>quellenimport/add" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neuer Quellenimport</a>
 		              </h3>
 		            </div>
 		            <?php  } ?>
@@ -91,7 +91,7 @@ include '../inc/sidebar.php';
 												<td><?php echo $arznei['bearbeiter']; ?></td>
 												<?php } ?>
 												<td class="rowlink-skip">
-													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/arzneien/edit.php?arznei_id=<?php echo $arznei['arznei_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/arzneien/edit?arznei_id=<?php echo $arznei['arznei_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>
 			            	       	            <?php  } ?>
 							                </tr>

@@ -19,7 +19,7 @@ function callAPI($method, $url, $data) {
    $result = curl_exec($curl);
 
    if(!$result) {
-       header('Location: '.$absoluteUrl.'connection-failure.php');
+       header('Location: '.$absoluteUrl.'connection-failure');
    }
    curl_close($curl);
    return $result;

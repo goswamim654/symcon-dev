@@ -11,7 +11,7 @@ $response = json_decode($get_data, true);
 $status = $response['status'];
 switch ($status) {
 	case 0:
-		header('Location: '.$absoluteUrl.'unauthorised.php');
+		header('Location: '.$absoluteUrl.'unauthorised');
 		break;
 	case 2:
 		$herkunfte = $response['content']['data'];
@@ -47,7 +47,7 @@ include '../../inc/sidebar.php';
 					<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 		            <div class="box-header with-border">
 						<h3 class="box-title">
-							<a href="<?php echo $absoluteUrl;?>stammdaten/herkunft/add.php" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neue Herkunft</a>
+							<a href="<?php echo $absoluteUrl;?>stammdaten/herkunft/add" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp; Neue Herkunft</a>
 						</h3>
 		            </div>
 		            <?php  } ?>
@@ -83,7 +83,7 @@ include '../../inc/sidebar.php';
 												<td><?php echo $herkunft['titel']; ?></td>
 												<?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) { ?>
 												<td class="rowlink-skip">
-													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/herkunft/edit.php?herkunft_id=<?php echo $herkunft['herkunft_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
+													<a class="btn btn-warning btn-sm" href="<?php echo $absoluteUrl;?>stammdaten/herkunft/edit?herkunft_id=<?php echo $herkunft['herkunft_id']; ?>" title="Ändern"><i class="fa fa-edit"></i></a>
 			            	       	            </td>
 			            	       	            <?php  } ?>
 							                </tr>
