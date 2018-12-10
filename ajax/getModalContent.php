@@ -373,3 +373,41 @@ if(isset($_GET['benutzer_id'])) {
 			break;
 	}																
 }
+
+if(isset($_GET['reference_id'])) {
+	$reference_id = $_GET['reference_id'];
+	$url = $baseApiURL.'reference/view?reference_id='.$reference_id;
+	$get_data = callAPI('GET',$url , false);
+	//echo $get_data;
+	$response = json_decode($get_data, true);
+	$status = $response['status'];
+	switch ($status) {
+		case 0:
+			echo $response['message'];
+			break;
+		case 2:
+			$reference = $response['content']['data'];
+			$data_array =  array(
+				"Autor"      => $reference['autor'],
+				"Reference"  => $reference['reference'],
+				"Kommentar"  => $reference['kommentar'],
+				"Unklar"  => $reference['unklarheiten']
+			);
+			echo json_encode($data_array);
+			break;
+		case 3:
+			echo $error = $response['message'];
+			break;
+		case 4:
+			echo $error = $response['message'];
+			break;
+		case 5:
+			echo $error = $response['message'];
+			break;
+		case 6:
+			echo $error = $response['message'];
+			break;
+		default:
+			break;
+	}																
+}

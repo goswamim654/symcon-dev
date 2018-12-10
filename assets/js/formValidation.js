@@ -342,4 +342,17 @@ $(document).ready(function () {
         }
     });
 
+    // reference form
+    var addReferenceForm = $("#addReferenceForm").validate({
+        errorPlacement: function(error, element) {
+        error.appendTo(element.prev("span"));
+        },
+        rules: {
+            'full_reference': "required",
+        },
+        messages: {
+            'full_reference': "Reference ist eine Pflichtangabe"
+        }
+    });
+
 });

@@ -48,6 +48,19 @@
             <li class="<?php if(preg_match("/prufer/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/prufer"><i class="fa fa-circle-o"></i> Prüfer</a></li>
             <li class="<?php if(preg_match("/herkunft/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/herkunft"><i class="fa fa-circle-o"></i> Herkunft</a></li>
             <li class="<?php if(preg_match("/verlage/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/verlage"><i class="fa fa-circle-o"></i> Verlage</a></li>
+            <li class="<?php if(preg_match("/reference/", $actual_link)) echo 'active'; ?> reset-datatable-state treeview">
+              <a href="#">
+                <i class="fa fa-circle-o"></i>
+                <span>Reference</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class="<?php if(preg_match("/de/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/reference/de"><i class="fa fa-circle-o"></i> Reference DE</a></li>
+                <li class="<?php if(preg_match("/reference/en/", $actual_link)) echo 'active'; ?>"><a href="<?php echo $absoluteUrl;?>stammdaten/reference/en"><i class="fa fa-circle-o"></i> Reference EN</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <?php if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 1 )) { ?>
